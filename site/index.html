@@ -224,6 +224,32 @@ body.locked .feat.hero.lockable svg{stroke:#8C7354}
 @keyframes homezoom{from{transform:scale(1.42)}to{transform:scale(1.3)}}
 @media (prefers-reduced-motion: reduce){.homezoom{animation:none}}
 .foot{padding:18px 0 10px;text-align:center;font-size:12px;color:#6E5A48}
+
+/* full screen on computers and tablets */
+@media (min-width: 900px) {
+html:not(.phone) body{background:#FBF7F1}
+html:not(.phone) .app{max-width:none;box-shadow:none}
+html:not(.phone) .screen > *{max-width:min(1080px, calc(100% - 64px));width:100%;margin-left:auto!important;margin-right:auto!important;align-self:center}
+html:not(.phone) .screen > .bandana{max-width:none;align-self:stretch}
+html:not(.phone) #welcome > *, html:not(.phone) #rsvp > *, html:not(.phone) #quiz > *, html:not(.phone) #wishes > *, html:not(.phone) #honeymoon > *, html:not(.phone) #locked > *, html:not(.phone) #hire > *{max-width:min(720px, calc(100% - 64px))}
+html:not(.phone) #welcome > div:first-child, html:not(.phone) #keepsake > div:first-child{max-width:none}
+html:not(.phone) .grid3{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;padding:0}
+html:not(.phone) .feat{font-size:15px}
+html:not(.phone) .feat.wide{grid-column:span 1;aspect-ratio:1/1.02;flex-direction:column;justify-content:center;text-align:center;padding:10px 6px}
+html:not(.phone) .feat.wide .t span, html:not(.phone) .feat.wide > svg:last-child{display:none}
+html:not(.phone) .feat.wide .t b{font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:600;color:#5E4B36}
+html:not(.phone) #home .unveil:first-of-type{height:500px!important}
+html:not(.phone) #home .unveil:first-of-type img{object-position:50% 8%!important}
+html:not(.phone) #gallery label.live{right:40px!important}
+html:not(.phone) #gBody > div:not(.sec){display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px!important;padding:0!important}
+html:not(.phone) #gBody > div:not(.sec) > div{display:contents!important}
+html:not(.phone) #gBody .tile{height:260px!important}
+html:not(.phone) #gBody .sec{padding-left:0;padding-right:0}
+html:not(.phone) .grid3 ~ .foot, html:not(.phone) .foot{padding-bottom:30px}
+html:not(.phone) nav.tabs{max-width:none;justify-content:center;gap:12px}
+html:not(.phone) nav.tabs a{flex:0 0 110px}
+html:not(.phone) #huntList{max-width:760px}
+}
 </style>
 <script src="config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
