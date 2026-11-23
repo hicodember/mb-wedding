@@ -223,6 +223,91 @@ body.locked .feat.hero.lockable svg{stroke:#8C7354}
 .homezoom{transform-origin:50% 30%;transform:scale(1.3);animation:homezoom 9s ease-out both}
 @keyframes homezoom{from{transform:scale(1.42)}to{transform:scale(1.3)}}
 @media (prefers-reduced-motion: reduce){.homezoom{animation:none}}
+
+.feat.dayof{display:none;grid-column:1/-1;aspect-ratio:auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:16px;text-align:left;background:#3B2A1E;color:#F6E2C8;border-color:#3B2A1E}
+.feat.dayof .dayic{width:52px;height:52px;border-radius:26px;background:#B4532A;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:float 5s ease-in-out infinite}
+.feat.dayof .t{display:flex;flex-direction:column;gap:4px}
+.feat.dayof .t b{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff}
+.feat.dayof .t span{font-size:13px;line-height:1.4;color:#E9DFCF;font-weight:400}
+body.locked .feat.dayof{display:flex}
+body.locked .feat.lockable{display:none}
+body.locked .linkrow a[href="#hunt"]{display:none}
+nav.tabs a.pre{display:none}
+body.locked nav.tabs a.pre{display:flex}
+body.locked nav.tabs a[data-t="hunt"], body.locked nav.tabs a[data-t="gallery"]{display:none}
+html:not(.phone) .feat.dayof{grid-column:1/-1;aspect-ratio:auto}
+
+.env-stage:before{content:'';position:absolute;inset:0;background-image:url(images/cow.svg);background-size:160px;opacity:.05;-webkit-mask:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%);mask:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%);pointer-events:none}
+.env-front{background-color:#F6EFE3;background-image:repeating-linear-gradient(45deg,rgba(140,115,84,.04) 0 2px,transparent 2px 6px)}
+.env-flap{background-color:#EFE5D3;background-image:repeating-linear-gradient(-45deg,rgba(140,115,84,.04) 0 2px,transparent 2px 6px)}
+.flaplace{position:absolute;left:0;right:0;top:0;height:10px;background:radial-gradient(circle at 6px 0,#fff 5px,transparent 5.5px) 0 0/12px 10px repeat-x;opacity:.95}
+.env-band{position:absolute;left:-6px;right:-6px;top:102px;height:42px;z-index:5;background-color:#8FB3D1;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.2) 0 1px,transparent 1px 4px),repeating-linear-gradient(45deg,rgba(40,70,100,.2) 0 1px,transparent 1px 3px);box-shadow:0 4px 10px rgba(59,42,30,.18);transition:transform .6s cubic-bezier(.4,0,.2,1),opacity .5s ease}
+.env-band .lace{position:absolute;left:0;right:0;height:9px;background:radial-gradient(circle at 6px 0,#fff 4.5px,transparent 5px) 0 0/12px 9px repeat-x}
+.env-band .lace.top{top:-8px;transform:scaleY(-1)}
+.env-band .lace.bot{bottom:-8px}
+.sprig{position:absolute;top:70px;z-index:5;transition:opacity .5s ease,transform .6s ease}
+.sprig.l{left:50%;margin-left:-74px;transform:rotate(-38deg)}
+.sprig.r{left:50%;margin-left:28px;transform:rotate(38deg)}
+.seal{top:86px!important;width:74px!important;height:74px!important;margin-left:-37px!important;background:none!important;box-shadow:none!important;padding:0;border-radius:37px;filter:drop-shadow(0 6px 10px rgba(59,42,30,.35))}
+.seal svg{display:block}
+.env.lift .env-band{transform:translateY(130px);opacity:0}
+.env.lift .sprig{opacity:0}
+.env.lift .sprig.l{transform:rotate(-80deg) translate(-20px,10px)}
+.env.lift .sprig.r{transform:rotate(80deg) translate(20px,10px)}
+.seal.crack{animation:conchooff .7s cubic-bezier(.4,0,.2,1) forwards!important}
+@keyframes conchooff{0%{transform:scale(1) rotate(0)}30%{transform:scale(1.15) rotate(-20deg)}100%{transform:translateY(-120px) scale(.5) rotate(320deg);opacity:0}}
+.cdown{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.cdown div{width:70px;padding:8px 0;border-radius:12px;background:#F6EFE3;border:1px solid #E9DFCF;display:flex;flex-direction:column;align-items:center}
+.cdown b{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1;color:#3B2A1E}
+.cdown span{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#6E5A48;font-weight:700;margin-top:2px}
+
+/* ===== elegant envelope ===== */
+#rsvp{background:#E7DED1 url(images/damask.svg) center/200px repeat}
+#rsvp .hdr{background:transparent;border:none}
+#rsvp .topbar{background:transparent}
+body.envmode #rsvp .hdr{visibility:hidden}
+body.envmode nav.tabs{display:none!important}
+.env-stage{position:relative;height:calc(100vh - 76px);min-height:620px;max-height:900px;padding:0;margin-top:-76px;perspective:none;display:block}
+.env-stage:before{display:none}
+.env-stage.gone{display:none}
+.envwrap{position:absolute;inset:0;max-width:560px;margin:0 auto}
+.env-stage{overflow:hidden}
+.flapw{position:absolute;top:0;height:100%;width:50%;z-index:3;filter:drop-shadow(0 8px 18px rgba(84,64,40,.3));transition:transform 1.3s cubic-bezier(.65,0,.35,1)}
+.flapw.l{left:0}.flapw.r{right:0}
+.flapw:before{content:'';position:absolute;top:0;bottom:0;width:100vw;background:#F5EFE6}
+.flapw.l:before{right:99.5%}.flapw.r:before{left:99.5%;background:#F5EFE6}
+.flap{position:absolute;inset:0;width:100%;height:100%}
+.envwrap.open .flapw.l{transform:translateX(-100vw)}
+.envwrap.open .flapw.r{transform:translateX(100vw)}
+.seal{position:absolute!important;left:50%!important;top:50%!important;width:104px!important;height:104px!important;margin:-52px 0 0 -52px!important;z-index:5!important;border:none!important;background:none!important;padding:0!important;cursor:pointer;border-radius:48px;filter:drop-shadow(0 8px 12px rgba(84,64,40,.38));animation:sealbreath 2.8s ease-in-out infinite!important;box-shadow:none!important}
+@keyframes sealbreath{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.seal svg{display:block}
+.seal.crack{animation:sealpop .8s cubic-bezier(.4,0,.2,1) forwards!important}
+@keyframes sealpop{0%{transform:scale(1)}30%{transform:scale(1.18)}100%{transform:scale(.4) translateY(40px);opacity:0}}
+.envtext{position:absolute;left:0;right:0;text-align:center;z-index:4;transition:opacity .6s ease}
+.envtext.top{top:12%}
+.envtext.bot{bottom:9%}
+.envtext.bot span{display:inline-block;padding:9px 18px;border-radius:20px;background:rgba(251,247,241,.85);font-size:14px;font-weight:700;color:#6E5A48;letter-spacing:.5px;animation:tapnudge 2.4s ease-in-out infinite}
+@keyframes tapnudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.envwrap.open .envtext{opacity:0}
+.pocketwrap{position:absolute;left:50%;bottom:12%;width:300px;margin-left:-150px;height:330px;z-index:1;opacity:0;transform:translateY(40px) scale(.94);transition:opacity .8s ease .5s,transform 1s cubic-bezier(.2,.8,.2,1) .5s}
+.envwrap.open .pocketwrap{opacity:1;transform:none}
+.peek{position:absolute;left:18px;right:18px;top:0;height:250px;background:#fff;padding:40px 14px 0;text-align:center;box-shadow:0 8px 22px rgba(84,64,40,.15);transform:translateY(120px);transition:transform 1.4s cubic-bezier(.2,.8,.2,1) 1.2s;;border-radius:4px}
+.peek:before{content:'';position:absolute;left:-1px;right:-1px;top:-9px;height:10px;background:radial-gradient(circle at 9px 10px,#fff 8.5px,transparent 9px) 0 0/18px 10px repeat-x}
+.peek:after{content:'';position:absolute;left:10px;right:10px;top:10px;height:16px;background:radial-gradient(circle,rgba(200,169,126,.55) 1.6px,transparent 2px) 0 0/9px 8px repeat-x}
+.envwrap.open .peek{transform:translateY(0)}
+.pocket{position:absolute;left:0;right:0;bottom:0;height:170px;background:#F1EADF;clip-path:polygon(0 0,50% 45%,100% 0,100% 100%,0 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.6);filter:drop-shadow(0 10px 18px rgba(84,64,40,.2))}
+.pocket:before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.5),rgba(0,0,0,.03))}
+.miniseal{position:absolute;left:50%;bottom:76px;margin-left:-23px;z-index:2;filter:drop-shadow(0 3px 5px rgba(84,64,40,.3))}
+/* lace invitation card */
+.invite{background:#fff!important;border:none!important;border-radius:6px!important;margin-top:30px!important;padding:46px 24px 30px!important;box-shadow:0 20px 44px rgba(84,64,40,.18)!important;overflow:visible!important}
+.invite:before{content:''!important;position:absolute!important;inset:auto!important;left:-1px!important;right:-1px!important;top:-11px!important;height:12px!important;border:none!important;border-radius:0!important;background:radial-gradient(circle at 10px 12px,#fff 9.5px,transparent 10px) 0 0/20px 12px repeat-x!important}
+.invite .lacerow{position:absolute;left:14px;right:14px;height:18px;background:radial-gradient(circle,rgba(200,169,126,.5) 1.8px,transparent 2.2px) 0 0/10px 9px repeat}
+.invite .lacerow.t{top:12px}.invite .lacerow.b{bottom:12px}
+.invite .pearl{position:absolute;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#EDE6DA 60%,#CFC4B3);box-shadow:0 1px 2px rgba(84,64,40,.3)}
+#rsvp .thanks,#rsvp .rsvp-form{position:relative;z-index:2}
+#rsvp .rsvp-form{background:rgba(251,247,241,.96);border-radius:20px;padding:20px 16px}
+html:not(.phone) .env-stage{max-width:none!important}
 .foot{padding:18px 0 10px;text-align:center;font-size:12px;color:#6E5A48}
 
 /* full screen on computers and tablets */
@@ -238,8 +323,7 @@ html:not(.phone) .feat{font-size:15px}
 html:not(.phone) .feat.wide{grid-column:span 1;aspect-ratio:1/1.02;flex-direction:column;justify-content:center;text-align:center;padding:10px 6px}
 html:not(.phone) .feat.wide .t span, html:not(.phone) .feat.wide > svg:last-child{display:none}
 html:not(.phone) .feat.wide .t b{font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:600;color:#5E4B36}
-html:not(.phone) #home .unveil:first-of-type{height:500px!important}
-html:not(.phone) #home .unveil:first-of-type img{object-position:50% 8%!important}
+html:not(.phone) .homehero .unveil{width:280px!important;height:356px!important;border-radius:140px 140px 18px 18px!important}
 html:not(.phone) #gallery label.live{right:40px!important}
 html:not(.phone) #gBody > div:not(.sec){display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px!important;padding:0!important}
 html:not(.phone) #gBody > div:not(.sec) > div{display:contents!important}
@@ -264,8 +348,8 @@ html:not(.phone) #huntList{max-width:760px}
 <div style="position:absolute;inset:0;overflow:hidden;z-index:3;pointer-events:none"><div class="petal" aria-hidden="true" style="left: 8px; background: #B4532A; opacity: 0.8; animation-delay: 0.0s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 56px; background: #FFFFFF; opacity: 0.8; animation-delay: -1.6s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 104px; background: #E8B48F; opacity: 0.8; animation-delay: -3.2s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 152px; background: #B4532A; opacity: 0.8; animation-delay: -4.800000000000001s; animation-duration: 13.5s"></div><div class="petal" aria-hidden="true" style="left: 200px; background: #FFFFFF; opacity: 0.8; animation-delay: -6.4s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 248px; background: #E8B48F; opacity: 0.8; animation-delay: -8.0s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 296px; background: #B4532A; opacity: 0.8; animation-delay: -9.600000000000001s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 344px; background: #FFFFFF; opacity: 0.8; animation-delay: -11.200000000000001s; animation-duration: 13.5s"></div></div>
 <div style="position:relative;display:flex;flex-direction:column;align-items:center;padding:52px 24px 0;text-align:center">
 <div class="rise eyebrow muted">Together with their families</div>
-<div class="unveil" style="margin-top:22px;width:272px;height:356px;border-radius:136px 136px 16px 16px;overflow:hidden;box-shadow:0 24px 50px rgba(59,42,30,.22);border:6px solid #fff;animation-delay:.2s">
-<img class="kb" src="images/couple.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block"></div>
+<div style="margin-top:22px;filter:drop-shadow(0 18px 28px rgba(59,42,30,.22))"><div class="unveil" style="width:272px;height:356px;border-radius:136px 136px 16px 16px;overflow:hidden;border:6px solid #fff;animation-delay:.2s">
+<img class="kb" src="images/couple.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block"></div></div>
 <div style="margin-top:20px;width:100%;color:#B4532A"><div class="script" id="welFirst" style="font-size:56px;line-height:1.1;white-space:nowrap"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.9s">M</span><span class="ltr" style="animation-delay: 0.945s">a</span><span class="ltr" style="animation-delay: 0.99s">c</span><span class="ltr" style="animation-delay: 1.035s">k</span><span class="ltr" style="animation-delay: 1.08s">e</span><span class="ltr" style="animation-delay: 1.125s">n</span><span class="ltr" style="animation-delay: 1.17s">z</span><span class="ltr" style="animation-delay: 1.215s">i</span><span class="ltr" style="animation-delay: 1.26s">e</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.305s">&amp;</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.35s">B</span><span class="ltr" style="animation-delay: 1.395s">r</span><span class="ltr" style="animation-delay: 1.44s">a</span><span class="ltr" style="animation-delay: 1.485s">n</span><span class="ltr" style="animation-delay: 1.53s">d</span><span class="ltr" style="animation-delay: 1.575s">o</span><span class="ltr" style="animation-delay: 1.62s">n</span></span></div></div>
 <div style="margin-top:10px"><svg width="180" height="22" viewBox="0 0 180 22" fill="none" aria-hidden="true"><path class="draw" d="M2 11 C 40 11, 60 3, 78 11 M102 11 C 120 19, 140 11, 178 11" stroke="#C8A97E" stroke-width="1.4" stroke-linecap="round"/><path d="M90 17 C 84 12, 80 9, 83 6 C 85 4, 88 5, 90 8 C 92 5, 95 4, 97 6 C 100 9, 96 12, 90 17 Z" fill="#B4532A"/></svg></div>
 <div class="rise serif" style="margin-top:8px;font-size:22px;font-style:italic;animation-delay:1.9s">invite you to share the day through your eyes</div>
@@ -284,12 +368,12 @@ html:not(.phone) #huntList{max-width:760px}
 <section class="screen" id="home">
 <div class="topbar"><span class="iconbtn" aria-hidden="true"></span><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div>
 <div class="mock" id="mock"><span>Mockup</span><button type="button" data-m="before">Before the wedding</button><button type="button" data-m="day">Wedding day</button></div>
-<div class="unveil" style="position:relative;margin:8px 20px 0;height:320px;border-radius:22px;overflow:hidden;box-shadow:0 16px 36px rgba(59,42,30,.2);animation-delay:.1s">
-<img class="kb" src="images/couple.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block">
-<div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;color:#fff">
-<div class="script" style="font-size:48px;line-height:1">Mackenzie &amp; Brandon</div>
-<div style="font-size:14px;font-weight:600;letter-spacing:1px;margin-top:2px">[Wedding Date] · [Venue]</div></div>
-<div class="bandana" style="position:absolute;left:0;right:0;bottom:0;height:6px"></div></div>
+<div class="homehero" style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 20px 0">
+<div style="filter:drop-shadow(0 16px 26px rgba(59,42,30,.2))"><div class="unveil" style="width:236px;height:300px;border-radius:118px 118px 16px 16px;overflow:hidden;border:6px solid #fff;animation-delay:.1s">
+<img class="kb" src="images/couple.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block"></div></div>
+<div class="script" id="homeNames" style="width:100%;font-size:52px;line-height:1.1;color:#B4532A;margin-top:12px;white-space:nowrap">Mackenzie &amp; Brandon</div>
+<div class="eyebrow muted" style="font-size:12px;margin-top:2px">[Wedding Date] · [Venue]</div>
+</div>
 <a href="#schedule" class="rise" style="margin:14px 20px 0;padding:12px 14px;border-radius:16px;background:#fff;border:1px solid #F0E8DB;display:flex;align-items:center;gap:12px;text-decoration:none;color:#3B2A1E;animation-delay:.2s">
 <span class="live" style="width:10px;height:10px;border-radius:5px;background:#B4532A;flex-shrink:0;margin-left:4px"></span>
 <span style="flex:1;font-size:15px"><b id="nowLbl">Happening now:</b> <span id="nowName">The Ceremony</span></span>
@@ -300,6 +384,7 @@ html:not(.phone) #huntList{max-width:760px}
 <span style="position:relative;padding:8px 12px;border-radius:14px;background:#B4532A;font-size:13px;font-weight:700">RSVP</span></a>
 <div class="linkrow"><a href="#hunt">Your missions: <span id="homeLeft">8</span> left</a><a href="#wishes">Leave a wish</a></div>
 <div class="grid3">
+<a href="#locked" class="feat rise dayof" style="animation-delay:.25s"><span class="dayic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="t"><b>Wedding Day Fun</b><span>Photos, the gallery and the scavenger hunt open the morning of [Wedding Date]</span></span></a>
 <label class="feat rise hero lockable" style="animation-delay:0.25s"><span class="lk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M42 36a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V18a3 3 0 0 1 3-3h7l3-5h10l3 5h7a3 3 0 0 1 3 3z"/><circle cx="24" cy="26" r="7"/><path d="M24 23v6M21 26h6"/></svg><span>Share Photos</span><input type="file" accept="image/*,video/*" multiple class="sr upload"></label>
 <a href="#gallery" class="feat rise lockable" style="animation-delay:0.3s"><span class="lk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="badge">12</span><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="9" width="28" height="24" rx="3"/><path d="M13 39h26a2 2 0 0 0 2-2V16"/><circle cx="15" cy="17" r="2.5"/><path d="M35 27l-8-8-14 14"/></svg><span>Gallery</span></a>
 <a href="#hunt" class="feat rise lockable" style="animation-delay:0.35s"><span class="lk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="badge"><span id="huntBadge">8</span></span><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v14a12 12 0 0 0 24 0V9"/><path d="M18 9v14a6 6 0 0 0 12 0V9"/><path d="M12 9h6M30 9h6"/><circle cx="15" cy="15" r=".8" fill="#8C7354"/><circle cx="15" cy="21" r=".8" fill="#8C7354"/><circle cx="33" cy="15" r=".8" fill="#8C7354"/><circle cx="33" cy="21" r=".8" fill="#8C7354"/><circle cx="17" cy="29" r=".8" fill="#8C7354"/><circle cx="31" cy="29" r=".8" fill="#8C7354"/></svg><span>Scavenger Hunt</span></a>
@@ -351,21 +436,18 @@ html:not(.phone) #huntList{max-width:760px}
 <section class="screen" id="rsvp">
 <div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div></div>
 <div class="env-stage" id="envStage">
-<div class="rays"></div><div class="env-glow"></div>
-<div class="rise eyebrow muted" id="envHint">A letter for you</div>
-<div class="env" id="env">
-<div class="env-back"><div class="bandana"></div></div>
-<div class="letter"><div class="script" style="font-size:34px;color:#B4532A;line-height:1">Mackenzie &amp; Brandon</div><div class="serif" style="font-size:15px;font-style:italic;margin-top:6px;color:#6E5A48">request the pleasure of your company</div></div>
-<div class="env-front"></div>
-<div class="env-flap"></div>
-<button type="button" class="seal" id="seal" aria-label="Open your invitation">M&amp;B</button>
+<div class="envwrap" id="env">
+<div class="envtext top"><div class="eyebrow" style="color:#8C7354">A special delivery for</div><div class="script" style="font-size:42px;line-height:1.1;color:#3B2A1E"><span class="gname">you</span></div></div>
+<div class="flapw l"><svg class="flap l" viewBox="0 0 200 1000" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="fgl" x1="0" x2="1"><stop offset="0" stop-color="#F5EFE6"/><stop offset="1" stop-color="#EEE6D9"/></linearGradient></defs><g><path d="M-60 0 L0 0 L0 140 Q43.2 155.4 32.3 200.0 Q75.5 215.4 64.7 260.0 Q107.8 275.4 97.0 320.0 Q140.2 335.4 129.3 380.0 Q172.5 395.4 161.7 440.0 Q204.8 455.4 194.0 500.0 Q204.8 544.5 161.7 560.0 Q172.5 604.5 129.3 620.0 Q140.2 664.5 97.0 680.0 Q107.8 724.5 64.7 740.0 Q75.5 784.5 32.3 800.0 Q43.2 844.5 -0.0 860.0 L0 1000 L-60 1000 Z" fill="url(#fgl)"/><path d="M0 168 Q39.2 182.8 28.7 223.3 Q67.9 238.1 57.3 278.7 Q96.6 293.4 86.0 334.0 Q125.2 348.8 114.7 389.3 Q153.9 404.1 143.3 444.7 Q182.6 459.4 172.0 500.0 Q182.6 540.6 143.3 555.3 Q153.9 595.9 114.7 610.7 Q125.2 651.2 86.0 666.0 Q96.6 706.6 57.3 721.3 Q67.9 761.9 28.7 776.7 Q39.2 817.2 -0.0 832.0" fill="none" stroke="#D8CBB7" stroke-width="1.6" vector-effect="non-scaling-stroke"/><path d="M0 168 Q39.2 182.8 28.7 223.3 Q67.9 238.1 57.3 278.7 Q96.6 293.4 86.0 334.0 Q125.2 348.8 114.7 389.3 Q153.9 404.1 143.3 444.7 Q182.6 459.4 172.0 500.0 Q182.6 540.6 143.3 555.3 Q153.9 595.9 114.7 610.7 Q125.2 651.2 86.0 666.0 Q96.6 706.6 57.3 721.3 Q67.9 761.9 28.7 776.7 Q39.2 817.2 -0.0 832.0" fill="none" stroke="#FBF7F0" stroke-width="1.2" transform="translate(-1.5 -1.5)" vector-effect="non-scaling-stroke"/></g></svg></div><div class="flapw r"><svg class="flap r" viewBox="0 0 200 1000" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="fgr" x1="0" x2="1"><stop offset="0" stop-color="#F5EFE6"/><stop offset="1" stop-color="#EEE6D9"/></linearGradient></defs><g transform="translate(200 0) scale(-1 1)"><path d="M-60 0 L0 0 L0 140 Q43.2 155.4 32.3 200.0 Q75.5 215.4 64.7 260.0 Q107.8 275.4 97.0 320.0 Q140.2 335.4 129.3 380.0 Q172.5 395.4 161.7 440.0 Q204.8 455.4 194.0 500.0 Q204.8 544.5 161.7 560.0 Q172.5 604.5 129.3 620.0 Q140.2 664.5 97.0 680.0 Q107.8 724.5 64.7 740.0 Q75.5 784.5 32.3 800.0 Q43.2 844.5 -0.0 860.0 L0 1000 L-60 1000 Z" fill="url(#fgr)"/><path d="M0 168 Q39.2 182.8 28.7 223.3 Q67.9 238.1 57.3 278.7 Q96.6 293.4 86.0 334.0 Q125.2 348.8 114.7 389.3 Q153.9 404.1 143.3 444.7 Q182.6 459.4 172.0 500.0 Q182.6 540.6 143.3 555.3 Q153.9 595.9 114.7 610.7 Q125.2 651.2 86.0 666.0 Q96.6 706.6 57.3 721.3 Q67.9 761.9 28.7 776.7 Q39.2 817.2 -0.0 832.0" fill="none" stroke="#D8CBB7" stroke-width="1.6" vector-effect="non-scaling-stroke"/><path d="M0 168 Q39.2 182.8 28.7 223.3 Q67.9 238.1 57.3 278.7 Q96.6 293.4 86.0 334.0 Q125.2 348.8 114.7 389.3 Q153.9 404.1 143.3 444.7 Q182.6 459.4 172.0 500.0 Q182.6 540.6 143.3 555.3 Q153.9 595.9 114.7 610.7 Q125.2 651.2 86.0 666.0 Q96.6 706.6 57.3 721.3 Q67.9 761.9 28.7 776.7 Q39.2 817.2 -0.0 832.0" fill="none" stroke="#FBF7F0" stroke-width="1.2" transform="translate(-1.5 -1.5)" vector-effect="non-scaling-stroke"/></g></svg></div>
+<button type="button" class="seal" id="seal" aria-label="Open your invitation"><svg viewBox="40 40 120 120" width="104" height="104" aria-hidden="true"><defs><radialGradient id="gold" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#F6E3A8"/><stop offset=".45" stop-color="#D4AF5A"/><stop offset="1" stop-color="#9C7A2E"/></radialGradient><radialGradient id="gold2" cx="60%" cy="70%" r="70%"><stop offset="0" stop-color="#E8CC7E"/><stop offset="1" stop-color="#B38D3C"/></radialGradient></defs><path d="M143.8 100.0 L142.1 109.8 L140.2 119.7 L133.9 127.6 L126.8 134.3 L119.4 141.0 L110.5 146.9 L100.0 147.5 L89.7 146.1 L81.0 140.2 L71.8 136.1 L65.6 128.0 L60.8 119.2 L57.9 109.8 L56.3 100.0 L54.0 89.3 L57.9 79.3 L63.6 70.4 L71.0 62.9 L81.1 59.9 L90.2 56.1 L100.0 53.4 L110.3 54.0 L120.3 57.0 L129.3 62.6 L133.7 72.6 L141.1 79.8 L144.8 89.6 Z" fill="url(#gold)"/><circle cx="100" cy="100" r="33" fill="url(#gold2)" stroke="#A8843A" stroke-width="2"/><circle cx="100" cy="100" r="29" fill="none" stroke="#F3DFA2" stroke-opacity=".6" stroke-width="1.2"/><g fill="#C9A14E" stroke="#8E6E2A" stroke-width=".9"><path d="M100 128 C100 110 100 90 100 58" fill="none" stroke-width="1.6"/><ellipse cx="93" cy="70" rx="3.4" ry="7" transform="rotate(-30 93 70)"/><ellipse cx="107" cy="70" rx="3.4" ry="7" transform="rotate(30 107 70)"/><ellipse cx="92" cy="82" rx="3.4" ry="7" transform="rotate(-32 92 82)"/><ellipse cx="108" cy="82" rx="3.4" ry="7" transform="rotate(32 108 82)"/><ellipse cx="91" cy="94" rx="3.4" ry="7" transform="rotate(-34 91 94)"/><ellipse cx="109" cy="94" rx="3.4" ry="7" transform="rotate(34 109 94)"/><ellipse cx="100" cy="60" rx="3.4" ry="7" transform="rotate(0 100 60)"/></g><g fill="none" stroke="#FFF1C4" stroke-opacity=".5" stroke-width=".8" transform="translate(-.8 -.8)"><path d="M100 128 C100 110 100 90 100 58"/></g></svg></button>
+<div class="envtext bot" id="envTap"><span>Tap the seal to open</span></div>
+<div class="pocketwrap"><div class="peek"><div class="script" style="font-size:34px;line-height:1.05;color:#3B2A1E">Mackenzie &amp; Brandon</div><div class="serif" style="font-size:15px;font-style:italic;color:#6E5A48;margin-top:6px">request the pleasure of your company</div></div><div class="pocket"></div><span class="miniseal"><svg viewBox="40 40 120 120" width="46" height="46" aria-hidden="true"><defs><radialGradient id="goldm" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#F6E3A8"/><stop offset=".45" stop-color="#D4AF5A"/><stop offset="1" stop-color="#9C7A2E"/></radialGradient><radialGradient id="goldm2" cx="60%" cy="70%" r="70%"><stop offset="0" stop-color="#E8CC7E"/><stop offset="1" stop-color="#B38D3C"/></radialGradient></defs><path d="M143.8 100.0 L142.1 109.8 L140.2 119.7 L133.9 127.6 L126.8 134.3 L119.4 141.0 L110.5 146.9 L100.0 147.5 L89.7 146.1 L81.0 140.2 L71.8 136.1 L65.6 128.0 L60.8 119.2 L57.9 109.8 L56.3 100.0 L54.0 89.3 L57.9 79.3 L63.6 70.4 L71.0 62.9 L81.1 59.9 L90.2 56.1 L100.0 53.4 L110.3 54.0 L120.3 57.0 L129.3 62.6 L133.7 72.6 L141.1 79.8 L144.8 89.6 Z" fill="url(#goldm)"/><circle cx="100" cy="100" r="33" fill="url(#goldm2)" stroke="#A8843A" stroke-width="2"/><circle cx="100" cy="100" r="29" fill="none" stroke="#F3DFA2" stroke-opacity=".6" stroke-width="1.2"/><g fill="#C9A14E" stroke="#8E6E2A" stroke-width=".9"><path d="M100 128 C100 110 100 90 100 58" fill="none" stroke-width="1.6"/><ellipse cx="93" cy="70" rx="3.4" ry="7" transform="rotate(-30 93 70)"/><ellipse cx="107" cy="70" rx="3.4" ry="7" transform="rotate(30 107 70)"/><ellipse cx="92" cy="82" rx="3.4" ry="7" transform="rotate(-32 92 82)"/><ellipse cx="108" cy="82" rx="3.4" ry="7" transform="rotate(32 108 82)"/><ellipse cx="91" cy="94" rx="3.4" ry="7" transform="rotate(-34 91 94)"/><ellipse cx="109" cy="94" rx="3.4" ry="7" transform="rotate(34 109 94)"/><ellipse cx="100" cy="60" rx="3.4" ry="7" transform="rotate(0 100 60)"/></g><g fill="none" stroke="#FFF1C4" stroke-opacity=".5" stroke-width=".8" transform="translate(-.8 -.8)"><path d="M100 128 C100 110 100 90 100 58"/></g></svg></span></div>
 </div>
-<div class="rise muted" style="margin-top:26px;font-size:15px;font-weight:600;animation-delay:.3s" id="envTap">Tap the seal to open</div>
 </div>
 
-<div class="invite" id="invite"><div class="shine"></div>
+<div class="invite" id="invite"><div class="shine"></div><span class="lacerow t"></span><span class="lacerow b"></span><span class="pearl" style="top:40px;left:22px"></span><span class="pearl" style="top:64px;right:26px"></span><span class="pearl" style="top:120px;left:14px"></span><span class="pearl" style="top:180px;right:16px"></span><span class="pearl" style="bottom:90px;left:18px"></span><span class="pearl" style="bottom:60px;right:22px"></span><span class="pearl" style="bottom:150px;right:12px"></span><span class="pearl" style="top:250px;left:12px"></span>
 <div class="eyebrow muted" style="font-size:11px">Together with their families</div>
-<div style="width:120px;height:150px;margin:16px auto 0;border-radius:60px 60px 8px 8px;overflow:hidden;border:4px solid #fff;box-shadow:0 8px 18px rgba(59,42,30,.16)"><img src="images/hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:52% 42%"></div>
+<div style="width:120px;height:150px;margin:16px auto 0;border-radius:60px 60px 8px 8px;overflow:hidden;border:4px solid #fff;box-shadow:0 8px 18px rgba(59,42,30,.16)"><img src="images/couple.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%"></div>
 <div class="script" id="invFirst" style="font-size:50px;line-height:1.1;color:#B4532A;margin-top:14px;white-space:nowrap">Mackenzie &amp; Brandon</div>
 <div class="serif" style="font-size:19px;line-height:1.45;margin-top:14px">request the honor of your presence<br>as they say &ldquo;I do&rdquo;</div>
 <div style="margin:16px auto 0;width:180px;height:1px;background:#C8A97E"></div>
@@ -374,8 +456,10 @@ html:not(.phone) #huntList{max-width:760px}
 <div class="serif" style="margin-top:4px;font-size:16px;font-style:italic;color:#6E5A48">[City], Texas</div>
 <div style="margin:16px auto 0;width:180px;height:1px;background:#C8A97E"></div>
 <div class="serif" style="font-size:17px;font-style:italic;margin-top:12px">Taco bar, dancing and boots welcome</div>
+<div class="cdown" id="cdown"><div><b id="cdD">--</b><span>days</span></div><div><b id="cdH">--</b><span>hours</span></div><div><b id="cdM">--</b><span>min</span></div></div>
 <div class="eyebrow" style="font-size:11px;color:#B4532A;margin-top:12px">Kindly reply by [RSVP Date]</div>
 <button type="button" class="btn" id="toForm" style="margin-top:20px">RSVP now<span class="sheen"></span></button>
+<a class="btn ghost enterapp" href="#welcome" style="margin-top:10px">Explore the wedding app</a>
 </div>
 
 <form class="rsvp-form" id="rsvpForm" novalidate>
@@ -405,6 +489,7 @@ html:not(.phone) #huntList{max-width:760px}
 <div class="script" id="thanksTitle" style="font-size:46px;line-height:1.05;color:#B4532A;margin-top:16px">See you there!</div>
 <p class="muted" id="thanksText" style="font-size:15px;line-height:1.5;margin:8px 0 18px">We saved your spot. This app will have everything you need on the big day.</p>
 <button type="button" class="btn ghost" data-toast="Added to your calendar">Add to calendar</button>
+<a class="btn enterapp" href="#home" style="margin-top:10px">Explore the wedding app<span class="sheen"></span></a>
 <button type="button" class="btn ghost" id="rsvpEdit" style="margin-top:10px">Change my RSVP</button>
 </div>
 <div class="foot">Made with love by <a href="#hire">Codember</a></div>
@@ -577,10 +662,12 @@ html:not(.phone) #huntList{max-width:760px}
 
 <nav class="tabs" id="tabs" aria-label="Main">
 <a href="#home" data-t="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home<span class="dot"></span></a>
+<a href="#rsvp" data-t="rsvp" class="pre"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>RSVP<span class="dot"></span></a>
 <a href="#hunt" data-t="hunt"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>Hunt<span class="dot"></span></a>
 <a href="#gallery" data-t="gallery"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Gallery<span class="dot"></span></a>
 <a href="#quiz" data-t="quiz"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Quiz<span class="dot"></span></a>
 <a href="#wishes" data-t="wishes"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Wishes<span class="dot"></span></a>
+<a href="#locked" data-t="locked" class="pre"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Big Day<span class="dot"></span></a>
 </nav>
 <canvas id="confetti" aria-hidden="true"></canvas>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -740,13 +827,12 @@ var PARTIES = [
 ];
 var env = $('#env'), rs = { opened: false, party: null, ans: {}, plusName: {} };
 function openEnv() {
-if (rs.opened) return; rs.opened = true; $('#envTap').style.visibility = 'hidden'; $('#envHint').style.visibility = 'hidden';
+if (rs.opened) return; rs.opened = true; store.set('opened', '1');
 var stage = $('#envStage'), seal = $('#seal');
-seal.classList.add('crack'); env.classList.add('lift'); stage.classList.add('lit');
+seal.classList.add('crack');
 setTimeout(function () { env.classList.add('open'); }, 450);
-setTimeout(function () { var r = env.getBoundingClientRect(); confettiBurst(r.left + r.width / 2, r.top + 30, 160); hearts(stage); }, 900);
-setTimeout(function () { env.classList.add('away'); }, 2500);
-setTimeout(function () { stage.classList.add('gone'); $('#invite').classList.add('show'); fitNames(); var v = document.getElementById('vp'); if (v) v.scrollTop = 0; else window.scrollTo(0, 0); confettiRain(90); }, 3100);
+setTimeout(function () { var r = env.getBoundingClientRect(); confettiBurst(r.left + r.width / 2, r.top + r.height * 0.45, 150); hearts(stage); }, 1000);
+setTimeout(function () { stage.classList.add('gone'); document.body.classList.remove('envmode'); $('#invite').classList.add('show'); fitNames(); var v = document.getElementById('vp'); if (v) v.scrollTop = 0; else window.scrollTo(0, 0); confettiRain(70); }, 3900);
 }
 function hearts(stage) {
 var cols = ['#B4532A', '#E8B48F', '#CC6A3A', '#C8A97E'];
@@ -758,7 +844,7 @@ stage.appendChild(h); setTimeout(function () { h.remove(); }, 3400);
 }, i * 120); })(i); }
 }
 var CF = { parts: [], raf: null };
-var CCOLS = ['#B4532A', '#E8B48F', '#C8A97E', '#F6E6D8', '#3B2A1E', '#FFFFFF', '#CC6A3A'];
+var CCOLS = ['#D4AF5A', '#F6E3A8', '#FFFFFF', '#E8DECF', '#B4532A', '#3B2A1E', '#C9A14E'];
 function reduceMotion() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
 function cfCanvas() {
 var c = $('#confetti'), host = c.parentElement.getBoundingClientRect ? c : c;
@@ -802,7 +888,7 @@ if (!a || !a.clientWidth) return;
 var s = max; a.style.fontSize = s + 'px';
 while (s > 24 && a.scrollWidth > a.clientWidth) { s -= 1; a.style.fontSize = s + 'px'; }
 }
-function fitNames() { fitOne($('#invFirst'), 54); fitOne($('#welFirst'), 64); }
+function fitNames() { fitOne($('#invFirst'), 54); fitOne($('#welFirst'), 64); fitOne($('#homeNames'), 56); }
 window.addEventListener('resize', fitNames);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNames);
 $('#seal').addEventListener('click', openEnv);
@@ -862,11 +948,11 @@ setName(first);
 var v = document.getElementById('vp'); if (v) v.scrollTop = 0; else window.scrollTo(0, 0);
 });
 $('#rsvpEdit').addEventListener('click', function () { $('#thanks').classList.remove('show'); $('#invite').classList.add('show'); fitNames(); $('#rsvpForm').classList.add('show'); });
-window.__resetRsvp = function () { rs.opened = false; rs.party = null; rs.ans = {}; rs.plusName = {}; env.classList.remove('open', 'lift', 'away'); $('#seal').classList.remove('crack'); $('#envStage').classList.remove('lit'); $('#envHint').style.visibility = 'visible'; $('#envTap').style.visibility = 'visible'; $('#envStage').classList.remove('gone'); ['invite', 'rsvpForm', 'thanks'].forEach(function (id) { document.getElementById(id).classList.remove('show'); }); $('#rName').value = ''; $('#partyBox').style.display = 'none'; $('#rSug').style.display = 'none'; };
+window.__resetRsvp = function () { rs.opened = false; rs.party = null; rs.ans = {}; rs.plusName = {}; env.classList.remove('open'); $('#seal').classList.remove('crack'); $('#envStage').classList.remove('gone', 'lit'); $('#envStage').classList.remove('gone'); ['invite', 'rsvpForm', 'thanks'].forEach(function (id) { document.getElementById(id).classList.remove('show'); }); $('#rName').value = ''; $('#partyBox').style.display = 'none'; $('#rSug').style.display = 'none'; };
 
 // wedding-day lock (in the real app this flips on its own the morning of the wedding)
 var locked = store.get('dayof') !== '1';
-var LOCKMSG = { gallery: 'The gallery opens the morning of the wedding so everyone sees the big day for the first time together.', hunt: 'The scavenger hunt starts the morning of the wedding. Save your best shots for the big day!', share: 'Photo sharing opens the morning of the wedding. Until then, keep those cameras in your pocket!' };
+var LOCKMSG = { all: 'Photo sharing, the gallery and the scavenger hunt all open the morning of the wedding. Until then, RSVP, take the quiz or leave a video wish.', gallery: 'The gallery opens the morning of the wedding so everyone sees the big day for the first time together.', hunt: 'The scavenger hunt starts the morning of the wedding. Save your best shots for the big day!', share: 'Photo sharing opens the morning of the wedding. Until then, keep those cameras in your pocket!' };
 function applyLock() {
 document.body.classList.toggle('locked', locked);
 document.querySelectorAll('#mock button').forEach(function (b) { b.classList.toggle('on', (b.getAttribute('data-m') === 'before') === locked); });
@@ -903,6 +989,19 @@ var n = ($('#hmName').value || '').trim().split(' ')[0];
 setTimeout(function () { $('#hmPay').style.display = 'none'; $('#hmThanksTitle').textContent = n ? 'Thank you, ' + n + '!' : 'Thank you!'; var th = $('#hmThanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show'); }, 1400);
 }); });
 window.__resetHoney = function () { hm.amt = null; hm.other = false; $('#otherBox').style.display = 'none'; $('#otherAmt').value = ''; $('#hmAmt').textContent = 'a gift'; $('#hmForm').style.display = 'block'; $('#hmPay').style.display = 'none'; $('#hmThanks').classList.remove('show'); document.querySelectorAll('#amts button, #exps .exp').forEach(function (b) { b.classList.remove('on'); }); };
+
+document.querySelectorAll('.enterapp').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); location.hash = store.get('guestName') ? 'home' : 'welcome'; }); });
+
+
+// countdown on the invitation
+function weddingTime() { var C = window.CFG; var s = C && C.moments && C.moments[0] && C.moments[0].start; var d = s ? Date.parse(s) : NaN; return isNaN(d) || d > Date.parse('2090-01-01') ? null : d; }
+function tickCountdown() {
+var w = weddingTime(), box = $('#cdown'); if (!box) return;
+if (!w) return;
+var ms = Math.max(0, w - Date.now()), d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+$('#cdD').textContent = d; $('#cdH').textContent = h; $('#cdM').textContent = m;
+}
+tickCountdown(); setInterval(tickCountdown, 30000);
 
 // ===== live mode: real data from Supabase (only when config.js has keys) =====
 if (window.LIVE) (function () {
@@ -1157,15 +1256,20 @@ document.querySelectorAll('#hmPay .payb button').forEach(function (b) {
 var views = ['welcome', 'home', 'rsvp', 'honeymoon', 'locked', 'schedule', 'about', 'info', 'party', 'hunt', 'gallery', 'quiz', 'wishes', 'keepsake', 'hire'];
 function route() {
 var h = (location.hash || '').replace('#', '');
-if (views.indexOf(h) < 0) h = 'welcome';
+if (views.indexOf(h) < 0) {
+  if (locked && !store.get('opened')) h = 'rsvp';
+  else h = store.get('guestName') ? 'home' : 'welcome';
+}
 if (locked && (h === 'gallery' || h === 'hunt')) { $('#lockText').textContent = LOCKMSG[h]; var tabH = h; h = 'locked'; }
+if (h === 'locked' && !tabH) $('#lockText').textContent = LOCKMSG.all;
 document.querySelectorAll('.screen').forEach(function (s) { s.classList.toggle('on', s.id === h); });
-var tabbed = ['honeymoon', 'locked', 'home', 'schedule', 'about', 'info', 'party', 'hunt', 'gallery', 'quiz', 'wishes'].indexOf(h) >= 0;
+document.body.classList.toggle('envmode', h === 'rsvp' && !rs.opened);
+var tabbed = ['rsvp', 'honeymoon', 'locked', 'home', 'schedule', 'about', 'info', 'party', 'hunt', 'gallery', 'quiz', 'wishes'].indexOf(h) >= 0;
 $('#tabs').classList.toggle('hide', !tabbed);
 document.querySelectorAll('#tabs a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-t') === (h === 'locked' && typeof tabH !== 'undefined' ? tabH : h)); });
 window.scrollTo(0, 0);
 if (h === 'keepsake') countUp();
-if (h === 'welcome') fitNames();
+if (h === 'welcome' || h === 'home') fitNames();
 }
 window.addEventListener('hashchange', route);
 route();
