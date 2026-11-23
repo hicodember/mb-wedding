@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mackenzie &amp; Brandon</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBF7F1">
+<link rel="icon" href="images/icon.png">
+<link rel="apple-touch-icon" href="images/icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Josefin+Sans:wght@400;600;700&amp;family=Mrs+Saint+Delafield&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#B4532A}a:hover{color:#8A3B1A}
+.bandana{background-image:url(images/bandana.svg);background-size:96px 96px}
+.cow{background-image:url(images/cow.svg);background-size:160px 160px}
+.scrim{background-image:linear-gradient(180deg,rgba(59,42,30,0) 0%,rgba(59,42,30,0.72) 100%)}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes letter{from{opacity:0;transform:translateY(60%) rotate(6deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+.ltr{display:inline-block;animation:letter .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:400}to{stroke-dashoffset:0}}
+.draw{stroke-dasharray:400;animation:draw 2.2s ease .4s both}
+@keyframes unveil{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+.unveil{animation:unveil 1.1s cubic-bezier(.65,0,.35,1) both}
+@keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+.kb{animation:kenburns 9s ease-out both}
+@keyframes fall{0%{transform:translate(0,-40px) rotate(0);opacity:0}12%{opacity:.85}88%{opacity:.85}100%{transform:translate(50px,620px) rotate(320deg);opacity:0}}
+.petal{position:absolute;top:0;width:14px;height:14px;border-radius:0 100% 0 100%;animation:fall 11s linear infinite;pointer-events:none}
+@keyframes sheen{0%{transform:translateX(-140%) skewX(-20deg)}60%,100%{transform:translateX(340%) skewX(-20deg)}}
+.sheen{position:absolute;top:0;bottom:0;left:0;width:30%;background:rgba(255,255,255,.28);animation:sheen 3.6s ease-in-out infinite;pointer-events:none}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(180,83,42,.55)}80%,100%{box-shadow:0 0 0 10px rgba(180,83,42,0)}}
+.live{animation:live 1.8s ease-out infinite}
+@keyframes stamp{0%{opacity:0;transform:scale(2.2) rotate(-24deg)}60%{opacity:1;transform:scale(.92) rotate(-10deg)}100%{opacity:1;transform:scale(1) rotate(-12deg)}}
+.stamp{animation:stamp .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ring{from{stroke-dashoffset:302}}
+.ring{animation:ring 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.sway{animation:sway 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float{animation:float 5s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.rise,.ltr,.draw,.unveil,.kb,.petal,.sheen,.live,.stamp,.ring,.sway,.float{animation:none}.petal{display:none}}
+*{box-sizing:border-box}
+html,body{background:#EFE6D8}
+body{font-family:'Josefin Sans',sans-serif;color:#3B2A1E;-webkit-font-smoothing:antialiased}
+.app{max-width:430px;margin:0 auto;min-height:100vh;background:#FBF7F1;position:relative;box-shadow:0 0 40px rgba(59,42,30,.12)}
+.screen{display:none;min-height:100vh;flex-direction:column;padding-bottom:84px;position:relative;overflow:hidden}
+.screen.on{display:flex}
+#welcome.screen{padding-bottom:0}
+.serif{font-family:'Cormorant Garamond',serif}
+.script{font-family:'Mrs Saint Delafield',cursive}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700}
+.muted{color:#6E5A48}
+.btn{position:relative;overflow:hidden;width:100%;height:60px;border:none;border-radius:30px;background:#B4532A;color:#fff;font-family:'Josefin Sans',sans-serif;font-size:17px;font-weight:700;letter-spacing:.5px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:0 10px 22px rgba(180,83,42,.25);transition:transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:#fff;color:#3B2A1E;border:1.5px solid #3B2A1E;box-shadow:none;height:52px}
+.hdr{flex-shrink:0;background:#fff;border-bottom:1px solid #E9DFCF}
+.hdr .in{padding:18px 24px 16px;display:flex;flex-direction:column;gap:4px}
+.hdr h1{margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1.05;font-weight:600}
+.hdr p{margin:0;font-size:14px;line-height:1.45;color:#6E5A48}
+.sec{display:flex;align-items:center;gap:12px;padding:24px 20px 12px}
+.sec span{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;font-style:italic}
+.sec i{flex:1;height:1px;background:#E9DFCF}
+nav.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;display:flex;background:rgba(255,255,255,.97);border-top:1px solid #E9DFCF;padding:2px 6px calc(10px + env(safe-area-inset-bottom));z-index:20;backdrop-filter:blur(8px)}
+nav.tabs a{flex:1;height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:#6E5A48;font-size:11px;font-weight:600;letter-spacing:.5px}
+nav.tabs a.on{color:#B4532A;font-weight:700}
+nav.tabs a .dot{width:5px;height:5px;border-radius:3px;background:transparent}
+nav.tabs a.on .dot{background:#B4532A}
+nav.tabs.hide{display:none}
+.card{background:#fff;border:1px solid #E9DFCF;border-radius:18px}
+.chip{flex-shrink:0;padding:10px 16px;border-radius:20px;font-size:14px;font-weight:700;background:#fff;color:#3B2A1E;border:1px solid #E9DFCF;cursor:pointer;font-family:'Josefin Sans',sans-serif}
+.chip.on{background:#3B2A1E;color:#fff;border-color:#3B2A1E}
+.opt{min-height:56px;border-radius:16px;border:1.5px solid #E9DFCF;background:#fff;color:#3B2A1E;transition:all .25s ease;font-family:'Josefin Sans',sans-serif;font-size:17px;font-weight:600;text-align:left;padding:0 16px;display:flex;align-items:center;gap:12px;cursor:pointer;width:100%}
+.opt .l{width:30px;height:30px;border-radius:15px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.opt.on{background:#3B2A1E;color:#fff;border-color:#3B2A1E;transform:scale(1.02)}
+.tile{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 8px 20px rgba(59,42,30,.12)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;height:64px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 12px 10px;color:#fff;font-size:13px;font-weight:600}
+.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,20px);background:#3B2A1E;color:#fff;padding:14px 20px;border-radius:24px;font-size:15px;font-weight:600;opacity:0;transition:all .35s ease;z-index:50;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+input.field{height:54px;border-radius:27px;border:1.5px solid #E9DFCF;background:#fff;padding:0 20px;font-family:'Josefin Sans',sans-serif;font-size:16px;color:#3B2A1E;width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hunt-item{position:relative;min-height:72px;border-radius:18px;border:1.5px solid #E9DFCF;background:#fff;padding:10px 14px;display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;font-family:'Josefin Sans',sans-serif;color:#3B2A1E;width:100%;transition:border-color .3s}
+.hunt-item.found{border-color:#3B2A1E}
+.thumb{width:50px;height:50px;border-radius:14px;overflow:hidden;flex-shrink:0;background:#F6EFE4;display:flex;align-items:center;justify-content:center;color:#8C7A5E}
+.thumb img{width:50px;height:50px;object-fit:cover}
+.stampb{flex-shrink:0;padding:5px 9px;border:2px solid #B4532A;border-radius:8px;color:#B4532A;font-size:12px;font-weight:700;letter-spacing:2px}
+.addb{flex-shrink:0;width:34px;height:34px;border-radius:17px;background:#B4532A;color:#fff;display:flex;align-items:center;justify-content:center}
+.moment{position:relative;width:100%;min-height:54px;border:none;background:transparent;padding:0;display:flex;align-items:center;gap:16px;text-align:left;cursor:pointer;font-family:'Josefin Sans',sans-serif;color:#3B2A1E}
+.moment .d{width:16px;height:16px;border-radius:8px;background:#fff;border:2px solid #C8A97E;box-shadow:0 0 0 4px #FBF7F1}
+.moment.past .d{background:#3B2A1E;border-color:#3B2A1E}
+.moment.on .d{background:#B4532A;border-color:#B4532A}
+.moment.on .n{color:#B4532A;font-weight:700}
+.pill{min-height:44px;padding:0 16px;border-radius:22px;border:1.5px solid #E9DFCF;background:#fff;color:#3B2A1E;transition:all .25s ease;font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer}
+.pill.on{background:#B4532A;color:#fff;border-color:#B4532A}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 8px;background:#FBF7F1}
+.iconbtn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#3B2A1E;border-radius:22px}
+.avatar{width:44px;height:44px;border-radius:22px;background:#fff;border:2px solid #E9DFCF;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#B4532A;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;box-shadow:0 4px 10px rgba(59,42,30,.08)}
+.hdr{background:#FBF7F1;border-bottom:none}
+.hdr .in{padding:6px 24px 14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0 20px}
+.feat{position:relative;aspect-ratio:1/1.02;border-radius:20px;background:#fff;box-shadow:0 8px 22px rgba(59,42,30,.07);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:#5E4B36;font-size:14px;font-weight:600;text-align:center;padding:10px 6px;line-height:1.15;transition:transform .2s ease, box-shadow .2s ease;cursor:pointer;border:1px solid #F0E8DB}
+.feat:active{transform:scale(.96)}
+.feat .badge{position:absolute;top:10px;right:10px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#B4532A;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.feat.hero{background:#B4532A;color:#fff;border-color:#B4532A}
+.feat.hero svg{stroke:#fff}
+.linkrow{display:flex;justify-content:space-between;padding:14px 22px 16px}
+.linkrow a{display:flex;gap:6px;align-items:center;color:#8C7354;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.person{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:18px;background:#fff;border:1px solid #F0E8DB}
+.person .pic{width:52px;height:52px;border-radius:26px;background:#F3EADB;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#8C7354;flex-shrink:0}
+.inforow{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:18px;background:#fff;border:1px solid #F0E8DB}
+
+.invite-bar{margin:12px 20px 4px;padding:16px 16px 18px;border-radius:18px;background:#3B2A1E;color:#fff;display:flex;align-items:center;gap:14px;text-decoration:none;position:relative;overflow:hidden}
+.invite-bar .mini{position:relative;width:54px;height:38px;flex-shrink:0;animation:wiggle 3s ease-in-out infinite}
+@keyframes wiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-8deg)}90%{transform:rotate(7deg)}95%{transform:rotate(-4deg)}}
+.env-stage{display:flex;flex-direction:column;align-items:center;padding:30px 0 10px;perspective:900px}
+.env{position:relative;width:320px;height:210px;margin-top:150px}
+.env-back{position:absolute;inset:0;border-radius:10px;overflow:hidden;background:#B4532A;z-index:1}
+.env-back .bandana{position:absolute;inset:0;opacity:.9}
+.letter{position:absolute;left:16px;right:16px;top:12px;height:186px;background:#FFFDF9;border-radius:6px;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:22px;text-align:center;transition:transform 1s cubic-bezier(.2,.8,.2,1) .55s}
+.env-front{position:absolute;inset:0;z-index:3;background:#F3EADB;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);border-radius:10px;box-shadow:inset 0 -2px 0 rgba(0,0,0,.04)}
+.env-front:after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.5),rgba(0,0,0,.04))}
+.env-flap{position:absolute;left:0;right:0;top:0;height:122px;z-index:4;background:#E9DCC6;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .8s cubic-bezier(.4,0,.2,1),z-index 0s linear .4s;border-radius:10px 10px 0 0}
+.seal{position:absolute;left:50%;top:96px;width:64px;height:64px;margin-left:-32px;border-radius:32px;border:none;z-index:6;cursor:pointer;background:radial-gradient(circle at 35% 30%,#CC6A3A,#8A3B1A 70%);color:#F6E2C8;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;box-shadow:0 6px 14px rgba(110,50,20,.45),inset 0 -3px 6px rgba(0,0,0,.25);transition:opacity .3s ease,transform .3s ease;animation:sealpulse 2.4s ease-in-out infinite}
+@keyframes sealpulse{0%,100%{box-shadow:0 6px 14px rgba(110,50,20,.45),0 0 0 0 rgba(180,83,42,.35)}50%{box-shadow:0 6px 14px rgba(110,50,20,.45),0 0 0 14px rgba(180,83,42,0)}}
+.env.open .seal{opacity:0;transform:scale(1.4);pointer-events:none}
+.env.open .env-flap{transform:rotateX(180deg);z-index:0}
+.env.open .letter{transform:translateY(-120px)}
+.env-stage.gone{display:none}
+.invite{margin:10px 20px 0;background:#FFFDF9;border-radius:20px;box-shadow:0 18px 40px rgba(59,42,30,.14);padding:28px 22px 26px;text-align:center;position:relative;border:1px solid #F0E8DB;display:none}
+.invite.show{display:block;animation:cardin 1s cubic-bezier(.2,.8,.2,1)}
+@keyframes cardin{from{opacity:0;transform:translateY(60px) scale(.94)}to{opacity:1;transform:none}}
+.invite:before{content:'';position:absolute;inset:8px;border:1px solid #E3D3B8;border-radius:14px;pointer-events:none}
+.rsvp-form{display:none;margin:18px 20px 0;flex-direction:column;gap:14px}
+.rsvp-form.show{display:flex;animation:cardin .8s cubic-bezier(.2,.8,.2,1)}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice button{min-height:76px;border-radius:18px;border:1.5px solid #E9DFCF;background:#fff;font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:700;color:#3B2A1E;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:all .25s ease}
+.choice button span{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:13px;color:#6E5A48}
+.choice button.on{background:#3B2A1E;color:#fff;border-color:#3B2A1E}
+.choice button.on span{color:#E9DFCF}
+.stepper{display:flex;align-items:center;gap:14px}
+.stepper button{width:46px;height:46px;border-radius:23px;border:1.5px solid #E9DFCF;background:#fff;font-size:22px;font-weight:700;cursor:pointer;color:#3B2A1E}
+.stepper b{font-family:'Cormorant Garamond',serif;font-size:32px;min-width:30px;text-align:center}
+.flabel{font-size:14px;font-weight:700;display:block;margin-bottom:8px}
+textarea.field{display:block;width:100%;height:96px;border-radius:20px;border:1.5px solid #E9DFCF;background:#fff;padding:14px 18px;resize:none;line-height:1.4;font-family:'Josefin Sans',sans-serif;font-size:16px;color:#3B2A1E}
+.thanks{display:none;margin:16px 20px 0;padding:30px 22px;border-radius:22px;background:#fff;text-align:center;border:1px solid #F0E8DB}
+.thanks.show{display:block;animation:cardin .8s cubic-bezier(.2,.8,.2,1)}
+
+.tryname{border:none;background:none;padding:0;font:inherit;font-weight:700;color:#B4532A;text-decoration:underline;cursor:pointer}
+.sug{position:absolute;left:0;right:0;top:58px;background:#fff;border:1px solid #E9DFCF;border-radius:18px;box-shadow:0 14px 30px rgba(59,42,30,.12);overflow:hidden;z-index:10;display:none}
+.sug button{display:flex;width:100%;min-height:52px;align-items:center;justify-content:space-between;gap:10px;padding:0 16px;border:none;border-bottom:1px solid #F3ECE0;background:#fff;font-family:'Josefin Sans',sans-serif;font-size:16px;font-weight:600;color:#3B2A1E;cursor:pointer;text-align:left}
+.sug button span{font-size:12px;color:#6E5A48;font-weight:600}
+.member{display:flex;flex-direction:column;gap:8px;padding:12px 4px;border-top:1px solid #F3ECE0}
+.member .row{display:flex;align-items:center;gap:12px}
+.member .ini{width:40px;height:40px;border-radius:20px;background:#F3EADB;color:#8C7354;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;flex-shrink:0}
+.member .nm{flex:1;display:flex;flex-direction:column;gap:2px}
+.member .nm b{font-size:16px}
+.member .nm span{font-size:12px;color:#6E5A48}
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.yn button{height:44px;border-radius:22px;border:1.5px solid #E9DFCF;background:#fff;font-family:'Josefin Sans',sans-serif;font-size:14px;font-weight:700;color:#3B2A1E;cursor:pointer;transition:all .2s ease}
+.yn button.on.y{background:#3B2A1E;color:#fff;border-color:#3B2A1E}
+.yn button.on.n{background:#F3ECE0;color:#6E5A48;border-color:#E3D7C4}
+.plusname{height:46px;border-radius:23px;border:1.5px solid #E9DFCF;padding:0 16px;font-family:'Josefin Sans',sans-serif;font-size:15px;width:100%;color:#3B2A1E}
+.mock{margin:4px 20px 0;display:flex;align-items:center;gap:8px;padding:6px;border-radius:22px;background:#EFE6D8}
+.mock span{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8C7354;padding-left:8px;white-space:nowrap}
+.mock button{flex:1;height:34px;border-radius:17px;border:none;background:transparent;font-family:'Josefin Sans',sans-serif;font-size:13px;font-weight:700;color:#6E5A48;cursor:pointer}
+.mock button.on{background:#fff;color:#3B2A1E;box-shadow:0 2px 6px rgba(59,42,30,.1)}
+.feat .lk{position:absolute;top:9px;right:9px;width:24px;height:24px;border-radius:12px;background:#3B2A1E;color:#fff;display:none;align-items:center;justify-content:center}
+body.locked .feat.lockable .lk{display:flex}
+body.locked .feat.lockable .badge{display:none}
+body.locked .feat.lockable{opacity:.62}
+body.locked .linkrow a[href="#hunt"]{visibility:hidden}
+body.locked .feat.hero.lockable{background:#fff;color:#5E4B36;border-color:#F0E8DB;opacity:.75}
+body.locked .feat.hero.lockable svg{stroke:#8C7354}
+
+.feat.wide{grid-column:span 3;aspect-ratio:auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:14px 16px;text-align:left}
+.feat.wide .t{display:flex;flex-direction:column;gap:3px;flex:1}
+.feat.wide .t b{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#3B2A1E}
+.feat.wide .t span{font-size:13px;color:#6E5A48;font-weight:600}
+.amts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.amts button{height:52px;border-radius:16px;border:1.5px solid #E9DFCF;background:#fff;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#3B2A1E;cursor:pointer;transition:all .2s ease}
+.amts button.on{background:#3B2A1E;color:#fff;border-color:#3B2A1E}
+.exp{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:#fff;border:1.5px solid #F0E8DB;cursor:pointer;width:100%;text-align:left;font-family:'Josefin Sans',sans-serif;color:#3B2A1E;transition:all .2s ease}
+.exp.on{border-color:#B4532A;background:#FFF8F2}
+.exp .em{width:44px;height:44px;border-radius:22px;background:#F6E6D8;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#B4532A}
+.exp b{font-size:15px;display:block}
+.exp span{font-size:12px;color:#6E5A48}
+.exp .pr{margin-left:auto;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700}
+.payb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.payb button{height:52px;border-radius:16px;border:1.5px solid #3B2A1E;background:#fff;font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:700;color:#3B2A1E;cursor:pointer}
+
+.env-stage{position:relative}
+.env-glow{position:absolute;left:50%;top:230px;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,170,.9) 0%,rgba(232,180,143,.45) 35%,rgba(251,247,241,0) 68%);opacity:0;transform:scale(.4);transition:opacity 1s ease,transform 1.6s cubic-bezier(.2,.8,.2,1);pointer-events:none;z-index:0}
+.env-stage.lit .env-glow{opacity:1;transform:scale(1);animation:glowpulse 2.6s ease-in-out 1.4s infinite}
+@keyframes glowpulse{0%,100%{opacity:1}50%{opacity:.7}}
+.rays{position:absolute;left:50%;top:230px;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:repeating-conic-gradient(rgba(255,222,190,.5) 0deg 6deg,rgba(255,255,255,0) 6deg 18deg);-webkit-mask:radial-gradient(circle,#000 0%,transparent 62%);mask:radial-gradient(circle,#000 0%,transparent 62%);opacity:0;transition:opacity 1.2s ease;pointer-events:none;z-index:0}
+.env-stage.lit .rays{opacity:1;animation:spinrays 24s linear infinite}
+@keyframes spinrays{to{transform:rotate(360deg)}}
+.env{z-index:1;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .7s ease}
+.env:not(.lift){animation:envfloat 3.2s ease-in-out infinite}
+@keyframes envfloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-10px) rotate(1.5deg)}}
+.env.lift{transform:translateY(30px) scale(1.14) rotateX(10deg)}
+.env.away{transform:translateY(120px) scale(.9);opacity:0}
+.env.open .letter{transform:translateY(-150px) scale(1.04);box-shadow:0 18px 30px rgba(59,42,30,.18)}
+.seal.crack{animation:crack .5s ease forwards}
+@keyframes crack{0%{transform:scale(1)}35%{transform:scale(1.18) rotate(-6deg)}100%{transform:scale(.2) rotate(30deg);opacity:0}}
+.heartup{position:absolute;bottom:40%;width:18px;height:18px;pointer-events:none;z-index:2;animation:heartup 3.2s ease-out forwards;opacity:0}
+@keyframes heartup{0%{opacity:0;transform:translateY(0) scale(.4)}15%{opacity:1}100%{opacity:0;transform:translateY(-320px) scale(1.2) rotate(var(--r))}}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+.invite.show{animation:invitein 1.3s cubic-bezier(.16,1,.3,1)}
+@keyframes invitein{0%{opacity:0;transform:translateY(160px) scale(.6) rotateX(18deg)}60%{opacity:1}100%{opacity:1;transform:none}}
+.invite .shine{position:absolute;inset:0;border-radius:20px;overflow:hidden;pointer-events:none}
+.invite .shine:after{content:'';position:absolute;top:-20%;bottom:-20%;width:40%;left:-60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,241,225,.75),rgba(255,255,255,0));transform:skewX(-18deg);animation:inviteshine 1.6s ease 1s 1 both}
+@keyframes inviteshine{to{left:140%}}
+@media (prefers-reduced-motion: reduce){.env:not(.lift){animation:none}.env-stage.lit .rays{animation:none}#confetti{display:none}}
+
+.welhero{position:relative;height:540px;overflow:hidden;flex-shrink:0}
+.welhero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;transform-origin:50% 26%;animation:welzoom 12s cubic-bezier(.2,.8,.2,1) both;display:block}
+@keyframes welzoom{from{transform:scale(1.7);filter:brightness(1.15) saturate(.8)}to{transform:scale(1.42);filter:none}}
+.welfade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(59,42,30,.38) 0%,rgba(59,42,30,0) 22%,rgba(251,247,241,0) 58%,rgba(251,247,241,.85) 82%,#FBF7F1 100%)}
+@media (prefers-reduced-motion: reduce){.welhero img{animation:none;transform:scale(1.42)}}
+.homezoom{transform-origin:50% 30%;transform:scale(1.3);animation:homezoom 9s ease-out both}
+@keyframes homezoom{from{transform:scale(1.42)}to{transform:scale(1.3)}}
+@media (prefers-reduced-motion: reduce){.homezoom{animation:none}}
+.foot{padding:18px 0 10px;text-align:center;font-size:12px;color:#6E5A48}
+</style>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tus-js-client@4.2.3/dist/tus.min.js"></script>
+<script src="live.js"></script>
+</head>
+<body>
+<div class="app">
+
+<!-- WELCOME -->
+<section class="screen" id="welcome">
+<div style="position:absolute;inset:0;overflow:hidden;z-index:3;pointer-events:none"><div class="petal" aria-hidden="true" style="left: 8px; background: #B4532A; opacity: 0.8; animation-delay: 0.0s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 56px; background: #FFFFFF; opacity: 0.8; animation-delay: -1.6s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 104px; background: #E8B48F; opacity: 0.8; animation-delay: -3.2s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 152px; background: #B4532A; opacity: 0.8; animation-delay: -4.800000000000001s; animation-duration: 13.5s"></div><div class="petal" aria-hidden="true" style="left: 200px; background: #FFFFFF; opacity: 0.8; animation-delay: -6.4s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 248px; background: #E8B48F; opacity: 0.8; animation-delay: -8.0s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 296px; background: #B4532A; opacity: 0.8; animation-delay: -9.600000000000001s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 344px; background: #FFFFFF; opacity: 0.8; animation-delay: -11.200000000000001s; animation-duration: 13.5s"></div></div>
+<div style="position:relative;display:flex;flex-direction:column;align-items:center;padding:52px 24px 0;text-align:center">
+<div class="rise eyebrow muted">Together with their families</div>
+<div class="unveil" style="margin-top:22px;width:272px;height:356px;border-radius:136px 136px 16px 16px;overflow:hidden;box-shadow:0 24px 50px rgba(59,42,30,.22);border:6px solid #fff;animation-delay:.2s">
+<img class="kb" src="images/couple.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block"></div>
+<div style="margin-top:20px;width:100%;color:#B4532A"><div class="script" id="welFirst" style="font-size:56px;line-height:1.1;white-space:nowrap"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.9s">M</span><span class="ltr" style="animation-delay: 0.945s">a</span><span class="ltr" style="animation-delay: 0.99s">c</span><span class="ltr" style="animation-delay: 1.035s">k</span><span class="ltr" style="animation-delay: 1.08s">e</span><span class="ltr" style="animation-delay: 1.125s">n</span><span class="ltr" style="animation-delay: 1.17s">z</span><span class="ltr" style="animation-delay: 1.215s">i</span><span class="ltr" style="animation-delay: 1.26s">e</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.305s">&amp;</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.35s">B</span><span class="ltr" style="animation-delay: 1.395s">r</span><span class="ltr" style="animation-delay: 1.44s">a</span><span class="ltr" style="animation-delay: 1.485s">n</span><span class="ltr" style="animation-delay: 1.53s">d</span><span class="ltr" style="animation-delay: 1.575s">o</span><span class="ltr" style="animation-delay: 1.62s">n</span></span></div></div>
+<div style="margin-top:10px"><svg width="180" height="22" viewBox="0 0 180 22" fill="none" aria-hidden="true"><path class="draw" d="M2 11 C 40 11, 60 3, 78 11 M102 11 C 120 19, 140 11, 178 11" stroke="#C8A97E" stroke-width="1.4" stroke-linecap="round"/><path d="M90 17 C 84 12, 80 9, 83 6 C 85 4, 88 5, 90 8 C 92 5, 95 4, 97 6 C 100 9, 96 12, 90 17 Z" fill="#B4532A"/></svg></div>
+<div class="rise serif" style="margin-top:8px;font-size:22px;font-style:italic;animation-delay:1.9s">invite you to share the day through your eyes</div>
+<div class="rise eyebrow muted" style="margin-top:6px;font-weight:600;animation-delay:2s">[Wedding Date] · [Venue]</div>
+</div>
+<form id="welcomeForm" class="rise" style="position:relative;margin:28px 28px 0;display:flex;flex-direction:column;gap:12px;animation-delay:2.2s">
+<label for="guestName" style="font-size:14px;font-weight:700">What should we call you?</label>
+<input id="guestName" class="field" type="text" placeholder="Your first name" autocomplete="given-name">
+<button class="btn" type="submit">Let's celebrate<span class="sheen"></span></button>
+</form>
+<div class="rise muted" style="position:relative;margin-top:12px;text-align:center;font-size:13px;animation-delay:2.4s">No app to download. Everything stays right here.</div>
+<div class="foot" style="margin-top:auto;position:relative">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- HOME -->
+<section class="screen" id="home">
+<div class="topbar"><span class="iconbtn" aria-hidden="true"></span><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div>
+<div class="mock" id="mock"><span>Mockup</span><button type="button" data-m="before">Before the wedding</button><button type="button" data-m="day">Wedding day</button></div>
+<div class="unveil" style="position:relative;margin:8px 20px 0;height:320px;border-radius:22px;overflow:hidden;box-shadow:0 16px 36px rgba(59,42,30,.2);animation-delay:.1s">
+<img class="kb" src="images/couple.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block">
+<div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;color:#fff">
+<div class="script" style="font-size:48px;line-height:1">Mackenzie &amp; Brandon</div>
+<div style="font-size:14px;font-weight:600;letter-spacing:1px;margin-top:2px">[Wedding Date] · [Venue]</div></div>
+<div class="bandana" style="position:absolute;left:0;right:0;bottom:0;height:6px"></div></div>
+<a href="#schedule" class="rise" style="margin:14px 20px 0;padding:12px 14px;border-radius:16px;background:#fff;border:1px solid #F0E8DB;display:flex;align-items:center;gap:12px;text-decoration:none;color:#3B2A1E;animation-delay:.2s">
+<span class="live" style="width:10px;height:10px;border-radius:5px;background:#B4532A;flex-shrink:0;margin-left:4px"></span>
+<span style="flex:1;font-size:15px"><b id="nowLbl">Happening now:</b> <span id="nowName">The Ceremony</span></span>
+<span style="font-size:13px;color:#8C7354;font-weight:700">Schedule</span></a>
+<a href="#rsvp" class="invite-bar rise" style="animation-delay:.22s"><div class="cow" style="position:absolute;inset:0;opacity:.04"></div>
+<svg class="mini" viewBox="0 0 54 38" aria-hidden="true"><rect x="1" y="1" width="52" height="36" rx="4" fill="#F3EADB"/><path d="M1 5l26 18L53 5" fill="none" stroke="#C8A97E" stroke-width="1.5"/><circle cx="27" cy="22" r="6" fill="#B4532A"/></svg>
+<span style="position:relative;flex:1;display:flex;flex-direction:column;gap:6px;min-width:0"><span class="script" style="font-size:30px;line-height:1.25;color:#F6E2C8;padding-bottom:2px">You&#39;re invited</span><span style="font-size:13px;line-height:1.35;opacity:.9" id="rsvpBarText">Open your invitation and RSVP</span></span>
+<span style="position:relative;padding:8px 12px;border-radius:14px;background:#B4532A;font-size:13px;font-weight:700">RSVP</span></a>
+<div class="linkrow"><a href="#hunt">Your missions: <span id="homeLeft">8</span> left</a><a href="#wishes">Leave a wish</a></div>
+<div class="grid3">
+<label class="feat rise hero lockable" style="animation-delay:0.25s"><span class="lk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M42 36a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V18a3 3 0 0 1 3-3h7l3-5h10l3 5h7a3 3 0 0 1 3 3z"/><circle cx="24" cy="26" r="7"/><path d="M24 23v6M21 26h6"/></svg><span>Share Photos</span><input type="file" accept="image/*,video/*" multiple class="sr upload"></label>
+<a href="#gallery" class="feat rise lockable" style="animation-delay:0.3s"><span class="lk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="badge">12</span><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="9" width="28" height="24" rx="3"/><path d="M13 39h26a2 2 0 0 0 2-2V16"/><circle cx="15" cy="17" r="2.5"/><path d="M35 27l-8-8-14 14"/></svg><span>Gallery</span></a>
+<a href="#hunt" class="feat rise lockable" style="animation-delay:0.35s"><span class="lk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="badge"><span id="huntBadge">8</span></span><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v14a12 12 0 0 0 24 0V9"/><path d="M18 9v14a6 6 0 0 0 12 0V9"/><path d="M12 9h6M30 9h6"/><circle cx="15" cy="15" r=".8" fill="#8C7354"/><circle cx="15" cy="21" r=".8" fill="#8C7354"/><circle cx="33" cy="15" r=".8" fill="#8C7354"/><circle cx="33" cy="21" r=".8" fill="#8C7354"/><circle cx="17" cy="29" r=".8" fill="#8C7354"/><circle cx="31" cy="29" r=".8" fill="#8C7354"/></svg><span>Scavenger Hunt</span></a>
+<a href="#quiz" class="feat rise" style="animation-delay:0.4s"><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12a4 4 0 0 1 4-4h24a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H20l-8 7v-7a4 4 0 0 1-4-4z"/><path d="M20 16a4 4 0 0 1 8 0c0 3-4 3-4 6"/><circle cx="24" cy="26.5" r=".9" fill="#8C7354"/></svg><span>Couple Quiz</span></a>
+<a href="#wishes" class="feat rise" style="animation-delay:0.45s"><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="13" width="26" height="22" rx="3"/><path d="M32 21l10-6v18l-10-6"/><path d="M19 29c-4-3-6-5-6-7a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 2-2 4-6 7z"/></svg><span>Video Wishes</span></a>
+<a href="#schedule" class="feat rise" style="animation-delay:0.5s"><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 18h34M16 6v8M32 6v8"/><path d="M14 25h4M22 25h4M30 25h4M14 32h4M22 32h4"/></svg><span>Schedule</span></a>
+<a href="#about" class="feat rise" style="animation-delay:0.55s"><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="26" r="10"/><circle cx="30" cy="26" r="10"/><path d="M18 9l3 3-3 3-3-3z"/></svg><span>About the Couple</span></a>
+<a href="#info" class="feat rise" style="animation-delay:0.6s"><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 42s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23z"/><path d="M24 25c-3-2-5-4-5-6a2.5 2.5 0 0 1 5-.5 2.5 2.5 0 0 1 5 .5c0 2-2 4-5 6z"/></svg><span>Wedding Info</span></a>
+<a href="#party" class="feat rise" style="animation-delay:0.65s"><svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 31c5 6 33 6 38 0"/><path d="M5 31c2-2 5-3 7-3h24c2 0 5 1 7 3"/><path d="M13 28c0-9 2-17 6-17 2 0 3 2 5 2s3-2 5-2c4 0 6 8 6 17"/><path d="M14 23c6 2 14 2 20 0"/></svg><span>Wedding Party</span></a>
+<a href="#honeymoon" class="feat rise wide" style="animation-delay:0.7s"><svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 42c0-10 1-18 4-24"/><path d="M28 18c-4-6-12-6-16-2 5 0 9 1 12 4"/><path d="M28 18c2-7 10-10 15-7-5 1-9 3-11 7"/><path d="M28 18c6-2 13 1 15 6-5-2-10-3-14-2"/><path d="M28 18c-5 1-9 6-9 11 3-4 6-7 9-8"/><path d="M8 42c8-3 24-3 32 0"/></svg><span class="t"><b>Honeymoon Fund</b><span>Help send them somewhere sunny</span></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6E5A48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></a>
+</div>
+<div class="foot" style="padding-top:20px">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<section class="screen" id="schedule">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#B4532A">The big day</div><h1 class="rise" style="animation-delay:.08s">Schedule</h1><p class="rise" style="animation-delay:.16s">Tap a moment to see what to do and your mission for it.</p></div></div>
+<div style="padding:8px 20px 0"><div id="schedCard"></div></div>
+<div style="position:relative;padding:10px 24px 0"><div style="position:absolute;left:39px;top:32px;bottom:22px;width:2px;background:#E9DFCF"></div><div id="moments"></div></div>
+<div style="padding:16px 20px 0"><label class="btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Capture this moment</span><span class="sheen"></span><input type="file" accept="image/*,video/*" multiple class="sr upload"></label></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+<section class="screen" id="about">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#B4532A">Our story</div><h1 class="rise" style="animation-delay:.08s">About the Couple</h1><p class="rise" style="animation-delay:.16s">How a cowgirl and her cowboy ended up here.</p></div></div>
+<div class="unveil" style="margin:8px 20px 0;height:300px;border-radius:150px 150px 22px 22px;overflow:hidden;border:6px solid #fff;box-shadow:0 16px 34px rgba(59,42,30,.18)"><img class="kb" src="images/kiss.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%"></div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:18px 20px 0">
+<div class="inforow rise" style="animation-delay:0.2s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="26" r="10"/><circle cx="30" cy="26" r="10"/><path d="M18 9l3 3-3 3-3-3z"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">How we met</div><div class="muted" style="font-size:14px;line-height:1.45">[Their story in a few sentences]</div></div></div>
+<div class="inforow rise" style="animation-delay:0.3s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 42s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23z"/><path d="M24 25c-3-2-5-4-5-6a2.5 2.5 0 0 1 5-.5 2.5 2.5 0 0 1 5 .5c0 2-2 4-5 6z"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">The proposal</div><div class="muted" style="font-size:14px;line-height:1.45">[Where and how Brandon asked]</div></div></div>
+<div class="inforow rise" style="animation-delay:0.4s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 31c5 6 33 6 38 0"/><path d="M5 31c2-2 5-3 7-3h24c2 0 5 1 7 3"/><path d="M13 28c0-9 2-17 6-17 2 0 3 2 5 2s3-2 5-2c4 0 6 8 6 17"/><path d="M14 23c6 2 14 2 20 0"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">Fun fact</div><div class="muted" style="font-size:14px;line-height:1.45">[Something guests would love to know]</div></div></div>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+<section class="screen" id="info">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#B4532A">Know before you go</div><h1 class="rise" style="animation-delay:.08s">Wedding Info</h1><p class="rise" style="animation-delay:.16s">Everything you need for the day.</p></div></div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:8px 20px 0">
+<div class="inforow rise" style="animation-delay:0.1s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 18h34M16 6v8M32 6v8"/><path d="M14 25h4M22 25h4M30 25h4M14 32h4M22 32h4"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">When</div><div class="muted" style="font-size:14px;line-height:1.45">[Wedding Date] · Ceremony at [4:00 PM]</div></div></div>
+<div class="inforow rise" style="animation-delay:0.2s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 42s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23z"/><path d="M24 25c-3-2-5-4-5-6a2.5 2.5 0 0 1 5-.5 2.5 2.5 0 0 1 5 .5c0 2-2 4-5 6z"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">Where</div><div class="muted" style="font-size:14px;line-height:1.45">[Venue name and address]</div></div></div>
+<div class="inforow rise" style="animation-delay:0.3s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 31c5 6 33 6 38 0"/><path d="M5 31c2-2 5-3 7-3h24c2 0 5 1 7 3"/><path d="M13 28c0-9 2-17 6-17 2 0 3 2 5 2s3-2 5-2c4 0 6 8 6 17"/><path d="M14 23c6 2 14 2 20 0"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">What to wear</div><div class="muted" style="font-size:14px;line-height:1.45">[Dress code]. Boots are always welcome.</div></div></div>
+<div class="inforow rise" style="animation-delay:0.4s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M42 36a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V18a3 3 0 0 1 3-3h7l3-5h10l3 5h7a3 3 0 0 1 3 3z"/><circle cx="24" cy="26" r="7"/><path d="M24 23v6M21 26h6"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">Phones</div><div class="muted" style="font-size:14px;line-height:1.45">Unplugged ceremony. Share everything after the kiss!</div></div></div>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+<section class="screen" id="party">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#B4532A">Meet the crew</div><h1 class="rise" style="animation-delay:.08s">Wedding Party</h1><p class="rise" style="animation-delay:.16s">The people standing beside Mackenzie &amp; Brandon.</p></div></div>
+<div class="sec" style="padding-top:8px"><span>Her side</span><i></i></div><div style="display:flex;flex-direction:column;gap:8px;padding:0 20px"><div class="person rise" style="animation-delay:0.1s"><div class="pic">?</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">[Name]</div><div class="muted" style="font-size:13px">Maid of Honor</div></div></div><div class="person rise" style="animation-delay:0.15s"><div class="pic">?</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">[Name]</div><div class="muted" style="font-size:13px">Bridesmaid</div></div></div></div>
+<div class="sec"><span>His side</span><i></i></div><div style="display:flex;flex-direction:column;gap:8px;padding:0 20px"><div class="person rise" style="animation-delay:0.2s"><div class="pic">?</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">[Name]</div><div class="muted" style="font-size:13px">Best Man</div></div></div><div class="person rise" style="animation-delay:0.25s"><div class="pic">?</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">[Name]</div><div class="muted" style="font-size:13px">Groomsman</div></div></div></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+<!-- RSVP -->
+<section class="screen" id="rsvp">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div></div>
+<div class="env-stage" id="envStage">
+<div class="rays"></div><div class="env-glow"></div>
+<div class="rise eyebrow muted" id="envHint">A letter for you</div>
+<div class="env" id="env">
+<div class="env-back"><div class="bandana"></div></div>
+<div class="letter"><div class="script" style="font-size:34px;color:#B4532A;line-height:1">Mackenzie &amp; Brandon</div><div class="serif" style="font-size:15px;font-style:italic;margin-top:6px;color:#6E5A48">request the pleasure of your company</div></div>
+<div class="env-front"></div>
+<div class="env-flap"></div>
+<button type="button" class="seal" id="seal" aria-label="Open your invitation">M&amp;B</button>
+</div>
+<div class="rise muted" style="margin-top:26px;font-size:15px;font-weight:600;animation-delay:.3s" id="envTap">Tap the seal to open</div>
+</div>
+
+<div class="invite" id="invite"><div class="shine"></div>
+<div class="eyebrow muted" style="font-size:11px">Together with their families</div>
+<div style="width:120px;height:150px;margin:16px auto 0;border-radius:60px 60px 8px 8px;overflow:hidden;border:4px solid #fff;box-shadow:0 8px 18px rgba(59,42,30,.16)"><img src="images/hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:52% 42%"></div>
+<div class="script" id="invFirst" style="font-size:50px;line-height:1.1;color:#B4532A;margin-top:14px;white-space:nowrap">Mackenzie &amp; Brandon</div>
+<div class="serif" style="font-size:19px;line-height:1.45;margin-top:14px">request the honor of your presence<br>as they say &ldquo;I do&rdquo;</div>
+<div style="margin:16px auto 0;width:180px;height:1px;background:#C8A97E"></div>
+<div style="margin-top:14px;font-size:14px;letter-spacing:3px;text-transform:uppercase;font-weight:700">[Wedding Date]</div>
+<div style="margin-top:4px;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#6E5A48">[Time] · [Venue]</div>
+<div class="serif" style="margin-top:4px;font-size:16px;font-style:italic;color:#6E5A48">[City], Texas</div>
+<div style="margin:16px auto 0;width:180px;height:1px;background:#C8A97E"></div>
+<div class="serif" style="font-size:17px;font-style:italic;margin-top:12px">Taco bar, dancing and boots welcome</div>
+<div class="eyebrow" style="font-size:11px;color:#B4532A;margin-top:12px">Kindly reply by [RSVP Date]</div>
+<button type="button" class="btn" id="toForm" style="margin-top:20px">RSVP now<span class="sheen"></span></button>
+</div>
+
+<form class="rsvp-form" id="rsvpForm" novalidate>
+<div class="serif" style="font-size:30px;font-weight:600;text-align:center">Find your invitation</div>
+<p class="muted" style="margin:-6px 0 0;text-align:center;font-size:14px;line-height:1.45">Type your name the way it is on your invitation. Everyone invited with you will show up.</p>
+<div style="position:relative"><label class="flabel sr" for="rName">Your name</label>
+<input id="rName" class="field" type="text" placeholder="Start typing your name" autocomplete="off" aria-autocomplete="list" aria-controls="rSug">
+<div id="rSug" class="sug" role="listbox"></div></div>
+<div id="noMatch" class="muted" style="display:none;font-size:14px;line-height:1.45;text-align:center">We could not find that name. Try your first and last name, or text the couple and they will sort it out.</div>
+<div style="font-size:13px;line-height:1.45;text-align:center;padding:10px 12px;border-radius:14px;background:#EFE6D8;color:#5E4B36"><b>Mockup:</b> the real guest list is not in yet. Try <button type="button" class="tryname" data-n="Jake">Jake</button>, <button type="button" class="tryname" data-n="Kayla">Kayla</button>, <button type="button" class="tryname" data-n="Linda">Linda</button> or <button type="button" class="tryname" data-n="Tyler">Tyler</button>.</div>
+<div id="partyBox" style="display:none;flex-direction:column;gap:14px">
+<div class="card" style="padding:16px 14px 6px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 4px 8px"><span class="serif" style="font-size:24px;font-weight:600">Your invitation</span><span class="muted" style="font-size:13px" id="partyCount"></span></div>
+<div id="partyList"></div>
+</div>
+<div class="muted" style="font-size:13px;line-height:1.45;text-align:center">Only the people listed here are invited. Thank you for helping us keep our count right!</div>
+<div id="yesBits" style="display:flex;flex-direction:column;gap:14px">
+<div><label class="flabel" for="rSong">Song that will get you dancing</label><input id="rSong" class="field" type="text" placeholder="Song and artist"></div>
+</div>
+<div><label class="flabel" for="rNote">A note for the couple</label><textarea id="rNote" class="field" placeholder="Optional"></textarea></div>
+<button type="submit" class="btn">Send my RSVP<span class="sheen"></span></button>
+</div>
+</form>
+
+<div class="thanks" id="thanks">
+<span class="stampb stamp" style="display:inline-block;font-size:14px;padding:7px 14px">RSVP RECEIVED</span>
+<div class="script" id="thanksTitle" style="font-size:46px;line-height:1.05;color:#B4532A;margin-top:16px">See you there!</div>
+<p class="muted" id="thanksText" style="font-size:15px;line-height:1.5;margin:8px 0 18px">We saved your spot. This app will have everything you need on the big day.</p>
+<button type="button" class="btn ghost" data-toast="Added to your calendar">Add to calendar</button>
+<button type="button" class="btn ghost" id="rsvpEdit" style="margin-top:10px">Change my RSVP</button>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- LOCKED -->
+<section class="screen" id="locked">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div></div>
+<div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 26px 0">
+<div class="unveil" style="position:relative;width:220px;height:270px;border-radius:110px 110px 16px 16px;overflow:hidden;border:6px solid #fff;box-shadow:0 18px 40px rgba(59,42,30,.18)">
+<div class="cow" style="position:absolute;inset:0"></div>
+<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div class="float" style="width:96px;height:96px;border-radius:48px;background:#B4532A;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(180,83,42,.4)"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div></div></div>
+<div class="rise eyebrow" style="color:#B4532A;margin-top:24px" id="lockEyebrow">Opens on the wedding day</div>
+<div class="script" style="font-size:54px;line-height:1.05;color:#3B2A1E;margin-top:6px">No sneak peeks, partner!</div>
+<p class="rise muted" id="lockText" style="font-size:16px;line-height:1.55;margin:10px 0 0;animation-delay:.2s"></p>
+<div class="rise eyebrow" style="margin-top:14px;font-size:12px;animation-delay:.3s">Unlocks the morning of [Wedding Date]</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:24px 24px 0">
+<a class="btn" href="#rsvp">RSVP while you wait<span class="sheen"></span></a>
+<a class="btn ghost" href="#quiz">Take the couple quiz</a>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- HONEYMOON -->
+<section class="screen" id="honeymoon">
+<div style="position:relative;height:270px;flex-shrink:0;overflow:hidden">
+<img class="kb" src="images/kiss.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block">
+<a href="#home" aria-label="Back" class="iconbtn" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);z-index:3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+<div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 24px 18px;text-align:center;color:#fff">
+<div class="rise eyebrow">Your presence is the gift</div>
+<div class="script" style="font-size:56px;line-height:1"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.2s">H</span><span class="ltr" style="animation-delay: 0.245s">o</span><span class="ltr" style="animation-delay: 0.29s">n</span><span class="ltr" style="animation-delay: 0.335s">e</span><span class="ltr" style="animation-delay: 0.38s">y</span><span class="ltr" style="animation-delay: 0.425s">m</span><span class="ltr" style="animation-delay: 0.47s">o</span><span class="ltr" style="animation-delay: 0.515s">o</span><span class="ltr" style="animation-delay: 0.56s">n</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.605s">F</span><span class="ltr" style="animation-delay: 0.65s">u</span><span class="ltr" style="animation-delay: 0.695s">n</span><span class="ltr" style="animation-delay: 0.74s">d</span></span></div>
+<div class="rise" style="font-size:14px;animation-delay:.8s">If you would like to give, help us make memories in [Destination]</div></div></div>
+<div class="bandana" style="height:8px;flex-shrink:0"></div>
+<div id="hmForm">
+<div class="sec" style="padding-top:20px"><span>Gift an experience</span><i></i></div>
+<div id="exps" style="display:flex;flex-direction:column;gap:8px;padding:0 20px">
+<button type="button" class="exp" data-a="75" data-i="0"><span class="em"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18M5 18c0-5 3-9 7-9s7 4 7 9"/><path d="M12 5v4"/></svg></span><span><b>Sunset dinner</b><span>A table for two by the water</span></span><span class="pr">$75</span></button>
+<button type="button" class="exp" data-a="100" data-i="1"><span class="em"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/><path d="M2 20c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/><circle cx="16" cy="7" r="3"/></svg></span><span><b>Snorkel trip</b><span>A morning out on the reef</span></span><span class="pr">$100</span></button>
+<button type="button" class="exp" data-a="150" data-i="2"><span class="em"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-5-3-8-6-8-10a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 4-3 7-8 10z"/></svg></span><span><b>Couples massage</b><span>Some rest after the big day</span></span><span class="pr">$150</span></button>
+<button type="button" class="exp" data-a="25" data-i="3"><span class="em"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg></span><span><b>Coffee and breakfast</b><span>Mornings on the balcony</span></span><span class="pr">$25</span></button>
+</div>
+<div class="sec"><span>Or choose an amount</span><i></i></div>
+<div style="padding:0 20px"><div class="amts" id="amts"><button type="button" data-a="25">$25</button><button type="button" data-a="50">$50</button><button type="button" data-a="100">$100</button><button type="button" data-a="250">$250</button><button type="button" id="amtOther" class="other" style="grid-column:span 4;font-family:'Josefin Sans',sans-serif;font-size:16px">Other amount</button></div>
+<div id="otherBox" style="display:none;margin-top:10px;position:relative"><span class="serif" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:700;color:#3B2A1E">$</span><label for="otherAmt" class="sr">Other amount in dollars</label><input id="otherAmt" class="field" type="text" inputmode="decimal" placeholder="Enter any amount" style="padding-left:40px;font-size:18px"></div></div>
+<div style="display:flex;flex-direction:column;gap:12px;padding:18px 20px 0">
+<div><label class="flabel" for="hmName">From</label><input id="hmName" class="field" type="text" placeholder="Your name"></div>
+<div><label class="flabel" for="hmNote">A note for their trip</label><textarea id="hmNote" class="field" placeholder="Optional"></textarea></div>
+<button type="button" class="btn" id="hmGo">Give <span id="hmAmt">a gift</span><span class="sheen"></span></button>
+<div class="muted" style="text-align:center;font-size:12px;line-height:1.45">Everything goes straight to Mackenzie &amp; Brandon. No gift is ever expected.</div>
+</div></div>
+<div id="hmPay" style="display:none;padding:20px 20px 0" class="rise">
+<div class="card" style="padding:22px 18px;text-align:center">
+<div class="serif" style="font-size:28px;font-weight:600">How would you like to send it?</div>
+<p class="muted" style="font-size:14px;margin:6px 0 16px" id="hmPayText"></p>
+<div class="payb" style="grid-template-columns:1fr 1fr"><button type="button" data-p="Venmo">Venmo</button><button type="button" data-p="Cash App">Cash App</button></div>
+<button type="button" class="btn ghost" id="hmBack" style="margin-top:12px">Back</button>
+</div></div>
+<div id="hmThanks" class="thanks" style="margin-top:20px">
+<span class="stampb stamp" style="display:inline-block;font-size:14px;padding:7px 14px">BON VOYAGE</span>
+<div class="script" id="hmThanksTitle" style="font-size:44px;line-height:1.05;color:#B4532A;margin-top:16px">Thank you!</div>
+<p class="muted" style="font-size:15px;line-height:1.5;margin:8px 0 0">Mackenzie &amp; Brandon will see your gift and your note. They will send you a postcard from the trip!</p>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- HUNT -->
+<section class="screen" id="hunt">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#B4532A">Play along</div><h1 class="rise" style="animation-delay:.08s">The Scavenger Hunt</h1><p class="rise" style="animation-delay:.16s">Tap a mission to snap it. The couple sees every find after the big day.</p></div></div>
+<div class="rise" style="margin:18px 20px 0;padding:18px;border-radius:22px;background:#3B2A1E;color:#fff;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden;animation-delay:.2s">
+<div class="cow" style="position:absolute;inset:0;opacity:.08"></div>
+<div style="position:relative;width:110px;height:110px;flex-shrink:0">
+<svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true"><circle cx="55" cy="55" r="48" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="9"/><circle id="ring" class="ring" cx="55" cy="55" r="48" fill="none" stroke="#B4532A" stroke-width="9" stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="301.6" transform="rotate(-90 55 55)" style="transition:stroke-dashoffset .6s ease"/></svg>
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><span id="hCount" class="serif" style="font-size:38px;font-weight:700;line-height:1">0</span><span style="font-size:12px;opacity:.8">of <span id="hTotal">8</span></span></div></div>
+<div style="position:relative;display:flex;flex-direction:column;gap:6px"><div class="serif" style="font-size:24px;font-weight:600;line-height:1.1"><span id="hLeft">8</span> left to find</div><div style="font-size:13px;line-height:1.45;opacity:.85">Finish them all to unlock a thank-you from Mackenzie &amp; Brandon.</div></div></div>
+<div id="huntList" style="display:flex;flex-direction:column;gap:10px;padding:18px 20px 0"></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- GALLERY -->
+<section class="screen" id="gallery">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#B4532A">Through your eyes</div><h1 class="rise" style="animation-delay:.08s">The Gallery</h1><p class="rise" style="animation-delay:.16s">Every photo and video from everyone, sorted by moment.</p></div></div>
+<div id="gChips" style="display:flex;gap:8px;padding:16px 20px 4px;overflow-x:auto"></div>
+<div id="gBody"></div>
+<label aria-label="Add photos or videos" class="live" style="position:fixed;right:max(20px,calc(50% - 195px));bottom:100px;width:64px;height:64px;border-radius:32px;background:#B4532A;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 12px 24px rgba(180,83,42,.35);z-index:15"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><input type="file" accept="image/*,video/*" multiple class="sr upload"></label>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- QUIZ -->
+<section class="screen" id="quiz">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#B4532A">The couple quiz</div><h1 class="rise" style="animation-delay:.08s">How well do you know us?</h1><p class="rise" style="animation-delay:.16s">10 quick questions. Scores are revealed at the reception.</p></div></div>
+<div id="quizBody"></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- WISHES -->
+<section class="screen" id="wishes">
+<div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div>
+<div style="position:relative;height:250px;flex-shrink:0;overflow:hidden">
+<img class="kb" src="images/ring.jpg" alt="Mackenzie's hands and ring" style="width:100%;height:100%;object-fit:cover;object-position:50% 62%;display:block">
+<div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 28px 18px;text-align:center;color:#fff">
+<div class="script" style="font-size:60px;line-height:1"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.2s">V</span><span class="ltr" style="animation-delay: 0.245s">i</span><span class="ltr" style="animation-delay: 0.29s">d</span><span class="ltr" style="animation-delay: 0.335s">e</span><span class="ltr" style="animation-delay: 0.38s">o</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.425s">W</span><span class="ltr" style="animation-delay: 0.47s">i</span><span class="ltr" style="animation-delay: 0.515s">s</span><span class="ltr" style="animation-delay: 0.56s">h</span><span class="ltr" style="animation-delay: 0.605s">e</span><span class="ltr" style="animation-delay: 0.65s">s</span></span></div>
+<div class="rise" style="font-size:14px;animation-delay:.8s">Words they will watch for years to come</div></div></div>
+<div class="bandana" style="height:8px;flex-shrink:0"></div>
+<div class="rise" style="margin:16px 20px 0;padding:12px 14px;border-radius:16px;background:#E6F4F2;display:flex;gap:12px;align-items:center;animation-delay:.3s">
+<div class="sway" style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#9AA0A6" stroke-width="2"><circle cx="24" cy="24" r="21"/><circle cx="24" cy="24" r="16" stroke-dasharray="3 3"/></g><g fill="#C9CDD1"><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(0 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(45 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(90 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(135 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(180 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(225 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(270 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(315 24 24)"/></g><circle cx="24" cy="24" r="6.5" fill="#2E9E95"/></svg></div>
+<div style="font-size:13px;line-height:1.4;color:#134E49"><b>Asked personally?</b> If the couple sent you a special link, your name shows up here.</div></div>
+<div class="rise" style="display:flex;align-items:center;gap:12px;padding:22px 24px 10px;animation-delay:.4s"><div class="serif" style="width:30px;height:30px;border-radius:15px;border:1.5px solid #B4532A;color:#B4532A;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700">1</div><div style="font-size:17px;font-weight:700">Pick what to talk about</div></div>
+<div id="prompts" style="display:flex;flex-wrap:wrap;gap:8px;padding:0 24px"></div>
+<div class="card" style="margin:12px 24px 0;padding:14px 16px"><div id="promptText" class="serif" style="font-size:21px;font-style:italic;line-height:1.3"></div><div id="capsule" style="display:none;margin-top:8px;gap:6px;align-items:center;font-size:13px;font-weight:700;color:#B4532A"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Unlocks on their 1st anniversary</div></div>
+<div class="rise" style="display:flex;align-items:center;gap:12px;padding:22px 24px 10px;animation-delay:.5s"><div class="serif" style="width:30px;height:30px;border-radius:15px;border:1.5px solid #B4532A;color:#B4532A;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700">2</div><div style="font-size:17px;font-weight:700">Record your video</div></div>
+<div style="padding:0 24px;display:flex;align-items:center;gap:16px">
+<div style="width:96px;height:96px;border-radius:48px;border:2px dashed #C8A97E;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+<label class="live" aria-label="Record a video" style="width:76px;height:76px;border-radius:38px;background:#B4532A;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><input id="wishVideo" type="file" accept="video/*" capture="user" class="sr"></label></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span id="recLabel" style="font-size:16px;font-weight:700">Tap to record</span><span class="muted" style="font-size:13px">Up to 1 minute</span></div></div>
+<div class="rise" style="display:flex;align-items:center;gap:12px;padding:22px 24px 10px;animation-delay:.6s"><div class="serif" style="width:30px;height:30px;border-radius:15px;border:1.5px solid #B4532A;color:#B4532A;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700">3</div><div style="font-size:17px;font-weight:700">Add your name and send</div></div>
+<form id="wishForm" style="padding:0 24px;display:flex;flex-direction:column;gap:10px">
+<label for="wishName" class="sr">Your name</label>
+<input id="wishName" class="field gname-input" type="text" placeholder="Your name">
+<button class="btn" type="submit"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Send to the couple</span><span class="sheen"></span></button>
+<div class="muted" style="display:flex;gap:6px;align-items:center;justify-content:center;font-size:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Only Mackenzie &amp; Brandon can watch</div></form>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- KEEPSAKE -->
+<section class="screen" id="keepsake">
+<div style="position:relative;height:380px;flex-shrink:0;overflow:hidden">
+<img class="kb" src="images/kiss.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block">
+<div style="position:absolute;inset:0;overflow:hidden"><div class="petal" aria-hidden="true" style="left: 8px; background: #B4532A; opacity: 0.8; animation-delay: 0.0s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 56px; background: #FFFFFF; opacity: 0.8; animation-delay: -1.6s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 104px; background: #E8B48F; opacity: 0.8; animation-delay: -3.2s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 152px; background: #B4532A; opacity: 0.8; animation-delay: -4.800000000000001s; animation-duration: 13.5s"></div><div class="petal" aria-hidden="true" style="left: 200px; background: #FFFFFF; opacity: 0.8; animation-delay: -6.4s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 248px; background: #E8B48F; opacity: 0.8; animation-delay: -8.0s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 296px; background: #B4532A; opacity: 0.8; animation-delay: -9.600000000000001s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 344px; background: #FFFFFF; opacity: 0.8; animation-delay: -11.200000000000001s; animation-duration: 13.5s"></div></div>
+<div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 24px 22px;text-align:center;color:#fff">
+<div class="rise eyebrow">For the newlyweds</div>
+<div class="script" style="font-size:56px;line-height:1.05"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.3s">Y</span><span class="ltr" style="animation-delay: 0.345s">o</span><span class="ltr" style="animation-delay: 0.39s">u</span><span class="ltr" style="animation-delay: 0.435s">r</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.48s">d</span><span class="ltr" style="animation-delay: 0.525s">a</span><span class="ltr" style="animation-delay: 0.57s">y</span><span class="ltr" style="animation-delay: 0.615s">,</span></span><br><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.7s">t</span><span class="ltr" style="animation-delay: 0.745s">h</span><span class="ltr" style="animation-delay: 0.79s">r</span><span class="ltr" style="animation-delay: 0.835s">o</span><span class="ltr" style="animation-delay: 0.88s">u</span><span class="ltr" style="animation-delay: 0.925s">g</span><span class="ltr" style="animation-delay: 0.97s">h</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.015s">t</span><span class="ltr" style="animation-delay: 1.06s">h</span><span class="ltr" style="animation-delay: 1.105s">e</span><span class="ltr" style="animation-delay: 1.15s">i</span><span class="ltr" style="animation-delay: 1.195s">r</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.24s">e</span><span class="ltr" style="animation-delay: 1.285s">y</span><span class="ltr" style="animation-delay: 1.33s">e</span><span class="ltr" style="animation-delay: 1.375s">s</span></span></div></div></div>
+<div class="bandana" style="height:8px;flex-shrink:0"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:18px 20px 0" id="stats"></div>
+<div class="sec"><span>Most loved moment</span><i></i></div>
+<div class="unveil tile" style="margin:0 20px;height:230px;border-radius:22px;animation-delay:.5s"><img src="images/hero.jpg" alt="" style="object-position:50% 40%"><div class="cap scrim" style="height:100%;padding:16px;font-size:14px"><span>Shared by Aunt Jo</span><span>64 hearts</span></div></div>
+<div class="sec"><span>Quiz champions</span><i></i></div>
+<div style="display:flex;flex-direction:column;gap:8px;padding:0 20px" id="leaders"></div>
+<div class="sec"><span>Time capsule</span><i></i></div>
+<div style="margin:0 20px;padding:18px;border-radius:22px;background:#3B2A1E;color:#fff;display:flex;gap:16px;align-items:center;position:relative;overflow:hidden">
+<div class="cow" style="position:absolute;inset:0;opacity:.07"></div>
+<div class="float" style="position:relative;width:54px;height:54px;border-radius:27px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+<div style="position:relative;display:flex;flex-direction:column;gap:4px"><span class="serif" style="font-size:24px;font-weight:600">12 videos are waiting</span><span style="font-size:13px;opacity:.85;line-height:1.4">They unlock on your first anniversary. We will text you that morning.</span></div></div>
+<div style="padding:22px 20px 0"><button class="btn" type="button" data-toast="Your download would start here">Download everything<span class="sheen"></span></button></div>
+<div class="muted" style="text-align:center;font-size:12px;padding-top:10px">This is what the couple sees after the wedding. Sample numbers.</div>
+<div style="padding:16px 20px 0"><a class="btn ghost" href="#home">Back to the guest app</a></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- HIRE -->
+<section class="screen" id="hire">
+<div style="position:relative;height:330px;flex-shrink:0;overflow:hidden;background:#F3EADB">
+<div style="position:absolute;inset:0;overflow:hidden"><div class="petal" aria-hidden="true" style="left: 8px; background: #B4532A; opacity: 0.8; animation-delay: 0.0s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 56px; background: #FFFFFF; opacity: 0.8; animation-delay: -1.6s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 104px; background: #E8B48F; opacity: 0.8; animation-delay: -3.2s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 152px; background: #B4532A; opacity: 0.8; animation-delay: -4.800000000000001s; animation-duration: 13.5s"></div><div class="petal" aria-hidden="true" style="left: 200px; background: #FFFFFF; opacity: 0.8; animation-delay: -6.4s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 248px; background: #E8B48F; opacity: 0.8; animation-delay: -8.0s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 296px; background: #B4532A; opacity: 0.8; animation-delay: -9.600000000000001s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 344px; background: #FFFFFF; opacity: 0.8; animation-delay: -11.200000000000001s; animation-duration: 13.5s"></div></div>
+<a href="#home" aria-label="Back to the wedding" style="position:absolute;top:16px;left:16px;z-index:5;width:44px;height:44px;border-radius:22px;background:#fff;display:flex;align-items:center;justify-content:center;color:#3B2A1E"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<div id="phones"></div></div>
+<div class="bandana" style="height:8px;flex-shrink:0"></div>
+<div style="padding:26px 24px 0;text-align:center">
+<div class="rise eyebrow" style="color:#B4532A">Loved this app?</div>
+<div class="rise serif" style="font-size:38px;line-height:1.05;font-weight:600;margin-top:8px;animation-delay:.1s">Get one made for <span class="script" style="font-weight:400;font-size:56px;color:#B4532A">your</span> event</div>
+<div class="rise muted" style="font-size:15px;line-height:1.5;margin-top:10px;animation-delay:.2s">Weddings, quinceañeras, birthdays, showers, reunions and company parties. Designed around your theme.</div></div>
+<div class="sec" style="padding-top:28px"><span>How it works</span><i></i></div>
+<div id="steps" style="display:flex;flex-direction:column;gap:18px;padding:0 24px"></div>
+<div class="muted" style="padding:26px 24px 0;text-align:center;font-size:16px">Starting at <b style="color:#3B2A1E">[YOUR PRICE]</b></div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:14px 24px 0">
+<a class="btn" href="sms:3467704879">Text Codember: 346-770-4879<span class="sheen"></span></a>
+<a class="btn ghost" href="https://codember.co">Visit codember.co</a>
+<a class="btn ghost" href="#keepsake">See what the couple gets after</a></div>
+<div class="foot" style="padding-bottom:30px">codember · Custom apps · Houston, TX</div>
+</section>
+
+<nav class="tabs" id="tabs" aria-label="Main">
+<a href="#home" data-t="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home<span class="dot"></span></a>
+<a href="#hunt" data-t="hunt"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>Hunt<span class="dot"></span></a>
+<a href="#gallery" data-t="gallery"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Gallery<span class="dot"></span></a>
+<a href="#quiz" data-t="quiz"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Quiz<span class="dot"></span></a>
+<a href="#wishes" data-t="wishes"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Wishes<span class="dot"></span></a>
+</nav>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script>
+(function () {
+var $ = function (s) { return document.querySelector(s); };
+var ICON = { camera: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>', plus: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>', check: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>', play: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>', heart: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' };
+var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+function toast(msg) { var t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove('show'); }, 2600); }
+
+// guest name
+function setName(n) { n = (n || '').trim(); if (!n) return; store.set('guestName', n); document.querySelectorAll('.gname').forEach(function (e) { e.textContent = n; }); document.querySelectorAll('.ginit').forEach(function (e) { e.textContent = n.charAt(0).toUpperCase(); }); var w = $('#wishName'); if (w && !w.value) w.value = n; }
+setName(store.get('guestName'));
+$('#welcomeForm').addEventListener('submit', function (e) { e.preventDefault(); setName($('#guestName').value); location.hash = 'home'; });
+
+// uploads (demo)
+document.querySelectorAll('.upload').forEach(function (inp) {
+inp.addEventListener('change', function () { var n = inp.files.length; if (n) toast('Added ' + n + (n === 1 ? ' file' : ' files') + '. Thank you!'); inp.value = ''; });
+});
+$('#wishVideo').addEventListener('change', function () { if (this.files.length) { $('#recLabel').textContent = 'Video ready'; toast('Video added. Now hit send!'); } });
+$('#wishForm').addEventListener('submit', function (e) { e.preventDefault(); toast('Sent to Mackenzie & Brandon'); });
+document.querySelectorAll('[data-toast]').forEach(function (b) { b.addEventListener('click', function () { toast(b.getAttribute('data-toast')); }); });
+
+// moments
+var M = [
+{ name: 'The Ceremony', time: '[4:00 PM]', img: 'images/hero.jpg', pos: '50% 40%', tip: 'Phones down for the vows. Snap away after the kiss!', mission: 'Catch the first kiss as husband and wife' },
+{ name: 'Cocktail Hour', time: '[4:45 PM]', img: 'images/denim.jpg', pos: '50% 40%', tip: 'Grab a drink and say hey to someone new.', mission: 'Take a selfie with a guest you just met' },
+{ name: 'The Reception', time: '[6:00 PM]', img: 'images/kiss.jpg', pos: '50% 30%', tip: 'Dinner, toasts and the first dance.', mission: 'Get the first dance on video' },
+{ name: 'The Send-Off', time: '[10:00 PM]', img: 'images/ring.jpg', pos: '50% 60%', tip: 'Line up outside to send them off in style.', mission: 'Film the grand exit' }
+];
+var cur = 0;
+function renderMoments() {
+var m = M[cur];
+if (!locked) $('#nowName').textContent = M[0].name;
+$('#schedCard').innerHTML = '<div class="unveil" style="position:relative;height:220px;border-radius:22px;overflow:hidden;box-shadow:0 14px 30px rgba(59,42,30,.18)"><img class="kb" src="' + m.img + '" alt="" style="width:100%;height:100%;object-fit:cover;object-position:' + m.pos + '"><div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff;gap:6px"><div class="serif" style="font-size:34px;font-weight:600;line-height:1">' + m.name + '</div><div style="font-size:14px;line-height:1.4">' + m.tip + '</div></div></div><a href="#hunt" style="margin-top:10px;padding:12px 14px;border-radius:16px;background:#fff;border:1.5px dashed #B4532A;display:flex;gap:10px;align-items:center;text-decoration:none;color:#3B2A1E"><span class="eyebrow" style="color:#B4532A;font-size:11px">Mission</span><span style="font-size:15px;font-weight:700">' + m.mission + '</span></a>';
+$('#moments').innerHTML = M.map(function (x, i) {
+var cls = i === cur ? 'on' : (i < cur ? 'past' : '');
+var st = i === cur ? 'Happening now' : (i < cur ? 'Done' : 'Coming up');
+return '<button type="button" class="moment ' + cls + '" data-i="' + i + '"><span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="d"></span></span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span class="n" style="font-size:16px;font-weight:600">' + x.name + '</span><span class="muted" style="font-size:12px">' + x.time + ' · ' + st + '</span></span></button>';
+}).join('');
+}
+$('#moments').addEventListener('click', function (e) { var b = e.target.closest('.moment'); if (b) { cur = +b.getAttribute('data-i'); renderMoments(); } });
+renderMoments();
+
+// hunt
+var H = [
+['Ceremony', 'The first kiss as husband and wife', 'images/hero.jpg'],
+['Ceremony', 'Someone happy crying', 'images/ring.jpg'],
+['Cocktail Hour', 'A selfie with a guest you just met', 'images/denim.jpg'],
+['Cocktail Hour', 'The best pair of boots here', 'images/denim.jpg'],
+['Reception', 'The first dance', 'images/kiss.jpg'],
+['Reception', 'Grandparents on the dance floor', 'images/kiss.jpg'],
+['Reception', 'The cake before anyone cuts it', 'images/hero.jpg'],
+['Send-Off', 'The grand exit', 'images/ring.jpg']
+];
+var found = {};
+try { found = JSON.parse(store.get('hunt') || '{}') || {}; } catch (e) { found = {}; }
+function renderHunt(animIdx) {
+var n = 0;
+$('#huntList').innerHTML = H.map(function (x, i) {
+var f = !!found[i]; if (f) n++;
+return '<button type="button" class="hunt-item' + (f ? ' found' : '') + '" data-i="' + i + '"><span class="thumb">' + (f ? ((typeof found[i] === 'string' ? found[i] : x[2]) ? '<img src="' + (typeof found[i] === 'string' ? found[i] : x[2]) + '" alt="">' : ICON.check) : ICON.camera) + '</span><span style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="eyebrow" style="color:#B4532A;font-size:11px;letter-spacing:2px">' + x[0] + '</span><span style="font-size:16px;font-weight:600;line-height:1.3">' + x[1] + '</span></span>' + (f ? '<span class="stampb' + (i === animIdx ? ' stamp' : '') + '" style="transform:rotate(-12deg)">FOUND</span>' : '<span class="addb">' + ICON.plus + '</span>') + '</button>';
+}).join('');
+$('#hCount').textContent = n; if ($('#homeLeft')) { $('#homeLeft').textContent = H.length - n; $('#huntBadge').textContent = H.length - n; } $('#hTotal').textContent = H.length; $('#hLeft').textContent = H.length - n;
+$('#ring').setAttribute('stroke-dashoffset', String(301.6 - 301.6 * n / H.length));
+if (n === H.length && animIdx !== undefined) toast('You found them all! The couple says thank you!');
+}
+$('#huntList').addEventListener('click', function (e) {
+var b = e.target.closest('.hunt-item'); if (!b) return; var i = +b.getAttribute('data-i');
+if (found[i]) { delete found[i]; renderHunt(); } else { found[i] = true; renderHunt(i); toast('Found! Nice one.'); }
+store.set('hunt', JSON.stringify(found));
+});
+renderHunt();
+
+// gallery
+var G = [
+{ k: 'Ceremony', items: [['images/hero.jpg', '50% 40%', 'Aunt Jo', 24], ['images/kiss.jpg', '50% 30%', 'Mom', 42], ['images/ring.jpg', '50% 60%', 'Kayla', 31, '0:42'], ['images/denim.jpg', '55% 45%', 'Tyler', 17]] },
+{ k: 'Cocktails', items: [['images/denim.jpg', '60% 20%', 'Brandon', 8], ['images/hero.jpg', '70% 30%', 'Grandpa', 12, '0:30'], ['images/kiss.jpg', '40% 40%', 'Sam', 5], ['images/ring.jpg', '40% 70%', 'Lily', 9]] },
+{ k: 'Reception', items: [['images/kiss.jpg', '60% 20%', 'Jess', 19, '0:58'], ['images/ring.jpg', '50% 50%', 'Aunt Jo', 22], ['images/hero.jpg', '30% 50%', 'Dad', 14], ['images/denim.jpg', '40% 70%', 'Kayla', 11]] }
+];
+var gf = 'All';
+function tile(x, h, dl) {
+return '<div class="tile unveil" style="height:' + h + 'px;animation-delay:' + dl + 's"><img src="' + x[0] + '" alt="" style="object-position:' + x[1] + '">' + (x[4] ? '<div style="position:absolute;top:10px;left:10px;padding:4px 9px;border-radius:12px;background:rgba(255,255,255,.95);font-size:11px;font-weight:700;display:flex;gap:4px;align-items:center">' + ICON.play + x[4] + '</div>' : '') + '<div class="cap scrim"><span>' + x[2] + '</span><span style="display:flex;gap:4px;align-items:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' + x[3] + '</span></div></div>';
+}
+function renderGallery() {
+$('#gChips').innerHTML = ['All', 'Ceremony', 'Cocktails', 'Reception'].map(function (c) { return '<button type="button" class="chip' + (c === gf ? ' on' : '') + '" data-c="' + c + '">' + c + '</button>'; }).join('');
+$('#gBody').innerHTML = G.filter(function (s) { return gf === 'All' || s.k === gf; }).map(function (s) {
+var it = s.items;
+return '<div class="sec"><span>' + (s.k === 'Cocktails' ? 'Cocktail Hour' : 'The ' + s.k) + '</span><i></i></div><div style="display:flex;gap:10px;padding:0 20px"><div style="flex:1;display:flex;flex-direction:column;gap:10px">' + tile(it[0], 240, .1) + tile(it[2], 180, .35) + '</div><div style="flex:1;display:flex;flex-direction:column;gap:10px;padding-top:30px">' + tile(it[1], 200, .22) + tile(it[3], 190, .48) + '</div></div>';
+}).join('');
+}
+$('#gChips').addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (b) { gf = b.getAttribute('data-c'); renderGallery(); } });
+renderGallery();
+
+// quiz
+var Q = [
+{ q: 'Who said "I love you" first?', o: ['Mackenzie', 'Brandon', 'Same time', 'Still arguing about it'] },
+{ q: 'Where was their first date?', o: ['[Answer A]', '[Answer B]', '[Answer C]', '[Answer D]'] },
+{ q: 'Who takes longer to get ready?', o: ['Mackenzie', 'Brandon', 'A tie', 'Depends on the boots'] }
+];
+var qi = 0, picked = null;
+function renderQuiz() {
+var c = Q[qi];
+$('#quizBody').innerHTML = '<div style="display:flex;flex-direction:column;gap:8px;padding:20px 24px 0"><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>Question ' + (qi + 1) + ' of ' + Q.length + '</span><span style="color:#B4532A">You\'re doing great</span></div><div style="height:10px;border-radius:5px;background:#E9DFCF;overflow:hidden"><div class="bandana" style="height:10px;border-radius:5px;width:' + Math.round((qi + 1) / Q.length * 100) + '%;transition:width .5s ease"></div></div></div>'
++ '<div class="rise" style="position:relative;margin:22px 20px 0;padding:26px 18px 18px;background:#fff;border-radius:24px;box-shadow:0 14px 34px rgba(59,42,30,.1);display:flex;flex-direction:column;gap:12px"><img src="images/kiss.jpg" alt="" style="position:absolute;top:-22px;right:18px;width:56px;height:56px;border-radius:28px;object-fit:cover;object-position:50% 35%;border:3px solid #fff;box-shadow:0 6px 14px rgba(59,42,30,.2)"><div class="serif" style="font-size:28px;font-weight:600;line-height:1.15;padding-right:50px">' + c.q + '</div>'
++ c.o.map(function (o, i) { return '<button type="button" class="opt' + (picked === i ? ' on' : '') + '" data-i="' + i + '"><span class="l">' + 'ABCD'[i] + '</span>' + o + '</button>'; }).join('')
++ (picked !== null ? '<div style="display:flex;justify-content:center;padding-top:4px"><span class="stampb stamp" style="font-size:13px;padding:6px 12px">LOCKED IN</span></div>' : '') + '</div>'
++ '<div style="padding:18px 20px 0"><button type="button" class="btn" id="qNext">Next question<span class="sheen"></span></button></div>';
+}
+$('#quizBody').addEventListener('click', function (e) {
+var o = e.target.closest('.opt'); if (o) { picked = +o.getAttribute('data-i'); renderQuiz(); return; }
+if (e.target.closest('#qNext')) { if (picked === null) { toast('Pick an answer first'); return; } qi = (qi + 1) % Q.length; picked = null; renderQuiz(); }
+});
+renderQuiz();
+
+// wishes
+var W = [
+{ l: 'Marriage advice', t: 'What is your best advice for a happy marriage?' },
+{ l: 'Sweet wishes', t: 'What do you wish for them in this next chapter?' },
+{ l: 'Favorite memory', t: 'Share a favorite memory with one of them.' },
+{ l: 'Time capsule', t: 'Talk to them on their 1st anniversary. It stays locked until then.', cap: true }
+];
+var wi = 0;
+function renderWishes() {
+$('#prompts').innerHTML = W.map(function (x, i) { return '<button type="button" class="pill' + (i === wi ? ' on' : '') + '" data-i="' + i + '">' + x.l + '</button>'; }).join('');
+$('#promptText').textContent = W[wi].t; $('#capsule').style.display = W[wi].cap ? 'flex' : 'none';
+}
+$('#prompts').addEventListener('click', function (e) { var b = e.target.closest('.pill'); if (b) { wi = +b.getAttribute('data-i'); renderWishes(); } });
+renderWishes();
+
+// keepsake count-up
+var S = [['Photos', 1286], ['Videos', 94], ['Video wishes', 41], ['Hunt finds', 212]];
+$('#stats').innerHTML = S.map(function (s, i) { return '<div class="card rise" style="padding:16px 14px;display:flex;flex-direction:column;gap:2px;animation-delay:' + (i * .1) + 's"><span class="serif cnt" data-v="' + s[1] + '" style="font-size:40px;font-weight:700;line-height:1;color:#B4532A">0</span><span class="muted" style="font-size:13px;font-weight:600">' + s[0] + '</span></div>'; }).join('');
+$('#leaders').innerHTML = [['1', 'Aunt Jo', '10/10', '#B4532A'], ['2', 'Tyler', '9/10', '#3B2A1E'], ['3', 'Kayla', '9/10', '#6E8FAF']].map(function (l) { return '<div class="card" style="height:58px;display:flex;align-items:center;gap:14px;padding:0 14px"><span style="width:34px;height:34px;border-radius:17px;background:' + l[3] + ';color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">' + l[0] + '</span><span style="flex:1;font-size:16px;font-weight:700">' + l[1] + '</span><span class="serif" style="font-size:22px;font-weight:700">' + l[2] + '</span></div>'; }).join('');
+function countUp() {
+var els = document.querySelectorAll('.cnt'), start = performance.now();
+function f(now) { var k = Math.min(1, (now - start) / 1800), e = 1 - Math.pow(1 - k, 3); els.forEach(function (el) { el.textContent = Math.round(+el.getAttribute('data-v') * e).toLocaleString(); }); if (k < 1) requestAnimationFrame(f); }
+requestAnimationFrame(f);
+}
+
+// hire
+var ph = [[-8, 'images/ring.jpg', '50% 60%', 'Wishes', 36, 70, 1, .1], [8, 'images/hero.jpg', '50% 40%', 'Our Day', 222, 70, 1, .2], [0, 'images/kiss.jpg', '50% 30%', 'Welcome', 129, 44, 2, .3]];
+$('#phones').innerHTML = ph.map(function (p) { return '<div class="rise" style="position:absolute;left:calc(50% - 195px + ' + p[4] + 'px);top:' + p[5] + 'px;z-index:' + p[6] + ';animation-delay:' + p[7] + 's"><div class="float" style="width:128px;height:244px;border-radius:26px;background:#3B2A1E;padding:6px;box-shadow:0 18px 36px rgba(59,42,30,.3);transform:rotate(' + p[0] + 'deg);animation-delay:' + (-p[7] * 5) + 's"><div style="width:100%;height:100%;border-radius:21px;overflow:hidden;background:#FBF7F1;display:flex;flex-direction:column"><img src="' + p[1] + '" alt="" style="width:100%;height:150px;object-fit:cover;object-position:' + p[2] + ';display:block"><div class="bandana" style="height:5px"></div><div class="script" style="font-size:22px;color:#B4532A;text-align:center;padding-top:8px;line-height:1">' + p[3] + '</div><div style="margin:10px 12px 0;height:20px;border-radius:10px;background:#B4532A"></div></div></div></div>'; }).join('');
+$('#steps').innerHTML = [['Tell me about your event', 'Your colors, your photos and what you want guests to do.'], ['I design and build your app', 'Photo sharing, games, a scavenger hunt and video wishes.'], ['Guests scan a QR code', 'No download. You keep every memory afterward.']].map(function (s, i) { return '<div class="rise" style="display:flex;gap:14px;align-items:flex-start;animation-delay:' + (.3 + i * .1) + 's"><div class="serif" style="width:34px;height:34px;border-radius:17px;border:1.5px solid #B4532A;color:#B4532A;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;flex-shrink:0">' + (i + 1) + '</div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:17px;font-weight:700">' + s[0] + '</div><div class="muted" style="font-size:14px;line-height:1.45">' + s[1] + '</div></div></div>'; }).join('');
+
+
+// rsvp
+// Guest list: each party is one invitation. Swap in the couple's real list.
+var PARTIES = [
+{ id: 'p1', members: [{ n: 'Kayla Smith', r: 'Invited guest' }, { n: 'Plus one', r: 'Guest of Kayla', plus: true }] },
+{ id: 'p2', members: [{ n: 'Jake Meyers', r: 'Brother of the bride' }, { n: 'Lily Meyers', r: 'Daughter' }, { n: 'Emma Meyers', r: 'Daughter' }, { n: 'Ava Meyers', r: 'Daughter' }] },
+{ id: 'p3', members: [{ n: 'Linda Greenshields', r: 'Aunt of the groom' }, { n: 'Tom Greenshields', r: 'Uncle of the groom' }] },
+{ id: 'p4', members: [{ n: 'Tyler Brooks', r: 'Groomsman' }, { n: 'Plus one', r: 'Guest of Tyler', plus: true }] }
+];
+var env = $('#env'), rs = { opened: false, party: null, ans: {}, plusName: {} };
+function openEnv() {
+if (rs.opened) return; rs.opened = true; $('#envTap').style.visibility = 'hidden'; $('#envHint').style.visibility = 'hidden';
+var stage = $('#envStage'), seal = $('#seal');
+seal.classList.add('crack'); env.classList.add('lift'); stage.classList.add('lit');
+setTimeout(function () { env.classList.add('open'); }, 450);
+setTimeout(function () { var r = env.getBoundingClientRect(); confettiBurst(r.left + r.width / 2, r.top + 30, 160); hearts(stage); }, 900);
+setTimeout(function () { env.classList.add('away'); }, 2500);
+setTimeout(function () { stage.classList.add('gone'); $('#invite').classList.add('show'); fitNames(); var v = document.getElementById('vp'); if (v) v.scrollTop = 0; else window.scrollTo(0, 0); confettiRain(90); }, 3100);
+}
+function hearts(stage) {
+var cols = ['#B4532A', '#E8B48F', '#CC6A3A', '#C8A97E'];
+for (var i = 0; i < 12; i++) { (function (i) { setTimeout(function () {
+var h = document.createElement('span'); h.className = 'heartup'; h.style.left = (12 + Math.random() * 76) + '%'; h.style.setProperty('--r', (Math.random() * 60 - 30) + 'deg');
+var s = 12 + Math.random() * 14; h.style.width = s + 'px'; h.style.height = s + 'px';
+h.innerHTML = '<svg viewBox="0 0 24 24" width="100%" height="100%" aria-hidden="true"><path fill="' + cols[i % 4] + '" d="M12 21s-7.5-4.6-9.6-9.2C.8 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.2 1.8-2 3.3-3.2 5.4-3.2 3.6 0 5.8 3.7 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg>';
+stage.appendChild(h); setTimeout(function () { h.remove(); }, 3400);
+}, i * 120); })(i); }
+}
+var CF = { parts: [], raf: null };
+var CCOLS = ['#B4532A', '#E8B48F', '#C8A97E', '#F6E6D8', '#3B2A1E', '#FFFFFF', '#CC6A3A'];
+function reduceMotion() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+function cfCanvas() {
+var c = $('#confetti'), host = c.parentElement.getBoundingClientRect ? c : c;
+var w = c.clientWidth || window.innerWidth, h = c.clientHeight || window.innerHeight, dpr = window.devicePixelRatio || 1;
+if (c.width !== Math.round(w * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
+var ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); return { c: c, ctx: ctx, w: w, h: h };
+}
+function addPart(x, y, vx, vy) {
+var shape = Math.random(); CF.parts.push({ x: x, y: y, vx: vx, vy: vy, rot: Math.random() * 6.28, vr: (Math.random() - .5) * .3, s: 6 + Math.random() * 7, col: CCOLS[Math.floor(Math.random() * CCOLS.length)], kind: shape < .2 ? 'heart' : (shape < .55 ? 'circle' : 'rect'), life: 0, wob: Math.random() * 6.28 });
+}
+function toLocal(x, y) { var r = $('#confetti').getBoundingClientRect(); return [x - r.left, y - r.top]; }
+function confettiBurst(x, y, n) {
+if (reduceMotion()) return; var p = toLocal(x, y);
+for (var i = 0; i < n; i++) { var a = -Math.PI / 2 + (Math.random() - .5) * 1.9, sp = 7 + Math.random() * 9; addPart(p[0], p[1], Math.cos(a) * sp, Math.sin(a) * sp); }
+runCF();
+}
+function confettiRain(n) {
+if (reduceMotion()) return; var g = cfCanvas();
+for (var i = 0; i < n; i++) addPart(Math.random() * g.w, -20 - Math.random() * 200, (Math.random() - .5) * 2, 2 + Math.random() * 2);
+runCF();
+}
+function heartPath(ctx, s) { ctx.beginPath(); ctx.moveTo(0, s * .35); ctx.bezierCurveTo(-s, -s * .3, -s * .45, -s, 0, -s * .45); ctx.bezierCurveTo(s * .45, -s, s, -s * .3, 0, s * .35); ctx.fill(); }
+function runCF() {
+if (CF.raf) return;
+(function step() {
+var g = cfCanvas(), ctx = g.ctx; ctx.clearRect(0, 0, g.w, g.h);
+CF.parts = CF.parts.filter(function (p) { return p.y < g.h + 40 && p.life < 420; });
+CF.parts.forEach(function (p) {
+p.life++; p.vy += .22; p.vx *= .985; p.vy = Math.min(p.vy, 4.2); p.wob += .08; p.x += p.vx + Math.sin(p.wob) * .6; p.y += p.vy; p.rot += p.vr;
+ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.col; ctx.globalAlpha = p.life > 360 ? (420 - p.life) / 60 : 1;
+if (p.kind === 'rect') { ctx.scale(1, Math.abs(Math.cos(p.wob))); ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); }
+else if (p.kind === 'circle') { ctx.beginPath(); ctx.arc(0, 0, p.s / 3, 0, 6.28); ctx.fill(); }
+else heartPath(ctx, p.s * .7);
+ctx.restore();
+});
+if (CF.parts.length) CF.raf = requestAnimationFrame(step); else { CF.raf = null; ctx.clearRect(0, 0, g.w, g.h); }
+})();
+}
+function fitOne(a, max) {
+if (!a || !a.clientWidth) return;
+var s = max; a.style.fontSize = s + 'px';
+while (s > 24 && a.scrollWidth > a.clientWidth) { s -= 1; a.style.fontSize = s + 'px'; }
+}
+function fitNames() { fitOne($('#invFirst'), 54); fitOne($('#welFirst'), 64); }
+window.addEventListener('resize', fitNames);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNames);
+$('#seal').addEventListener('click', openEnv);
+$('#toForm').addEventListener('click', function () { var f = $('#rsvpForm'); f.classList.add('show'); setTimeout(function () { f.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); });
+function esc(x) { return String(x).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function norm(x) { return x.toLowerCase().replace(/[^a-z ]/g, '').replace(/\s+/g, ' ').trim(); }
+function findMatches(q) {
+q = norm(q); if (q.length < 2) return [];
+var out = [];
+PARTIES.forEach(function (p) { p.members.forEach(function (m) { if (!m.plus && norm(m.n).indexOf(q) >= 0) out.push({ p: p, m: m }); }); });
+return out.slice(0, 5);
+}
+$('#rName').addEventListener('input', function () {
+var list = findMatches(this.value), box = $('#rSug');
+$('#noMatch').style.display = this.value.trim().length >= 4 && !list.length ? 'block' : 'none';
+if (!list.length) { box.style.display = 'none'; return; }
+box.innerHTML = list.map(function (x) { var others = x.p.members.length - 1; return '<button type="button" role="option" data-p="' + x.p.id + '" data-n="' + esc(x.m.n) + '">' + esc(x.m.n) + '<span>' + (others ? '+' + others + ' on invitation' : 'Just you') + '</span></button>'; }).join('');
+box.style.display = 'block';
+});
+document.querySelectorAll('.tryname').forEach(function (b) { b.addEventListener('click', function () { var i = $('#rName'); i.value = b.getAttribute('data-n'); i.dispatchEvent(new Event('input')); i.focus(); }); });
+$('#rSug').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; selectParty(b.getAttribute('data-p'), b.getAttribute('data-n')); });
+function selectParty(pid, who) {
+rs.party = PARTIES.filter(function (p) { return p.id === pid; })[0]; rs.ans = {}; rs.plusName = {};
+$('#rName').value = who; $('#rSug').style.display = 'none'; $('#noMatch').style.display = 'none';
+renderParty(); var pb = $('#partyBox'); pb.style.display = 'flex'; pb.classList.remove('rise'); void pb.offsetWidth; pb.classList.add('rise');
+}
+function renderParty() {
+var p = rs.party; if (!p) return;
+$('#partyCount').textContent = p.members.length + (p.members.length === 1 ? ' person' : ' people') + ' invited';
+$('#partyList').innerHTML = p.members.map(function (m, i) {
+var a = rs.ans[i];
+var label = m.plus ? (rs.plusName[i] ? esc(rs.plusName[i]) : 'Plus one') : esc(m.n);
+var ini = m.plus ? '+1' : esc(m.n.charAt(0));
+return '<div class="member"><div class="row"><span class="ini">' + ini + '</span><span class="nm"><b>' + label + '</b><span>' + esc(m.r) + '</span></span></div>'
++ '<div class="yn"><button type="button" class="y' + (a === 'y' ? ' on' : '') + '" data-i="' + i + '" data-a="y">' + (m.plus ? 'Bringing a guest' : 'Going') + '</button><button type="button" class="n' + (a === 'n' ? ' on' : '') + '" data-i="' + i + '" data-a="n">' + (m.plus ? 'Coming solo' : 'Can&#39;t make it') + '</button></div>'
++ (m.plus && a === 'y' ? '<input class="plusname" data-i="' + i + '" type="text" placeholder="Your guest&#39;s full name" aria-label="Your guest&#39;s full name" value="' + esc(rs.plusName[i] || '') + '">' : '')
++ '</div>';
+}).join('');
+var anyYes = Object.keys(rs.ans).some(function (k) { return rs.ans[k] === 'y'; });
+$('#yesBits').style.display = anyYes ? 'flex' : 'none';
+}
+$('#partyList').addEventListener('click', function (e) { var b = e.target.closest('.yn button'); if (!b) return; rs.ans[+b.getAttribute('data-i')] = b.getAttribute('data-a'); renderParty(); });
+$('#partyList').addEventListener('input', function (e) { if (e.target.classList.contains('plusname')) rs.plusName[+e.target.getAttribute('data-i')] = e.target.value; });
+$('#rsvpForm').addEventListener('submit', function (e) {
+e.preventDefault();
+var p = rs.party;
+if (!p) { toast('Find your name first'); $('#rName').focus(); return; }
+for (var i = 0; i < p.members.length; i++) { if (!rs.ans[i]) { toast('Pick an answer for everyone listed'); return; } if (p.members[i].plus && rs.ans[i] === 'y' && !(rs.plusName[i] || '').trim()) { toast('Add your guest&#39;s name'.replace('&#39;', "'")); return; } }
+var going = 0; p.members.forEach(function (m, i) { if (rs.ans[i] === 'y') going++; });
+var first = $('#rName').value.trim().split(' ')[0];
+$('#thanksTitle').textContent = going ? 'See you there, ' + first + '!' : 'We will miss you, ' + first;
+$('#thanksText').textContent = going ? going + ' of ' + p.members.length + ' on your invitation ' + (going === 1 ? 'is' : 'are') + ' coming. This app will have everything you need on the big day.' : 'Thank you for letting us know. You can still leave the couple a video wish.';
+$('#rsvpForm').classList.remove('show'); $('#invite').classList.remove('show'); var th = $('#thanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show');
+if (going) setTimeout(function () { confettiRain(110); }, 200);
+$('#rsvpBarText').textContent = going ? 'You are going! Tap to view your invitation' : 'RSVP sent. Tap to view your invitation';
+setName(first);
+var v = document.getElementById('vp'); if (v) v.scrollTop = 0; else window.scrollTo(0, 0);
+});
+$('#rsvpEdit').addEventListener('click', function () { $('#thanks').classList.remove('show'); $('#invite').classList.add('show'); fitNames(); $('#rsvpForm').classList.add('show'); });
+window.__resetRsvp = function () { rs.opened = false; rs.party = null; rs.ans = {}; rs.plusName = {}; env.classList.remove('open', 'lift', 'away'); $('#seal').classList.remove('crack'); $('#envStage').classList.remove('lit'); $('#envHint').style.visibility = 'visible'; $('#envTap').style.visibility = 'visible'; $('#envStage').classList.remove('gone'); ['invite', 'rsvpForm', 'thanks'].forEach(function (id) { document.getElementById(id).classList.remove('show'); }); $('#rName').value = ''; $('#partyBox').style.display = 'none'; $('#rSug').style.display = 'none'; };
+
+// wedding-day lock (in the real app this flips on its own the morning of the wedding)
+var locked = store.get('dayof') !== '1';
+var LOCKMSG = { gallery: 'The gallery opens the morning of the wedding so everyone sees the big day for the first time together.', hunt: 'The scavenger hunt starts the morning of the wedding. Save your best shots for the big day!', share: 'Photo sharing opens the morning of the wedding. Until then, keep those cameras in your pocket!' };
+function applyLock() {
+document.body.classList.toggle('locked', locked);
+document.querySelectorAll('#mock button').forEach(function (b) { b.classList.toggle('on', (b.getAttribute('data-m') === 'before') === locked); });
+$('#nowLbl').textContent = locked ? 'Coming up:' : 'Happening now:';
+$('#nowName').textContent = locked ? 'The big day, [Wedding Date]' : M[0].name;
+}
+function showLock(kind) { $('#lockText').textContent = LOCKMSG[kind] || LOCKMSG.share; location.hash = 'locked'; }
+$('#mock').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; locked = b.getAttribute('data-m') === 'before'; store.set('dayof', locked ? '0' : '1'); applyLock(); toast(locked ? 'Showing the app before the wedding' : 'Showing the wedding day'); });
+document.addEventListener('click', function (e) {
+if (!locked) return;
+var up = e.target.closest('label'); if (up && up.querySelector('input.upload')) { e.preventDefault(); showLock('share'); }
+}, true);
+applyLock();
+window.__setLock = function (v) { locked = v; store.set('dayof', v ? '0' : '1'); applyLock(); };
+
+
+// honeymoon fund
+var hm = { amt: null, what: '' };
+function setAmt(a, what) { hm.amt = a; hm.what = what || ''; $('#hmAmt').textContent = a ? '$' + a : 'a gift'; if (what) { hm.other = false; $('#otherBox').style.display = 'none'; $('#amtOther').classList.remove('on'); } document.querySelectorAll('#amts button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-a') === String(a) && !what); }); document.querySelectorAll('#exps .exp').forEach(function (b) { b.classList.toggle('on', !!what && b.querySelector('b').textContent === what); }); }
+$('#exps').addEventListener('click', function (e) { var b = e.target.closest('.exp'); if (b) setAmt(b.getAttribute('data-a'), b.querySelector('b').textContent); });
+$('#amts').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return;
+if (b.id === 'amtOther') { setAmt(null); hm.other = true; b.classList.add('on'); $('#otherBox').style.display = 'block'; $('#hmAmt').textContent = 'a gift'; $('#otherAmt').focus(); return; }
+hm.other = false; $('#otherBox').style.display = 'none'; $('#amtOther').classList.remove('on'); setAmt(b.getAttribute('data-a')); });
+$('#otherAmt').addEventListener('input', function () { var v = this.value.replace(/[^0-9.]/g, ''); var parts = v.split('.'); if (parts.length > 2) v = parts[0] + '.' + parts.slice(1).join(''); if (parts[1] && parts[1].length > 2) v = parts[0] + '.' + parts[1].slice(0, 2); this.value = v; var n = parseFloat(v); hm.amt = n > 0 ? (n % 1 ? n.toFixed(2) : String(n)) : null; $('#hmAmt').textContent = hm.amt ? '$' + hm.amt : 'a gift'; });
+$('#hmGo').addEventListener('click', function () {
+if (!hm.amt) { toast(hm.other ? 'Type the amount you want to give' : 'Pick an experience or an amount'); return; }
+$('#hmPayText').textContent = '$' + hm.amt + (hm.what ? ' for ' + hm.what.toLowerCase() : '') + ' to Mackenzie & Brandon';
+$('#hmForm').style.display = 'none'; $('#hmPay').style.display = 'block'; var v = document.getElementById('vp'); if (v) v.scrollTop = 200; else window.scrollTo(0, 200);
+});
+$('#hmBack').addEventListener('click', function () { $('#hmPay').style.display = 'none'; $('#hmForm').style.display = 'block'; });
+document.querySelectorAll('#hmPay .payb button').forEach(function (b) { b.addEventListener('click', function () {
+toast('In the real app this opens ' + b.getAttribute('data-p'));
+var n = ($('#hmName').value || '').trim().split(' ')[0];
+setTimeout(function () { $('#hmPay').style.display = 'none'; $('#hmThanksTitle').textContent = n ? 'Thank you, ' + n + '!' : 'Thank you!'; var th = $('#hmThanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show'); }, 1400);
+}); });
+window.__resetHoney = function () { hm.amt = null; hm.other = false; $('#otherBox').style.display = 'none'; $('#otherAmt').value = ''; $('#hmAmt').textContent = 'a gift'; $('#hmForm').style.display = 'block'; $('#hmPay').style.display = 'none'; $('#hmThanks').classList.remove('show'); document.querySelectorAll('#amts button, #exps .exp').forEach(function (b) { b.classList.remove('on'); }); };
+
+// ===== live mode: real data from Supabase (only when config.js has keys) =====
+if (window.LIVE) (function () {
+var L = window.LIVE, C = window.CFG || {};
+function strip(el) { if (!el) return el; var c = el.cloneNode(true); el.parentNode.replaceChild(c, el); return c; }
+document.body.classList.add('live');
+
+// mockup-only bits off
+var mk = $('#mock'); if (mk) mk.style.display = 'none';
+document.querySelectorAll('.tryname').forEach(function (b) { var p = b.parentNode; if (p) p.style.display = 'none'; });
+var ks = document.querySelector('#hire a[href="#keepsake"]'); if (ks) ks.style.display = 'none';
+
+// wedding details from config.js
+if (C.moments && C.moments.length) M = C.moments.map(function (m) { return { name: m.name, time: m.time || '', img: m.img || 'images/hero.jpg', pos: m.pos || '50% 40%', tip: m.tip || '', mission: m.mission || '' }; });
+if (C.hunt && C.hunt.length) H = C.hunt.map(function (h) { return [h[0], h[1], '']; });
+if (C.quiz && C.quiz.length) Q = C.quiz.map(function (x) { return { q: x.q, o: x.o }; });
+function partyList(list) { return list.map(function (p, i) { return '<div class="person rise" style="animation-delay:' + (0.1 + i * 0.05) + 's"><div class="pic">' + esc(p.name.charAt(0)) + '</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">' + esc(p.name) + '</div><div class="muted" style="font-size:13px">' + esc(p.role || '') + '</div></div></div>'; }).join(''); }
+if (C.party) {
+  var secs = document.querySelectorAll('#party .sec');
+  if (C.party.her && C.party.her.length && secs[0]) secs[0].nextElementSibling.innerHTML = partyList(C.party.her);
+  if (C.party.his && C.party.his.length && secs[1]) secs[1].nextElementSibling.innerHTML = partyList(C.party.his);
+}
+L.applyText(document.body);
+renderMoments(); renderHunt(); renderQuiz();
+
+// wedding-day lock from the server clock
+locked = true;
+applyLock = function () {
+  document.body.classList.toggle('locked', locked);
+  $('#nowLbl').textContent = locked ? 'Coming up:' : 'Happening now:';
+  $('#nowName').textContent = locked ? L.t('The big day, [Wedding Date]') : (M[L.momentIndex()] || M[0]).name;
+};
+applyLock();
+function refreshClock() {
+  var was = locked; locked = !L.unlocked();
+  if (!locked) { var mi = L.momentIndex(); if (mi !== cur && !refreshClock.picked) { cur = mi; renderMoments(); } }
+  applyLock();
+  if (was && !locked) { loadGallery(); route(); }
+}
+L.ready.then(function () { refreshClock(); route(); loadGallery(); setInterval(refreshClock, 60000); });
+$('#moments').addEventListener('click', function () { refreshClock.picked = true; });
+
+// ---------- photo and video sharing ----------
+function afterUpload(r) {
+  if (r.done) { toast('Added ' + r.done + (r.done === 1 ? ' memory' : ' memories') + '. Thank you!'); confettiRain(60); loadGallery(); }
+  if (r.skipped) setTimeout(function () { toast('Videos need to be 1 minute or shorter'); }, r.done ? 2700 : 0);
+  if (r.failed) setTimeout(function () { toast('Something did not upload. Check your signal and try again.'); }, (r.done || r.skipped) ? 5400 : 0);
+}
+document.querySelectorAll('input.upload').forEach(function (inp) {
+  var n = strip(inp);
+  n.addEventListener('change', function () {
+    var files = Array.prototype.slice.call(n.files || []); n.value = '';
+    if (!files.length) return;
+    if (locked) { showLock('share'); return; }
+    L.uploadFiles(files).then(afterUpload);
+  });
+});
+
+// ---------- scavenger hunt: each mission takes a real photo ----------
+var huntInput = document.createElement('input');
+huntInput.type = 'file'; huntInput.accept = 'image/*,video/*'; huntInput.className = 'sr'; document.body.appendChild(huntInput);
+var pendingMission = null;
+var hl = strip($('#huntList'));
+hl.addEventListener('click', function (e) {
+  var b = e.target.closest('.hunt-item'); if (!b) return;
+  if (locked) { showLock('hunt'); return; }
+  pendingMission = +b.getAttribute('data-i'); huntInput.click();
+});
+huntInput.addEventListener('change', function () {
+  var files = Array.prototype.slice.call(huntInput.files || []), i = pendingMission; huntInput.value = '';
+  if (!files.length || i === null) return;
+  L.uploadFiles(files.slice(0, 1), { mission: i }).then(function (r) {
+    if (r.done) { found[i] = r.thumbs[0] || true; store.set('hunt', JSON.stringify(found)); renderHunt(i); toast('Found! Nice one.'); loadGallery(); }
+    else afterUpload(r);
+  });
+});
+
+// ---------- gallery ----------
+var GL = [], loved = {};
+try { loved = JSON.parse(store.get('loved') || '{}') || {}; } catch (e) { loved = {}; }
+function loadGallery() {
+  if (locked) return;
+  L.gallery().then(function (list) {
+    GL = list; renderGallery();
+    var gb = document.querySelector('.grid3 a[href="#gallery"] .badge'); if (gb) { gb.textContent = list.length; gb.style.display = list.length ? 'flex' : 'none'; }
+  }).catch(function (e) { console.warn(e); });
+}
+function short(n) { return n === 'Cocktail Hour' ? 'Cocktails' : n.replace(/^The /, ''); }
+function liveTile(x, h, dl) {
+  return '<button type="button" class="tile unveil" data-id="' + x.id + '" style="height:' + h + 'px;animation-delay:' + dl + 's;border:none;padding:0;cursor:pointer;width:100%;background:#E9DFCF"><img src="' + esc(x.thumb) + '" alt="Shared by ' + esc(x.who) + '" loading="lazy">'
+    + (x.kind === 'video' ? '<div style="position:absolute;top:10px;left:10px;padding:4px 9px;border-radius:12px;background:rgba(255,255,255,.95);font-size:11px;font-weight:700;display:flex;gap:4px;align-items:center;color:#3B2A1E">' + ICON.play + 'Video</div>' : '')
+    + '<div class="cap scrim"><span>' + esc(x.who) + '</span><span style="display:flex;gap:4px;align-items:center">' + (x.hearts ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' + x.hearts : '') + '</span></div></button>';
+}
+renderGallery = function () {
+  var names = M.map(function (m) { return m.name; });
+  var chips = ['All'].concat(names.map(short));
+  $('#gChips').innerHTML = chips.map(function (c) { return '<button type="button" class="chip' + (c === gf ? ' on' : '') + '" data-c="' + esc(c) + '">' + esc(c) + '</button>'; }).join('');
+  var groups = names.map(function (n) { return { k: n, items: GL.filter(function (x) { return x.moment === n; }) }; });
+  var other = GL.filter(function (x) { return names.indexOf(x.moment) < 0; });
+  if (other.length) groups.push({ k: 'More memories', items: other });
+  groups = groups.filter(function (g) { return g.items.length && (gf === 'All' || short(g.k) === gf); });
+  if (!groups.length) { $('#gBody').innerHTML = '<div style="padding:40px 30px;text-align:center"><div class="script" style="font-size:44px;color:#B4532A">Be the first!</div><p class="muted" style="font-size:15px;line-height:1.5">No photos here yet. Tap the + button to share yours.</p></div>'; return; }
+  $('#gBody').innerHTML = groups.map(function (g) {
+    var a = [], b = [];
+    g.items.forEach(function (x, i) { (i % 2 ? b : a).push(liveTile(x, [240, 180, 210, 190][i % 4], Math.min(i * 0.06, 0.6))); });
+    return '<div class="sec"><span>' + esc(g.k) + '</span><i></i></div><div style="display:flex;gap:10px;padding:0 20px"><div style="flex:1;display:flex;flex-direction:column;gap:10px">' + a.join('') + '</div><div style="flex:1;display:flex;flex-direction:column;gap:10px;padding-top:30px">' + b.join('') + '</div></div>';
+  }).join('');
+};
+renderGallery();
+
+// lightbox
+var lb = document.createElement('div');
+lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Photo');
+lb.style.cssText = 'position:fixed;inset:0;z-index:70;background:rgba(20,14,10,.94);display:none;flex-direction:column;align-items:center;justify-content:center;padding:60px 14px 24px';
+lb.innerHTML = '<button type="button" id="lbClose" aria-label="Close" style="position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:22px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:24px;cursor:pointer">&times;</button><div id="lbMedia" style="flex:1;width:100%;display:flex;align-items:center;justify-content:center;min-height:0"></div><div style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:400px;padding-top:14px;color:#fff;font-family:\'Josefin Sans\',sans-serif"><span id="lbWho" style="font-size:15px;font-weight:600"></span><button type="button" id="lbHeart" style="height:44px;padding:0 16px;border-radius:22px;border:1.5px solid #fff;background:transparent;color:#fff;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px"></button></div>';
+document.body.appendChild(lb);
+var lbItem = null;
+function heartLabel(x) { return (loved[x.id] ? '&#9829; Loved' : '&#9825; Love it') + (x.hearts ? ' · ' + x.hearts : ''); }
+function openLb(x) {
+  lbItem = x;
+  $('#lbMedia').innerHTML = x.kind === 'video' ? '<video src="' + esc(x.url) + '" controls playsinline autoplay style="max-width:100%;max-height:100%;border-radius:12px"></video>' : '<img src="' + esc(x.url) + '" alt="Shared by ' + esc(x.who) + '" style="max-width:100%;max-height:100%;border-radius:12px;object-fit:contain">';
+  $('#lbWho').textContent = 'Shared by ' + x.who;
+  $('#lbHeart').innerHTML = heartLabel(x);
+  lb.style.display = 'flex'; $('#lbClose').focus();
+}
+function closeLb() { lb.style.display = 'none'; $('#lbMedia').innerHTML = ''; lbItem = null; }
+$('#lbClose').addEventListener('click', closeLb);
+lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+lb.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+$('#lbHeart').addEventListener('click', function () {
+  var x = lbItem; if (!x || loved[x.id]) return;
+  loved[x.id] = 1; store.set('loved', JSON.stringify(loved)); x.hearts++; $('#lbHeart').innerHTML = heartLabel(x);
+  L.heart(x.id).then(function () {}, function () {});
+});
+$('#gBody').addEventListener('click', function (e) {
+  var t = e.target.closest('.tile[data-id]'); if (!t) return;
+  var id = t.getAttribute('data-id'); var x = GL.filter(function (g) { return g.id === id; })[0]; if (x) openLb(x);
+});
+
+// ---------- quiz: saves answers, shows the leaderboard after the reveal ----------
+try { var qs = JSON.parse(store.get('quiz') || '{}'); if (qs.qi) qi = Math.min(qs.qi, Q.length); } catch (e) {}
+var baseQuiz = renderQuiz;
+renderQuiz = function () {
+  if (qi < Q.length) { baseQuiz(); return; }
+  $('#quizBody').innerHTML = '<div class="rise card" style="margin:22px 20px 0;padding:28px 20px;text-align:center"><span class="stampb stamp" style="display:inline-block;font-size:13px;padding:6px 12px">ALL DONE</span><div class="script" style="font-size:46px;color:#B4532A;margin-top:14px;line-height:1.05">You know them well!</div><p class="muted" style="font-size:15px;line-height:1.5;margin:8px 0 0">Scores are revealed at the reception.</p><div id="lbBoard" style="margin-top:16px;text-align:left"></div></div>';
+  L.leaderboard().then(function (rows) {
+    if (!rows || !rows.length) return;
+    $('#lbBoard').innerHTML = '<div class="serif" style="font-size:24px;font-weight:600;text-align:center;margin-bottom:10px">Quiz champions</div>' + rows.slice(0, 10).map(function (r, i) {
+      return '<div style="display:flex;align-items:center;gap:12px;padding:10px 4px;border-top:1px solid #F3ECE0"><span style="width:30px;height:30px;border-radius:15px;background:' + (i ? '#3B2A1E' : '#B4532A') + ';color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">' + (i + 1) + '</span><span style="flex:1;font-weight:700">' + esc(r.name || 'Guest') + '</span><span class="serif" style="font-size:20px;font-weight:700">' + r.score + '/' + Q.length + '</span></div>';
+    }).join('');
+  });
+};
+var qb = strip($('#quizBody'));
+qb.addEventListener('click', function (e) {
+  var o = e.target.closest('.opt'); if (o) { picked = +o.getAttribute('data-i'); L.answerQuiz(qi, picked); renderQuiz(); return; }
+  if (e.target.closest('#qNext')) {
+    if (picked === null) { toast('Pick an answer first'); return; }
+    qi++; picked = null; store.set('quiz', JSON.stringify({ qi: qi })); renderQuiz();
+    if (qi >= Q.length) confettiRain(70);
+  }
+});
+renderQuiz();
+
+// ---------- video wishes ----------
+var wf = strip($('#wishForm'));
+var wv = $('#wishVideo'), wvLabel = strip(wv.parentNode);
+wv = $('#wishVideo');
+wv.addEventListener('change', function () { if (wv.files.length) { $('#recLabel').textContent = 'Video ready'; toast('Video added. Now hit send!'); } });
+wf.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var file = wv.files && wv.files[0];
+  if (!file) { toast('Record your video first'); return; }
+  var name = ($('#wishName').value || '').trim();
+  if (!name) { toast('Add your name so they know who it is from'); $('#wishName').focus(); return; }
+  var btn = wf.querySelector('button[type=submit]'); btn.disabled = true;
+  L.uploadWish(file, W[wi].l, !!W[wi].cap, name).then(function (r) {
+    btn.disabled = false;
+    if (r && r.tooLong) { toast('Videos need to be 1 minute or shorter'); return; }
+    toast('Sent to ' + L.t('Mackenzie & Brandon')); confettiRain(80);
+    wv.value = ''; $('#recLabel').textContent = 'Tap to record';
+  }, function () { btn.disabled = false; toast('That did not send. Check your signal and try again.'); });
+});
+
+// ---------- RSVP from the real guest list ----------
+var form = strip($('#rsvpForm'));
+var found_inv = {}, tmr = null;
+$('#rName').addEventListener('input', function () {
+  var q = this.value; clearTimeout(tmr);
+  if (q.trim().length < 3) { $('#rSug').style.display = 'none'; $('#noMatch').style.display = 'none'; return; }
+  tmr = setTimeout(function () {
+    L.findInvitation(q).then(function (list) {
+      var box = $('#rSug');
+      $('#noMatch').style.display = !list.length && q.trim().length >= 4 ? 'block' : 'none';
+      if (!list.length) { box.style.display = 'none'; return; }
+      list.forEach(function (p) { found_inv[p.party_id] = p; });
+      box.innerHTML = list.map(function (p) { var others = p.members.length - 1; return '<button type="button" role="option" data-p="' + p.party_id + '" data-n="' + esc(p.match_name) + '">' + esc(p.match_name) + '<span>' + (p.responded ? 'Already replied' : (others ? '+' + others + ' on invitation' : 'Just you')) + '</span></button>'; }).join('');
+      box.style.display = 'block';
+    }).catch(function () { toast('Could not search right now. Try again in a moment.'); });
+  }, 250);
+});
+$('#rSug').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; selectParty(b.getAttribute('data-p'), b.getAttribute('data-n')); });
+selectParty = function (pid, who) {
+  var p = found_inv[pid]; if (!p) return;
+  rs.party = { id: p.party_id, members: p.members.map(function (m) { return { id: m.id, n: m.name, r: m.role, plus: m.plus }; }) };
+  rs.ans = {}; rs.plusName = {};
+  p.members.forEach(function (m, i) { if (m.attending === true) rs.ans[i] = 'y'; else if (m.attending === false) rs.ans[i] = 'n'; if (m.plus_one_name) rs.plusName[i] = m.plus_one_name; });
+  $('#rName').value = who; $('#rSug').style.display = 'none'; $('#noMatch').style.display = 'none';
+  renderParty(); var pb = $('#partyBox'); pb.style.display = 'flex'; pb.classList.remove('rise'); void pb.offsetWidth; pb.classList.add('rise');
+};
+$('#partyList').addEventListener('click', function (e) { var b = e.target.closest('.yn button'); if (!b) return; rs.ans[+b.getAttribute('data-i')] = b.getAttribute('data-a'); renderParty(); });
+$('#partyList').addEventListener('input', function (e) { if (e.target.classList.contains('plusname')) rs.plusName[+e.target.getAttribute('data-i')] = e.target.value; });
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var p = rs.party;
+  if (!p) { toast('Find your name first'); $('#rName').focus(); return; }
+  for (var i = 0; i < p.members.length; i++) {
+    if (!rs.ans[i]) { toast('Pick an answer for everyone listed'); return; }
+    if (p.members[i].plus && rs.ans[i] === 'y' && !(rs.plusName[i] || '').trim()) { toast("Add your guest's name"); return; }
+  }
+  var answers = p.members.map(function (m, i) { return { guest_id: m.id, attending: rs.ans[i] === 'y', plus_one_name: m.plus && rs.ans[i] === 'y' ? (rs.plusName[i] || '').trim() : '' }; });
+  var btn = form.querySelector('button[type=submit]'); btn.disabled = true;
+  L.submitRsvp(p.id, answers, $('#rName').value.trim(), ($('#rSong').value || '').trim(), ($('#rNote').value || '').trim()).then(function (res) {
+    btn.disabled = false;
+    var going = res.going, total = res.total, first = $('#rName').value.trim().split(' ')[0];
+    $('#thanksTitle').textContent = going ? 'See you there, ' + first + '!' : 'We will miss you, ' + first;
+    $('#thanksText').textContent = going ? going + ' of ' + total + ' on your invitation ' + (going === 1 ? 'is' : 'are') + ' coming. This app will have everything you need on the big day.' : 'Thank you for letting us know. You can still leave the couple a video wish.';
+    $('#rsvpForm').classList.remove('show'); $('#invite').classList.remove('show'); var th = $('#thanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show');
+    if (going) setTimeout(function () { confettiRain(110); }, 200);
+    $('#rsvpBarText').textContent = going ? 'You are going! Tap to view your invitation' : 'RSVP sent. Tap to view your invitation';
+    store.set('rsvpDone', going ? 'yes' : 'no');
+    setName(first); window.scrollTo(0, 0);
+  }, function () { btn.disabled = false; toast('That did not send. Check your signal and try again.'); });
+});
+if (store.get('rsvpDone')) $('#rsvpBarText').textContent = store.get('rsvpDone') === 'yes' ? 'You are going! Tap to view your invitation' : 'RSVP sent. Tap to view your invitation';
+
+// ---------- honeymoon fund: real Venmo and Cash App links ----------
+document.querySelectorAll('#hmPay .payb button').forEach(function (b) {
+  var n = strip(b), method = n.getAttribute('data-p');
+  if (!L.payUrl(method, 1, '')) { n.style.display = 'none'; return; }
+  n.addEventListener('click', function () {
+    var name = ($('#hmName').value || '').trim(), note = ($('#hmNote').value || '').trim();
+    var url = L.payUrl(method, hm.amt, (hm.what ? hm.what + '. ' : '') + 'Honeymoon fund' + (name ? ' from ' + name : ''));
+    L.recordGift({ name: name, amount: hm.amt, method: method, what: hm.what, note: note }).then(function () {}, function () {});
+    var w = window.open(url, '_blank'); if (!w) location.href = url;
+    setTimeout(function () { $('#hmPay').style.display = 'none'; $('#hmThanksTitle').textContent = name ? 'Thank you, ' + name.split(' ')[0] + '!' : 'Thank you!'; var th = $('#hmThanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show'); }, 800);
+  });
+});
+})();
+
+
+// routing
+var views = ['welcome', 'home', 'rsvp', 'honeymoon', 'locked', 'schedule', 'about', 'info', 'party', 'hunt', 'gallery', 'quiz', 'wishes', 'keepsake', 'hire'];
+function route() {
+var h = (location.hash || '').replace('#', '');
+if (views.indexOf(h) < 0) h = 'welcome';
+if (locked && (h === 'gallery' || h === 'hunt')) { $('#lockText').textContent = LOCKMSG[h]; var tabH = h; h = 'locked'; }
+document.querySelectorAll('.screen').forEach(function (s) { s.classList.toggle('on', s.id === h); });
+var tabbed = ['honeymoon', 'locked', 'home', 'schedule', 'about', 'info', 'party', 'hunt', 'gallery', 'quiz', 'wishes'].indexOf(h) >= 0;
+$('#tabs').classList.toggle('hide', !tabbed);
+document.querySelectorAll('#tabs a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-t') === (h === 'locked' && typeof tabH !== 'undefined' ? tabH : h)); });
+window.scrollTo(0, 0);
+if (h === 'keepsake') countUp();
+if (h === 'welcome') fitNames();
+}
+window.addEventListener('hashchange', route);
+route();
+})();
+</script>
+</body>
+</html>
