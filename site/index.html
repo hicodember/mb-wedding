@@ -367,7 +367,6 @@ html:not(.phone) #huntList{max-width:760px}
 <!-- HOME -->
 <section class="screen" id="home">
 <div class="topbar"><span class="iconbtn" aria-hidden="true"></span><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div>
-<div class="mock" id="mock"><span>Mockup</span><button type="button" data-m="before">Before the wedding</button><button type="button" data-m="day">Wedding day</button></div>
 <div class="homehero" style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 20px 0">
 <div style="filter:drop-shadow(0 16px 26px rgba(59,42,30,.2))"><div class="unveil" style="width:236px;height:300px;border-radius:118px 118px 16px 16px;overflow:hidden;border:6px solid #fff;animation-delay:.1s">
 <img class="kb" src="images/couple.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block"></div></div>
@@ -960,7 +959,7 @@ $('#nowLbl').textContent = locked ? 'Coming up:' : 'Happening now:';
 $('#nowName').textContent = locked ? 'The big day, [Wedding Date]' : M[0].name;
 }
 function showLock(kind) { $('#lockText').textContent = LOCKMSG[kind] || LOCKMSG.share; location.hash = 'locked'; }
-$('#mock').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; locked = b.getAttribute('data-m') === 'before'; store.set('dayof', locked ? '0' : '1'); applyLock(); toast(locked ? 'Showing the app before the wedding' : 'Showing the wedding day'); });
+if ($('#mock')) $('#mock').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; locked = b.getAttribute('data-m') === 'before'; store.set('dayof', locked ? '0' : '1'); applyLock(); toast(locked ? 'Showing the app before the wedding' : 'Showing the wedding day'); });
 document.addEventListener('click', function (e) {
 if (!locked) return;
 var up = e.target.closest('label'); if (up && up.querySelector('input.upload')) { e.preventDefault(); showLock('share'); }
