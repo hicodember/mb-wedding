@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mackenzie &amp; Brandon</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBF7F1">
+<link rel="icon" href="images/icon.png">
+<link rel="apple-touch-icon" href="images/icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Josefin+Sans:wght@400;600;700&amp;family=Mrs+Saint+Delafield&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#B4532A}a:hover{color:#8A3B1A}
+.bandana{background-image:url(images/bandana.svg);background-size:96px 96px}
+.cow{background-image:url(images/cow.svg);background-size:160px 160px}
+.scrim{background-image:linear-gradient(180deg,rgba(59,42,30,0) 0%,rgba(59,42,30,0.72) 100%)}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes letter{from{opacity:0;transform:translateY(60%) rotate(6deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+.ltr{display:inline-block;animation:letter .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:400}to{stroke-dashoffset:0}}
+.draw{stroke-dasharray:400;animation:draw 2.2s ease .4s both}
+@keyframes unveil{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+.unveil{animation:unveil 1.1s cubic-bezier(.65,0,.35,1) both}
+@keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+.kb{animation:kenburns 9s ease-out both}
+@keyframes fall{0%{transform:translate(0,-40px) rotate(0);opacity:0}12%{opacity:.85}88%{opacity:.85}100%{transform:translate(50px,620px) rotate(320deg);opacity:0}}
+.petal{position:absolute;top:0;width:14px;height:14px;border-radius:0 100% 0 100%;animation:fall 11s linear infinite;pointer-events:none}
+@keyframes sheen{0%{transform:translateX(-140%) skewX(-20deg)}60%,100%{transform:translateX(340%) skewX(-20deg)}}
+.sheen{position:absolute;top:0;bottom:0;left:0;width:30%;background:rgba(255,255,255,.28);animation:sheen 3.6s ease-in-out infinite;pointer-events:none}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(180,83,42,.55)}80%,100%{box-shadow:0 0 0 10px rgba(180,83,42,0)}}
+.live{animation:live 1.8s ease-out infinite}
+@keyframes stamp{0%{opacity:0;transform:scale(2.2) rotate(-24deg)}60%{opacity:1;transform:scale(.92) rotate(-10deg)}100%{opacity:1;transform:scale(1) rotate(-12deg)}}
+.stamp{animation:stamp .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ring{from{stroke-dashoffset:302}}
+.ring{animation:ring 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.sway{animation:sway 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float{animation:float 5s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.rise,.ltr,.draw,.unveil,.kb,.petal,.sheen,.live,.stamp,.ring,.sway,.float{animation:none}.petal{display:none}}
+*{box-sizing:border-box}
+html,body{background:#EFE6D8}
+body{font-family:'Josefin Sans',sans-serif;color:#3B2A1E;-webkit-font-smoothing:antialiased}
+.app{max-width:430px;margin:0 auto;min-height:100vh;background:#F7EFE4;position:relative;box-shadow:0 0 40px rgba(59,42,30,.12)}
+.screen{display:none;min-height:100vh;flex-direction:column;padding-bottom:84px;position:relative;overflow:hidden}
+.screen.on{display:flex}
+#welcome.screen{padding-bottom:0}
+.serif{font-family:'Cormorant Garamond',serif}
+.script{font-family:'Mrs Saint Delafield',cursive}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700}
+.muted{color:#6E5A48}
+.btn{position:relative;overflow:hidden;width:100%;height:60px;border:none;border-radius:30px;background:#7C5236;color:#fff;font-family:'Josefin Sans',sans-serif;font-size:17px;font-weight:700;letter-spacing:.5px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:0 10px 22px rgba(124,82,54,.25);transition:transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:#fff;color:#3B2A1E;border:1.5px solid #3B2A1E;box-shadow:none;height:52px}
+.hdr{flex-shrink:0;background:#fff;border-bottom:1px solid #E9DFCF}
+.hdr .in{padding:18px 24px 16px;display:flex;flex-direction:column;gap:4px}
+.hdr h1{margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1.05;font-weight:600}
+.hdr p{margin:0;font-size:14px;line-height:1.45;color:#6E5A48}
+.sec{display:flex;align-items:center;gap:12px;padding:24px 20px 12px}
+.sec span{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;font-style:italic}
+.sec i{flex:1;height:1px;background:#E9DFCF}
+nav.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;display:flex;background:rgba(255,255,255,.97);border-top:1px solid #E9DFCF;padding:2px 6px calc(10px + env(safe-area-inset-bottom));z-index:20;backdrop-filter:blur(8px)}
+nav.tabs a{flex:1;height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:#6E5A48;font-size:11px;font-weight:600;letter-spacing:.5px}
+nav.tabs a.on{color:#7C5236;font-weight:700}
+nav.tabs a .dot{width:5px;height:5px;border-radius:3px;background:transparent}
+nav.tabs a.on .dot{background:#7C5236}
+nav.tabs.hide{display:none}
+.card{background:#fff;border:1px solid #E9DFCF;border-radius:18px}
+.chip{flex-shrink:0;padding:10px 16px;border-radius:20px;font-size:14px;font-weight:700;background:#fff;color:#3B2A1E;border:1px solid #E9DFCF;cursor:pointer;font-family:'Josefin Sans',sans-serif}
+.chip.on{background:#3B2A1E;color:#fff;border-color:#3B2A1E}
+.opt{min-height:56px;border-radius:16px;border:1.5px solid #E9DFCF;background:#fff;color:#3B2A1E;transition:all .25s ease;font-family:'Josefin Sans',sans-serif;font-size:17px;font-weight:600;text-align:left;padding:0 16px;display:flex;align-items:center;gap:12px;cursor:pointer;width:100%}
+.opt .l{width:30px;height:30px;border-radius:15px;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.opt.on{background:#3B2A1E;color:#fff;border-color:#3B2A1E;transform:scale(1.02)}
+.tile{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 8px 20px rgba(59,42,30,.12)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;height:64px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 12px 10px;color:#fff;font-size:13px;font-weight:600}
+.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,20px);background:#3B2A1E;color:#fff;padding:14px 20px;border-radius:24px;font-size:15px;font-weight:600;opacity:0;transition:all .35s ease;z-index:50;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+input.field{height:54px;border-radius:27px;border:1.5px solid #E9DFCF;background:#fff;padding:0 20px;font-family:'Josefin Sans',sans-serif;font-size:16px;color:#3B2A1E;width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hunt-item{position:relative;min-height:72px;border-radius:18px;border:1.5px solid #E9DFCF;background:#fff;padding:10px 14px;display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;font-family:'Josefin Sans',sans-serif;color:#3B2A1E;width:100%;transition:border-color .3s}
+.hunt-item.found{border-color:#3B2A1E}
+.thumb{width:50px;height:50px;border-radius:14px;overflow:hidden;flex-shrink:0;background:#F6EFE4;display:flex;align-items:center;justify-content:center;color:#8C7A5E}
+.thumb img{width:50px;height:50px;object-fit:cover}
+.stampb{flex-shrink:0;padding:5px 9px;border:2px solid #7C5236;border-radius:8px;color:#7C5236;font-size:12px;font-weight:700;letter-spacing:2px}
+.addb{flex-shrink:0;width:34px;height:34px;border-radius:17px;background:#7C5236;color:#fff;display:flex;align-items:center;justify-content:center}
+.moment{position:relative;width:100%;min-height:54px;border:none;background:transparent;padding:0;display:flex;align-items:center;gap:16px;text-align:left;cursor:pointer;font-family:'Josefin Sans',sans-serif;color:#3B2A1E}
+.moment .d{width:16px;height:16px;border-radius:8px;background:#fff;border:2px solid #C8A97E;box-shadow:0 0 0 4px #F7EFE4}
+.moment.past .d{background:#3B2A1E;border-color:#3B2A1E}
+.moment.on .d{background:#7C5236;border-color:#7C5236}
+.moment.on .n{color:#7C5236;font-weight:700}
+.pill{min-height:44px;padding:0 16px;border-radius:22px;border:1.5px solid #E9DFCF;background:#fff;color:#3B2A1E;transition:all .25s ease;font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer}
+.pill.on{background:#7C5236;color:#fff;border-color:#7C5236}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 8px;background:#F7EFE4}
+.iconbtn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#3B2A1E;border-radius:22px}
+.avatar{width:44px;height:44px;border-radius:22px;background:#fff;border:2px solid #E9DFCF;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#7C5236;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;box-shadow:0 4px 10px rgba(59,42,30,.08)}
+.hdr{background:#F7EFE4;border-bottom:none}
+.hdr .in{padding:6px 24px 14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0 20px}
+.feat{position:relative;aspect-ratio:1/1.02;border-radius:20px;background:#fff;box-shadow:0 8px 22px rgba(59,42,30,.07);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:#5E4B36;font-size:14px;font-weight:600;text-align:center;padding:10px 6px;line-height:1.15;transition:transform .2s ease, box-shadow .2s ease;cursor:pointer;border:1px solid #F0E8DB}
+.feat:active{transform:scale(.96)}
+.feat .badge{position:absolute;top:10px;right:10px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#7C5236;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.feat.hero{background:#7C5236;color:#fff;border-color:#7C5236}
+.feat.hero svg{stroke:#fff}
+.linkrow{display:flex;justify-content:space-between;padding:14px 22px 16px}
+.linkrow a{display:flex;gap:6px;align-items:center;color:#8C7354;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.person{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:18px;background:#fff;border:1px solid #F0E8DB}
+.person .pic{width:52px;height:52px;border-radius:26px;background:#F3EADB;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#8C7354;flex-shrink:0}
+.inforow{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:18px;background:#fff;border:1px solid #F0E8DB}
+
+.invite-bar{margin:12px 20px 4px;padding:16px 16px 18px;border-radius:18px;background:#3B2A1E;color:#fff;display:flex;align-items:center;gap:14px;text-decoration:none;position:relative;overflow:hidden}
+.invite-bar .mini{position:relative;width:54px;height:38px;flex-shrink:0;animation:wiggle 3s ease-in-out infinite}
+@keyframes wiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-8deg)}90%{transform:rotate(7deg)}95%{transform:rotate(-4deg)}}
+.env-stage{display:flex;flex-direction:column;align-items:center;padding:30px 0 10px;perspective:900px}
+.env{position:relative;width:320px;height:210px;margin-top:150px}
+.env-back{position:absolute;inset:0;border-radius:10px;overflow:hidden;background:#7C5236;z-index:1}
+.env-back .bandana{position:absolute;inset:0;opacity:.9}
+.letter{position:absolute;left:16px;right:16px;top:12px;height:186px;background:#FFFDF9;border-radius:6px;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:22px;text-align:center;transition:transform 1s cubic-bezier(.2,.8,.2,1) .55s}
+.env-front{position:absolute;inset:0;z-index:3;background:#F3EADB;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);border-radius:10px;box-shadow:inset 0 -2px 0 rgba(0,0,0,.04)}
+.env-front:after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.5),rgba(0,0,0,.04))}
+.env-flap{position:absolute;left:0;right:0;top:0;height:122px;z-index:4;background:#E9DCC6;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .8s cubic-bezier(.4,0,.2,1),z-index 0s linear .4s;border-radius:10px 10px 0 0}
+.seal{position:absolute;left:50%;top:96px;width:64px;height:64px;margin-left:-32px;border-radius:32px;border:none;z-index:6;cursor:pointer;background:radial-gradient(circle at 35% 30%,#CC6A3A,#8A3B1A 70%);color:#F6E2C8;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;box-shadow:0 6px 14px rgba(110,50,20,.45),inset 0 -3px 6px rgba(0,0,0,.25);transition:opacity .3s ease,transform .3s ease;animation:sealpulse 2.4s ease-in-out infinite}
+@keyframes sealpulse{0%,100%{box-shadow:0 6px 14px rgba(110,50,20,.45),0 0 0 0 rgba(124,82,54,.35)}50%{box-shadow:0 6px 14px rgba(110,50,20,.45),0 0 0 14px rgba(124,82,54,0)}}
+.env.open .seal{opacity:0;transform:scale(1.4);pointer-events:none}
+.env.open .env-flap{transform:rotateX(180deg);z-index:0}
+.env.open .letter{transform:translateY(-120px)}
+.env-stage.gone{display:none}
+.invite{margin:10px 20px 0;background:#FFFDF9;border-radius:20px;box-shadow:0 18px 40px rgba(59,42,30,.14);padding:28px 22px 26px;text-align:center;position:relative;border:1px solid #F0E8DB;display:none}
+.invite.show{display:block;animation:cardin 1s cubic-bezier(.2,.8,.2,1)}
+@keyframes cardin{from{opacity:0;transform:translateY(60px) scale(.94)}to{opacity:1;transform:none}}
+.invite:before{content:'';position:absolute;inset:8px;border:1px solid #E3D3B8;border-radius:14px;pointer-events:none}
+.rsvp-form{display:none;margin:18px 20px 0;flex-direction:column;gap:14px}
+.rsvp-form.show{display:flex;animation:cardin .8s cubic-bezier(.2,.8,.2,1)}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice button{min-height:76px;border-radius:18px;border:1.5px solid #E9DFCF;background:#fff;font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:700;color:#3B2A1E;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:all .25s ease}
+.choice button span{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:13px;color:#6E5A48}
+.choice button.on{background:#3B2A1E;color:#fff;border-color:#3B2A1E}
+.choice button.on span{color:#E9DFCF}
+.stepper{display:flex;align-items:center;gap:14px}
+.stepper button{width:46px;height:46px;border-radius:23px;border:1.5px solid #E9DFCF;background:#fff;font-size:22px;font-weight:700;cursor:pointer;color:#3B2A1E}
+.stepper b{font-family:'Cormorant Garamond',serif;font-size:32px;min-width:30px;text-align:center}
+.flabel{font-size:14px;font-weight:700;display:block;margin-bottom:8px}
+textarea.field{display:block;width:100%;height:96px;border-radius:20px;border:1.5px solid #E9DFCF;background:#fff;padding:14px 18px;resize:none;line-height:1.4;font-family:'Josefin Sans',sans-serif;font-size:16px;color:#3B2A1E}
+.thanks{display:none;margin:16px 20px 0;padding:30px 22px;border-radius:22px;background:#fff;text-align:center;border:1px solid #F0E8DB}
+.thanks.show{display:block;animation:cardin .8s cubic-bezier(.2,.8,.2,1)}
+
+.tryname{border:none;background:none;padding:0;font:inherit;font-weight:700;color:#7C5236;text-decoration:underline;cursor:pointer}
+.sug{position:absolute;left:0;right:0;top:58px;background:#fff;border:1px solid #E9DFCF;border-radius:18px;box-shadow:0 14px 30px rgba(59,42,30,.12);overflow:hidden;z-index:10;display:none}
+.sug button{display:flex;width:100%;min-height:52px;align-items:center;justify-content:space-between;gap:10px;padding:0 16px;border:none;border-bottom:1px solid #F3ECE0;background:#fff;font-family:'Josefin Sans',sans-serif;font-size:16px;font-weight:600;color:#3B2A1E;cursor:pointer;text-align:left}
+.sug button span{font-size:12px;color:#6E5A48;font-weight:600}
+.member{display:flex;flex-direction:column;gap:8px;padding:12px 4px;border-top:1px solid #F3ECE0}
+.member .row{display:flex;align-items:center;gap:12px}
+.member .ini{width:40px;height:40px;border-radius:20px;background:#F3EADB;color:#8C7354;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;flex-shrink:0}
+.member .nm{flex:1;display:flex;flex-direction:column;gap:2px}
+.member .nm b{font-size:16px}
+.member .nm span{font-size:12px;color:#6E5A48}
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.yn button{height:44px;border-radius:22px;border:1.5px solid #E9DFCF;background:#fff;font-family:'Josefin Sans',sans-serif;font-size:14px;font-weight:700;color:#3B2A1E;cursor:pointer;transition:all .2s ease}
+.yn button.on.y{background:#3B2A1E;color:#fff;border-color:#3B2A1E}
+.yn button.on.n{background:#F3ECE0;color:#6E5A48;border-color:#E3D7C4}
+.plusname{height:46px;border-radius:23px;border:1.5px solid #E9DFCF;padding:0 16px;font-family:'Josefin Sans',sans-serif;font-size:15px;width:100%;color:#3B2A1E}
+.mock{margin:4px 20px 0;display:flex;align-items:center;gap:8px;padding:6px;border-radius:22px;background:#EFE6D8}
+.mock span{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8C7354;padding-left:8px;white-space:nowrap}
+.mock button{flex:1;height:34px;border-radius:17px;border:none;background:transparent;font-family:'Josefin Sans',sans-serif;font-size:13px;font-weight:700;color:#6E5A48;cursor:pointer}
+.mock button.on{background:#fff;color:#3B2A1E;box-shadow:0 2px 6px rgba(59,42,30,.1)}
+.feat .lk{position:absolute;top:9px;right:9px;width:24px;height:24px;border-radius:12px;background:#3B2A1E;color:#fff;display:none;align-items:center;justify-content:center}
+body.locked .feat.lockable .lk{display:flex}
+body.locked .feat.lockable .badge{display:none}
+body.locked .feat.lockable{opacity:.62}
+body.locked .linkrow a[href="#hunt"]{visibility:hidden}
+body.locked .feat.hero.lockable{background:#fff;color:#5E4B36;border-color:#F0E8DB;opacity:.75}
+body.locked .feat.hero.lockable svg{stroke:#8C7354}
+
+.feat.wide{grid-column:span 3;aspect-ratio:auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:14px 16px;text-align:left}
+.feat.wide .t{display:flex;flex-direction:column;gap:3px;flex:1}
+.feat.wide .t b{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#3B2A1E}
+.feat.wide .t span{font-size:13px;color:#6E5A48;font-weight:600}
+.amts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.amts button{height:52px;border-radius:16px;border:1.5px solid #E9DFCF;background:#fff;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#3B2A1E;cursor:pointer;transition:all .2s ease}
+.amts button.on{background:#3B2A1E;color:#fff;border-color:#3B2A1E}
+.exp{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:#fff;border:1.5px solid #F0E8DB;cursor:pointer;width:100%;text-align:left;font-family:'Josefin Sans',sans-serif;color:#3B2A1E;transition:all .2s ease}
+.exp.on{border-color:#7C5236;background:#FFF8F2}
+.exp .em{width:44px;height:44px;border-radius:22px;background:#F6E6D8;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#7C5236}
+.exp b{font-size:15px;display:block}
+.exp span{font-size:12px;color:#6E5A48}
+.exp .pr{margin-left:auto;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700}
+.payb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.payb button{height:52px;border-radius:16px;border:1.5px solid #3B2A1E;background:#fff;font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:700;color:#3B2A1E;cursor:pointer}
+
+.env-stage{position:relative}
+.env-glow{position:absolute;left:50%;top:230px;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,170,.9) 0%,rgba(232,180,143,.45) 35%,rgba(251,247,241,0) 68%);opacity:0;transform:scale(.4);transition:opacity 1s ease,transform 1.6s cubic-bezier(.2,.8,.2,1);pointer-events:none;z-index:0}
+.env-stage.lit .env-glow{opacity:1;transform:scale(1);animation:glowpulse 2.6s ease-in-out 1.4s infinite}
+@keyframes glowpulse{0%,100%{opacity:1}50%{opacity:.7}}
+.rays{position:absolute;left:50%;top:230px;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:repeating-conic-gradient(rgba(255,222,190,.5) 0deg 6deg,rgba(255,255,255,0) 6deg 18deg);-webkit-mask:radial-gradient(circle,#000 0%,transparent 62%);mask:radial-gradient(circle,#000 0%,transparent 62%);opacity:0;transition:opacity 1.2s ease;pointer-events:none;z-index:0}
+.env-stage.lit .rays{opacity:1;animation:spinrays 24s linear infinite}
+@keyframes spinrays{to{transform:rotate(360deg)}}
+.env{z-index:1;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .7s ease}
+.env:not(.lift){animation:envfloat 3.2s ease-in-out infinite}
+@keyframes envfloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-10px) rotate(1.5deg)}}
+.env.lift{transform:translateY(30px) scale(1.14) rotateX(10deg)}
+.env.away{transform:translateY(120px) scale(.9);opacity:0}
+.env.open .letter{transform:translateY(-150px) scale(1.04);box-shadow:0 18px 30px rgba(59,42,30,.18)}
+.seal.crack{animation:crack .5s ease forwards}
+@keyframes crack{0%{transform:scale(1)}35%{transform:scale(1.18) rotate(-6deg)}100%{transform:scale(.2) rotate(30deg);opacity:0}}
+.heartup{position:absolute;bottom:40%;width:18px;height:18px;pointer-events:none;z-index:2;animation:heartup 3.2s ease-out forwards;opacity:0}
+@keyframes heartup{0%{opacity:0;transform:translateY(0) scale(.4)}15%{opacity:1}100%{opacity:0;transform:translateY(-320px) scale(1.2) rotate(var(--r))}}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+.invite.show{animation:invitein 1.3s cubic-bezier(.16,1,.3,1)}
+@keyframes invitein{0%{opacity:0;transform:translateY(160px) scale(.6) rotateX(18deg)}60%{opacity:1}100%{opacity:1;transform:none}}
+.invite .shine{position:absolute;inset:0;border-radius:20px;overflow:hidden;pointer-events:none}
+.invite .shine:after{content:'';position:absolute;top:-20%;bottom:-20%;width:40%;left:-60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,241,225,.75),rgba(255,255,255,0));transform:skewX(-18deg);animation:inviteshine 1.6s ease 1s 1 both}
+@keyframes inviteshine{to{left:140%}}
+@media (prefers-reduced-motion: reduce){.env:not(.lift){animation:none}.env-stage.lit .rays{animation:none}#confetti{display:none}}
+
+.welhero{position:relative;height:540px;overflow:hidden;flex-shrink:0}
+.welhero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;transform-origin:50% 26%;animation:welzoom 12s cubic-bezier(.2,.8,.2,1) both;display:block}
+@keyframes welzoom{from{transform:scale(1.7);filter:brightness(1.15) saturate(.8)}to{transform:scale(1.42);filter:none}}
+.welfade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(59,42,30,.38) 0%,rgba(59,42,30,0) 22%,rgba(251,247,241,0) 58%,rgba(251,247,241,.85) 82%,#F7EFE4 100%)}
+@media (prefers-reduced-motion: reduce){.welhero img{animation:none;transform:scale(1.42)}}
+.homezoom{transform-origin:50% 30%;transform:scale(1.3);animation:homezoom 9s ease-out both}
+@keyframes homezoom{from{transform:scale(1.42)}to{transform:scale(1.3)}}
+@media (prefers-reduced-motion: reduce){.homezoom{animation:none}}
+
+.feat.dayof{display:none;grid-column:1/-1;aspect-ratio:auto;flex-direction:row;justify-content:flex-start;gap:14px;padding:16px;text-align:left;background:#3B2A1E;color:#F6E2C8;border-color:#3B2A1E}
+.feat.dayof .dayic{width:52px;height:52px;border-radius:26px;background:#7C5236;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:float 5s ease-in-out infinite}
+.feat.dayof .t{display:flex;flex-direction:column;gap:4px}
+.feat.dayof .t b{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff}
+.feat.dayof .t span{font-size:13px;line-height:1.4;color:#E9DFCF;font-weight:400}
+body.locked .feat.dayof{display:flex}
+body.locked .feat.lockable{display:none}
+body.locked .linkrow a[href="#hunt"]{display:none}
+nav.tabs a.pre{display:none}
+body.locked nav.tabs a.pre{display:flex}
+body.locked nav.tabs a[data-t="hunt"], body.locked nav.tabs a[data-t="gallery"]{display:none}
+html:not(.phone) .feat.dayof{grid-column:1/-1;aspect-ratio:auto}
+
+.env-stage:before{content:'';position:absolute;inset:0;background-image:url(images/cow.svg);background-size:160px;opacity:.05;-webkit-mask:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%);mask:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%);pointer-events:none}
+.env-front{background-color:#F6EFE3;background-image:repeating-linear-gradient(45deg,rgba(140,115,84,.04) 0 2px,transparent 2px 6px)}
+.env-flap{background-color:#EFE5D3;background-image:repeating-linear-gradient(-45deg,rgba(140,115,84,.04) 0 2px,transparent 2px 6px)}
+.flaplace{position:absolute;left:0;right:0;top:0;height:10px;background:radial-gradient(circle at 6px 0,#fff 5px,transparent 5.5px) 0 0/12px 10px repeat-x;opacity:.95}
+.env-band{position:absolute;left:-6px;right:-6px;top:102px;height:42px;z-index:5;background-color:#8FB3D1;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.2) 0 1px,transparent 1px 4px),repeating-linear-gradient(45deg,rgba(40,70,100,.2) 0 1px,transparent 1px 3px);box-shadow:0 4px 10px rgba(59,42,30,.18);transition:transform .6s cubic-bezier(.4,0,.2,1),opacity .5s ease}
+.env-band .lace{position:absolute;left:0;right:0;height:9px;background:radial-gradient(circle at 6px 0,#fff 4.5px,transparent 5px) 0 0/12px 9px repeat-x}
+.env-band .lace.top{top:-8px;transform:scaleY(-1)}
+.env-band .lace.bot{bottom:-8px}
+.sprig{position:absolute;top:70px;z-index:5;transition:opacity .5s ease,transform .6s ease}
+.sprig.l{left:50%;margin-left:-74px;transform:rotate(-38deg)}
+.sprig.r{left:50%;margin-left:28px;transform:rotate(38deg)}
+.seal{top:86px!important;width:74px!important;height:74px!important;margin-left:-37px!important;background:none!important;box-shadow:none!important;padding:0;border-radius:37px;filter:drop-shadow(0 6px 10px rgba(59,42,30,.35))}
+.seal svg{display:block}
+.env.lift .env-band{transform:translateY(130px);opacity:0}
+.env.lift .sprig{opacity:0}
+.env.lift .sprig.l{transform:rotate(-80deg) translate(-20px,10px)}
+.env.lift .sprig.r{transform:rotate(80deg) translate(20px,10px)}
+.seal.crack{animation:conchooff .7s cubic-bezier(.4,0,.2,1) forwards!important}
+@keyframes conchooff{0%{transform:scale(1) rotate(0)}30%{transform:scale(1.15) rotate(-20deg)}100%{transform:translateY(-120px) scale(.5) rotate(320deg);opacity:0}}
+.cdown{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.cdown div{width:70px;padding:8px 0;border-radius:12px;background:#F6EFE3;border:1px solid #E9DFCF;display:flex;flex-direction:column;align-items:center}
+.cdown b{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1;color:#3B2A1E}
+.cdown span{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#6E5A48;font-weight:700;margin-top:2px}
+
+/* ===== elegant envelope ===== */
+#rsvp{background:#E7DED1 url(images/damask.svg) center/200px repeat}
+#rsvp .hdr{background:transparent;border:none}
+#rsvp .topbar{background:transparent}
+body.envmode #rsvp .hdr{visibility:hidden}
+body.envmode nav.tabs{display:none!important}
+.env-stage{position:relative;height:calc(100vh - 76px);min-height:620px;max-height:900px;padding:0;margin-top:-76px;perspective:none;display:block}
+.env-stage:before{display:none}
+.env-stage.gone{display:none}
+.envwrap{position:absolute;inset:0;max-width:560px;margin:0 auto}
+.env-stage{overflow:hidden}
+.flapw{position:absolute;top:0;height:100%;width:50%;z-index:3;filter:drop-shadow(0 8px 18px rgba(84,64,40,.3));transition:transform 1.3s cubic-bezier(.65,0,.35,1)}
+.flapw.l{left:0}.flapw.r{right:0}
+.flapw:before{content:'';position:absolute;top:0;bottom:0;width:100vw;background:#F5EFE6}
+.flapw.l:before{right:99.5%}.flapw.r:before{left:99.5%;background:#F5EFE6}
+.flap{position:absolute;inset:0;width:100%;height:100%}
+.envwrap.open .flapw.l{transform:translateX(-100vw)}
+.envwrap.open .flapw.r{transform:translateX(100vw)}
+.seal{position:absolute!important;left:50%!important;top:50%!important;width:104px!important;height:104px!important;margin:-52px 0 0 -52px!important;z-index:5!important;border:none!important;background:none!important;padding:0!important;cursor:pointer;border-radius:48px;filter:drop-shadow(0 8px 12px rgba(84,64,40,.38));animation:sealbreath 2.8s ease-in-out infinite!important;box-shadow:none!important}
+@keyframes sealbreath{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.seal svg{display:block}
+.seal.crack{animation:sealpop .8s cubic-bezier(.4,0,.2,1) forwards!important}
+@keyframes sealpop{0%{transform:scale(1)}30%{transform:scale(1.18)}100%{transform:scale(.4) translateY(40px);opacity:0}}
+.envtext{position:absolute;left:0;right:0;text-align:center;z-index:4;transition:opacity .6s ease}
+.envtext.top{top:12%}
+.envtext.bot{bottom:9%}
+.envtext.bot span{display:inline-block;padding:9px 18px;border-radius:20px;background:rgba(251,247,241,.85);font-size:14px;font-weight:700;color:#6E5A48;letter-spacing:.5px;animation:tapnudge 2.4s ease-in-out infinite}
+@keyframes tapnudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.envwrap.open .envtext{opacity:0}
+.pocketwrap{position:absolute;left:50%;bottom:12%;width:300px;margin-left:-150px;height:330px;z-index:1;opacity:0;transform:translateY(40px) scale(.94);transition:opacity .8s ease .5s,transform 1s cubic-bezier(.2,.8,.2,1) .5s}
+.envwrap.open .pocketwrap{opacity:1;transform:none}
+.peek{position:absolute;left:18px;right:18px;top:0;height:250px;background:#fff;padding:40px 14px 0;text-align:center;box-shadow:0 8px 22px rgba(84,64,40,.15);transform:translateY(120px);transition:transform 1.4s cubic-bezier(.2,.8,.2,1) 1.2s;;border-radius:4px}
+.peek:before{content:'';position:absolute;left:-1px;right:-1px;top:-9px;height:10px;background:radial-gradient(circle at 9px 10px,#fff 8.5px,transparent 9px) 0 0/18px 10px repeat-x}
+.peek:after{content:'';position:absolute;left:10px;right:10px;top:10px;height:16px;background:radial-gradient(circle,rgba(200,169,126,.55) 1.6px,transparent 2px) 0 0/9px 8px repeat-x}
+.envwrap.open .peek{transform:translateY(0)}
+.pocket{position:absolute;left:0;right:0;bottom:0;height:170px;background:#F1EADF;clip-path:polygon(0 0,50% 45%,100% 0,100% 100%,0 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.6);filter:drop-shadow(0 10px 18px rgba(84,64,40,.2))}
+.pocket:before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.5),rgba(0,0,0,.03))}
+.miniseal{position:absolute;left:50%;bottom:76px;margin-left:-23px;z-index:2;filter:drop-shadow(0 3px 5px rgba(84,64,40,.3))}
+/* lace invitation card */
+.invite{background:#fff!important;border:none!important;border-radius:6px!important;margin-top:30px!important;padding:46px 24px 30px!important;box-shadow:0 20px 44px rgba(84,64,40,.18)!important;overflow:visible!important}
+.invite:before{content:''!important;position:absolute!important;inset:auto!important;left:-1px!important;right:-1px!important;top:-11px!important;height:12px!important;border:none!important;border-radius:0!important;background:radial-gradient(circle at 10px 12px,#fff 9.5px,transparent 10px) 0 0/20px 12px repeat-x!important}
+.invite .lacerow{position:absolute;left:14px;right:14px;height:18px;background:radial-gradient(circle,rgba(200,169,126,.5) 1.8px,transparent 2.2px) 0 0/10px 9px repeat}
+.invite .lacerow.t{top:12px}.invite .lacerow.b{bottom:12px}
+.invite .pearl{position:absolute;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#EDE6DA 60%,#CFC4B3);box-shadow:0 1px 2px rgba(84,64,40,.3)}
+#rsvp .thanks,#rsvp .rsvp-form{position:relative;z-index:2}
+#rsvp .rsvp-form{background:rgba(251,247,241,.96);border-radius:20px;padding:20px 16px}
+html:not(.phone) .env-stage{max-width:none!important}
+.foot{padding:18px 0 10px;text-align:center;font-size:12px;color:#6E5A48}
+
+/* full screen on computers and tablets */
+@media (min-width: 900px) {
+html:not(.phone) body{background:#F7EFE4}
+html:not(.phone) .app{max-width:none;box-shadow:none}
+html:not(.phone) .screen > *{max-width:min(1080px, calc(100% - 64px));width:100%;margin-left:auto!important;margin-right:auto!important;align-self:center}
+html:not(.phone) .screen > .bandana{max-width:none;align-self:stretch}
+html:not(.phone) #welcome > *, html:not(.phone) #rsvp > *, html:not(.phone) #quiz > *, html:not(.phone) #wishes > *, html:not(.phone) #honeymoon > *, html:not(.phone) #locked > *, html:not(.phone) #hire > *{max-width:min(720px, calc(100% - 64px))}
+html:not(.phone) #welcome > div:first-child, html:not(.phone) #keepsake > div:first-child{max-width:none}
+html:not(.phone) .grid3{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;padding:0}
+html:not(.phone) .feat{font-size:15px}
+html:not(.phone) .feat.wide{grid-column:span 1;aspect-ratio:1/1.02;flex-direction:column;justify-content:center;text-align:center;padding:10px 6px}
+html:not(.phone) .feat.wide .t span, html:not(.phone) .feat.wide > svg:last-child{display:none}
+html:not(.phone) .feat.wide .t b{font-family:'Josefin Sans',sans-serif;font-size:15px;font-weight:600;color:#5E4B36}
+html:not(.phone) .homehero .unveil{width:280px!important;height:356px!important;border-radius:140px 140px 18px 18px!important}
+html:not(.phone) #gallery label.live{right:40px!important}
+html:not(.phone) #gBody > div:not(.sec){display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px!important;padding:0!important}
+html:not(.phone) #gBody > div:not(.sec) > div{display:contents!important}
+html:not(.phone) #gBody .tile{height:260px!important}
+html:not(.phone) #gBody .sec{padding-left:0;padding-right:0}
+html:not(.phone) .grid3 ~ .foot, html:not(.phone) .foot{padding-bottom:30px}
+html:not(.phone) nav.tabs{max-width:none;justify-content:center;gap:12px}
+html:not(.phone) nav.tabs a{flex:0 0 110px}
+html:not(.phone) #huntList{max-width:760px}
+}
+
+/* letter only pulls up: rises out of the pocket and ends above it, never tucked under */
+.envwrap.open .peek{animation:pullup 2.2s cubic-bezier(.25,.8,.25,1) 1.1s forwards;transition:none}
+.pocket{z-index:2}.miniseal{z-index:3}
+@keyframes pullup{0%{transform:translateY(120px);z-index:1}45%{transform:translateY(-150px);z-index:1}46%{z-index:5}100%{transform:translateY(-200px) scale(1.06);z-index:5}}
+
+/* ================= RANCH HOME (blueprint) ================= */
+#home{padding-bottom:0;background:#F5EBDF}
+html:not(.phone) #home > *{max-width:none!important}
+.rhome{position:relative;overflow:hidden;background:#F5EBDF;color:#3B2619}
+.rhead{position:relative;z-index:6;height:84px;display:flex;align-items:center;justify-content:center;background:linear-gradient(#F8F0E5,#F3E7D8)}
+.rhead:after{content:'';position:absolute;left:0;right:0;bottom:-26px;height:30px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%2040%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C40%20L0%2C12.2%20L18.38501784965021%2C14.0%20L39.57932182252891%2C13.4%20L60.49187177584475%2C6.3%20L75.01058893713822%2C15.4%20L92.09623268105517%2C15.0%20L101.68111618619919%2C10.7%20L113.13313584287681%2C11.4%20L129.16831247387023%2C6.1%20L140.2025296803641%2C8.8%20L161.03136488568384%2C13.7%20L171.26582385869636%2C14.0%20L181.208567716281%2C12.2%20L190.98235697198479%2C6.0%20L211.18202339812473%2C8.1%20L222.19875976727099%2C15.8%20L242.41246848338622%2C8.9%20L263.8731603286874%2C11.4%20L281.3627870101957%2C8.0%20L302.53645102542765%2C12.9%20L324.0683513978684%2C14.9%20L336.25139596782253%2C9.6%20L346.57478076763897%2C7.5%20L355.48673675489846%2C9.0%20L371.9302767186056%2C6.0%20L389.4213562122733%2C9.4%20L401.7607672547171%2C14.2%20L416.49119986753766%2C9.2%20L431.2282572748538%2C13.0%20L440.02627028835485%2C15.8%20L448.34638817389293%2C13.5%20L468.17472062532676%2C6.2%20L487.2030568810528%2C9.7%20L503.30232048784904%2C6.1%20L511.9565001496342%2C7.8%20L533.3290187439105%2C8.0%20L551.909328518229%2C15.3%20L573.0979421302168%2C9.4%20L586.0650470010276%2C11.2%20L604.9234892068134%2C7.1%20L623.4010619975987%2C14.0%20L643.4367824662248%2C6.4%20L664.6779850568154%2C6.9%20L677.4483525538744%2C12.1%20L698.3015731513408%2C9.4%20L719.2403398233298%2C11.5%20L731.6146449941305%2C9.2%20L742.0993338512003%2C6.8%20L752.1834864759257%2C12.9%20L774.1376618794396%2C7.6%20L782.817392169118%2C15.9%20L798.2868225481697%2C10.1%20L809.6095350021296%2C11.9%20L829.1776721673104%2C10.6%20L843.0822741140727%2C6.6%20L863.9072449922605%2C6.3%20L878.8171437701521%2C14.4%20L888.6451493502958%2C13.3%20L909.9423292270023%2C12.3%20L928.9744629239274%2C7.1%20L943.0582355923335%2C7.5%20L962.8845101504086%2C8.9%20L977.2286789394083%2C16.0%20L997.1602163319207%2C15.8%20L1011.5097761862033%2C10.9%20L1029.7228464629393%2C10.8%20L1041.797163102997%2C10.0%20L1051.8482521780247%2C9.8%20L1073.6856799837205%2C15.6%20L1090.4631895770883%2C11.0%20L1103.2018922209127%2C6.9%20L1115.0142340988239%2C13.8%20L1135.1576493937062%2C9.6%20L1154.1619655085797%2C13.7%20L1171.8863200008923%2C12.6%20L1190.5212623110451%2C9.6%20L1200%2C10%20L1200%2C40Z%22%20fill%3D%22%23F5EBDF%22/%3E%3Cpath%20d%3D%22M0%2C40%20L0%2C17.2%20L18.38501784965021%2C19.0%20L39.57932182252891%2C18.4%20L60.49187177584475%2C11.3%20L75.01058893713822%2C20.4%20L92.09623268105517%2C20.0%20L101.68111618619919%2C15.7%20L113.13313584287681%2C16.4%20L129.16831247387023%2C11.1%20L140.2025296803641%2C13.8%20L161.03136488568384%2C18.7%20L171.26582385869636%2C19.0%20L181.208567716281%2C17.2%20L190.98235697198479%2C11.0%20L211.18202339812473%2C13.1%20L222.19875976727099%2C20.8%20L242.41246848338622%2C13.9%20L263.8731603286874%2C16.4%20L281.3627870101957%2C13.0%20L302.53645102542765%2C17.9%20L324.0683513978684%2C19.9%20L336.25139596782253%2C14.6%20L346.57478076763897%2C12.5%20L355.48673675489846%2C14.0%20L371.9302767186056%2C11.0%20L389.4213562122733%2C14.4%20L401.7607672547171%2C19.2%20L416.49119986753766%2C14.2%20L431.2282572748538%2C18.0%20L440.02627028835485%2C20.8%20L448.34638817389293%2C18.5%20L468.17472062532676%2C11.2%20L487.2030568810528%2C14.7%20L503.30232048784904%2C11.1%20L511.9565001496342%2C12.8%20L533.3290187439105%2C13.0%20L551.909328518229%2C20.3%20L573.0979421302168%2C14.4%20L586.0650470010276%2C16.2%20L604.9234892068134%2C12.1%20L623.4010619975987%2C19.0%20L643.4367824662248%2C11.4%20L664.6779850568154%2C11.9%20L677.4483525538744%2C17.1%20L698.3015731513408%2C14.4%20L719.2403398233298%2C16.5%20L731.6146449941305%2C14.2%20L742.0993338512003%2C11.8%20L752.1834864759257%2C17.9%20L774.1376618794396%2C12.6%20L782.817392169118%2C20.9%20L798.2868225481697%2C15.1%20L809.6095350021296%2C16.9%20L829.1776721673104%2C15.6%20L843.0822741140727%2C11.6%20L863.9072449922605%2C11.3%20L878.8171437701521%2C19.4%20L888.6451493502958%2C18.3%20L909.9423292270023%2C17.3%20L928.9744629239274%2C12.1%20L943.0582355923335%2C12.5%20L962.8845101504086%2C13.9%20L977.2286789394083%2C21.0%20L997.1602163319207%2C20.8%20L1011.5097761862033%2C15.9%20L1029.7228464629393%2C15.8%20L1041.797163102997%2C15.0%20L1051.8482521780247%2C14.8%20L1073.6856799837205%2C20.6%20L1090.4631895770883%2C16.0%20L1103.2018922209127%2C11.9%20L1115.0142340988239%2C18.8%20L1135.1576493937062%2C14.6%20L1154.1619655085797%2C18.7%20L1171.8863200008923%2C17.6%20L1190.5212623110451%2C14.6%20L1200%2C15%20L1200%2C40Z%22%20fill%3D%22%23FBF5EC%22/%3E%3C/svg%3E") center/100% 100% no-repeat;transform:scaleY(-1);pointer-events:none}
+.rnav{display:flex;align-items:center;gap:clamp(16px,2.4vw,40px);position:relative;z-index:2}
+.rnav>a:not(.rbrand),.rmore>button{font:600 12px 'Josefin Sans',sans-serif;letter-spacing:2.6px;text-transform:uppercase;color:#3B2619;text-decoration:none;white-space:nowrap;background:none;border:0;cursor:pointer;padding:6px 0;display:flex;align-items:center;gap:6px}
+.rnav>a:not(.rbrand):hover,.rmore>button:hover{color:#8A5A3A}
+.rbrand{display:flex;align-items:center;justify-content:center;margin:0 6px}.rbrand img{width:96px;height:42px;display:block}
+.rbrand.m{display:none}
+.rmore{position:relative}
+.rmenu{display:none;position:absolute;right:0;top:calc(100% + 8px);min-width:200px;background:#FBF5EC;border:1px solid #DCC8B0;border-radius:10px;box-shadow:0 14px 30px rgba(59,38,25,.18);padding:8px;z-index:20}
+.rmenu.open{display:block}
+.rmenu a{display:block;padding:11px 12px;border-radius:6px;font:600 12px 'Josefin Sans',sans-serif;letter-spacing:1.6px;text-transform:uppercase;color:#3B2619;text-decoration:none}.rmenu a:hover{background:#F1E4D3}
+.rburger{display:none}
+.rdrawer{display:none}
+.rfl{position:absolute;pointer-events:none;z-index:7;height:auto}
+.rfl.tl{left:0;top:0;width:clamp(170px,19vw,280px)}
+.rfl.tr{right:0;top:0;width:clamp(150px,16vw,240px)}
+.rhero{position:relative;height:clamp(500px,44vw,620px);margin-top:-4px}
+.rphoto{position:absolute;inset:0;background:url(images/ranch.jpg) center 62%/cover no-repeat;filter:sepia(.38) saturate(.8) brightness(1.04) contrast(.96)}
+.rphoto:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,235,223,.92) 0%,rgba(245,235,223,.62) 22%,rgba(245,235,223,.12) 46%,rgba(245,235,223,0) 62%,rgba(60,38,24,.12) 100%)}
+.rtitle{position:absolute;top:2%;left:0;right:0;text-align:center;z-index:3}
+.rtitle h1{margin:0;font-family:'Mrs Saint Delafield',cursive;font-weight:400;font-size:clamp(78px,8.6vw,128px);line-height:1.05;color:#3B2619;white-space:nowrap;text-shadow:0 2px 18px rgba(250,240,228,.8)}
+.rtitle h1 .amp{font-size:.7em}
+.rsub{font:600 clamp(14px,1.3vw,18px) 'Cormorant Garamond',serif;letter-spacing:6px;text-transform:uppercase;color:#3B2619;margin-top:2px}
+.rorn{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:10px}.rorn i{height:1px;width:clamp(60px,9vw,120px);background:#5B3B26}.rorn img{width:48px;height:22px}
+.rcard{position:absolute;z-index:4;left:31%;bottom:8%;width:clamp(300px,24vw,360px);padding:20px 26px 18px;text-align:center;background:rgba(246,236,222,.86);border:1px solid rgba(255,255,255,.75);outline:1px solid rgba(160,120,85,.25);outline-offset:-7px;border-radius:12px;box-shadow:0 14px 34px rgba(40,25,15,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;flex-direction:column;align-items:center}
+.rcard label{font:600 12px 'Josefin Sans',sans-serif;letter-spacing:2.6px;text-transform:uppercase;color:#3B2619;margin-bottom:11px}
+.rcard input{width:100%;height:42px;border:1px solid #DCC6AA;border-radius:6px;background:#FBF5EC;padding:0 14px;font:16px 'Josefin Sans',sans-serif;color:#3B2619;outline:none}
+.rcard input:focus{border-color:#8A5A3A;box-shadow:0 0 0 3px rgba(138,90,58,.14)}
+.rbtn{margin-top:14px;height:42px;min-width:150px;padding:0 34px;border-radius:24px;border:2px solid #C9A57F;background:linear-gradient(#7C5236,#583620);color:#FBF2E6;font:600 15px 'Josefin Sans',sans-serif;letter-spacing:3px;text-transform:uppercase;cursor:pointer;box-shadow:0 5px 12px rgba(50,30,17,.3),inset 0 1px 0 rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,filter .15s}
+.rbtn:hover{filter:brightness(1.1);transform:translateY(-1px)}.rbtn span{font-size:13px}
+.rhello{font:italic 17px 'Cormorant Garamond',serif;color:#5B3B26;min-height:0;margin-top:8px}.rhello:empty{display:none}
+.renv{position:absolute;z-index:5;right:6.5%;bottom:-2%;width:clamp(300px,27vw,400px);filter:drop-shadow(0 16px 20px rgba(40,25,15,.35));animation:envfloat 5s ease-in-out infinite;transition:transform .3s}
+
+.renv:hover{animation-play-state:paused;transform:translateY(-8px) rotate(-1.5deg)}
+@keyframes envfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.rexplore{position:relative;z-index:2;padding:26px 7% 30px;background:radial-gradient(ellipse at 0 100%,rgba(190,150,120,.14),transparent 30%),radial-gradient(ellipse at 100% 0,rgba(140,130,105,.12),transparent 30%),#F5EBDF}
+.rexplore:before{content:'';position:absolute;left:0;right:0;top:-26px;height:30px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%2040%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C40%20L0%2C12.2%20L18.38501784965021%2C14.0%20L39.57932182252891%2C13.4%20L60.49187177584475%2C6.3%20L75.01058893713822%2C15.4%20L92.09623268105517%2C15.0%20L101.68111618619919%2C10.7%20L113.13313584287681%2C11.4%20L129.16831247387023%2C6.1%20L140.2025296803641%2C8.8%20L161.03136488568384%2C13.7%20L171.26582385869636%2C14.0%20L181.208567716281%2C12.2%20L190.98235697198479%2C6.0%20L211.18202339812473%2C8.1%20L222.19875976727099%2C15.8%20L242.41246848338622%2C8.9%20L263.8731603286874%2C11.4%20L281.3627870101957%2C8.0%20L302.53645102542765%2C12.9%20L324.0683513978684%2C14.9%20L336.25139596782253%2C9.6%20L346.57478076763897%2C7.5%20L355.48673675489846%2C9.0%20L371.9302767186056%2C6.0%20L389.4213562122733%2C9.4%20L401.7607672547171%2C14.2%20L416.49119986753766%2C9.2%20L431.2282572748538%2C13.0%20L440.02627028835485%2C15.8%20L448.34638817389293%2C13.5%20L468.17472062532676%2C6.2%20L487.2030568810528%2C9.7%20L503.30232048784904%2C6.1%20L511.9565001496342%2C7.8%20L533.3290187439105%2C8.0%20L551.909328518229%2C15.3%20L573.0979421302168%2C9.4%20L586.0650470010276%2C11.2%20L604.9234892068134%2C7.1%20L623.4010619975987%2C14.0%20L643.4367824662248%2C6.4%20L664.6779850568154%2C6.9%20L677.4483525538744%2C12.1%20L698.3015731513408%2C9.4%20L719.2403398233298%2C11.5%20L731.6146449941305%2C9.2%20L742.0993338512003%2C6.8%20L752.1834864759257%2C12.9%20L774.1376618794396%2C7.6%20L782.817392169118%2C15.9%20L798.2868225481697%2C10.1%20L809.6095350021296%2C11.9%20L829.1776721673104%2C10.6%20L843.0822741140727%2C6.6%20L863.9072449922605%2C6.3%20L878.8171437701521%2C14.4%20L888.6451493502958%2C13.3%20L909.9423292270023%2C12.3%20L928.9744629239274%2C7.1%20L943.0582355923335%2C7.5%20L962.8845101504086%2C8.9%20L977.2286789394083%2C16.0%20L997.1602163319207%2C15.8%20L1011.5097761862033%2C10.9%20L1029.7228464629393%2C10.8%20L1041.797163102997%2C10.0%20L1051.8482521780247%2C9.8%20L1073.6856799837205%2C15.6%20L1090.4631895770883%2C11.0%20L1103.2018922209127%2C6.9%20L1115.0142340988239%2C13.8%20L1135.1576493937062%2C9.6%20L1154.1619655085797%2C13.7%20L1171.8863200008923%2C12.6%20L1190.5212623110451%2C9.6%20L1200%2C10%20L1200%2C40Z%22%20fill%3D%22%23F5EBDF%22/%3E%3Cpath%20d%3D%22M0%2C40%20L0%2C17.2%20L18.38501784965021%2C19.0%20L39.57932182252891%2C18.4%20L60.49187177584475%2C11.3%20L75.01058893713822%2C20.4%20L92.09623268105517%2C20.0%20L101.68111618619919%2C15.7%20L113.13313584287681%2C16.4%20L129.16831247387023%2C11.1%20L140.2025296803641%2C13.8%20L161.03136488568384%2C18.7%20L171.26582385869636%2C19.0%20L181.208567716281%2C17.2%20L190.98235697198479%2C11.0%20L211.18202339812473%2C13.1%20L222.19875976727099%2C20.8%20L242.41246848338622%2C13.9%20L263.8731603286874%2C16.4%20L281.3627870101957%2C13.0%20L302.53645102542765%2C17.9%20L324.0683513978684%2C19.9%20L336.25139596782253%2C14.6%20L346.57478076763897%2C12.5%20L355.48673675489846%2C14.0%20L371.9302767186056%2C11.0%20L389.4213562122733%2C14.4%20L401.7607672547171%2C19.2%20L416.49119986753766%2C14.2%20L431.2282572748538%2C18.0%20L440.02627028835485%2C20.8%20L448.34638817389293%2C18.5%20L468.17472062532676%2C11.2%20L487.2030568810528%2C14.7%20L503.30232048784904%2C11.1%20L511.9565001496342%2C12.8%20L533.3290187439105%2C13.0%20L551.909328518229%2C20.3%20L573.0979421302168%2C14.4%20L586.0650470010276%2C16.2%20L604.9234892068134%2C12.1%20L623.4010619975987%2C19.0%20L643.4367824662248%2C11.4%20L664.6779850568154%2C11.9%20L677.4483525538744%2C17.1%20L698.3015731513408%2C14.4%20L719.2403398233298%2C16.5%20L731.6146449941305%2C14.2%20L742.0993338512003%2C11.8%20L752.1834864759257%2C17.9%20L774.1376618794396%2C12.6%20L782.817392169118%2C20.9%20L798.2868225481697%2C15.1%20L809.6095350021296%2C16.9%20L829.1776721673104%2C15.6%20L843.0822741140727%2C11.6%20L863.9072449922605%2C11.3%20L878.8171437701521%2C19.4%20L888.6451493502958%2C18.3%20L909.9423292270023%2C17.3%20L928.9744629239274%2C12.1%20L943.0582355923335%2C12.5%20L962.8845101504086%2C13.9%20L977.2286789394083%2C21.0%20L997.1602163319207%2C20.8%20L1011.5097761862033%2C15.9%20L1029.7228464629393%2C15.8%20L1041.797163102997%2C15.0%20L1051.8482521780247%2C14.8%20L1073.6856799837205%2C20.6%20L1090.4631895770883%2C16.0%20L1103.2018922209127%2C11.9%20L1115.0142340988239%2C18.8%20L1135.1576493937062%2C14.6%20L1154.1619655085797%2C18.7%20L1171.8863200008923%2C17.6%20L1190.5212623110451%2C14.6%20L1200%2C15%20L1200%2C40Z%22%20fill%3D%22%23FBF5EC%22/%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none}
+.rfl.bl{left:0;bottom:0;width:clamp(90px,9vw,140px);z-index:1}
+.rfl.br{right:0;bottom:0;width:clamp(90px,9vw,140px);transform:scaleX(-1);z-index:1}
+.rhd{display:flex;align-items:flex-end;justify-content:center;gap:18px;margin:0 auto 22px;max-width:900px}
+.rhd i{flex:1;height:1px;background:#9A7A5C;margin-bottom:10px}
+.rhd span{display:flex;flex-direction:column;align-items:center;gap:4px}.rhd img{width:46px;height:20px}
+.rhd b{font:600 clamp(16px,1.6vw,22px) 'Cormorant Garamond',serif;letter-spacing:5px;text-transform:uppercase;white-space:nowrap}
+.rgrid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1060px;margin:0 auto}
+.rtile{position:relative;height:clamp(130px,11.5vw,160px);border-radius:12px;overflow:hidden;display:grid;place-items:center;text-decoration:none;color:#3B2619;box-shadow:0 6px 16px rgba(60,38,24,.2);isolation:isolate;animation:rtin .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d)}
+@keyframes rtin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.rph{position:absolute;inset:0;z-index:-2;filter:sepia(.32) saturate(.85);transition:transform .6s ease}
+.rtile:after{content:'';position:absolute;inset:0;z-index:-1;background:rgba(70,45,28,.16)}
+.rtile:hover .rph{transform:scale(1.07)}
+.rlab{min-width:56%;padding:12px 18px 11px;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(244,233,218,.8);border:1px solid rgba(120,85,55,.4);outline:1px solid rgba(255,250,240,.6);outline-offset:3px;border-radius:12px;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);text-align:center}
+.rlab svg{color:#3B2619}
+.rlab b{font:600 clamp(13px,1.15vw,16px)/1.15 'Cormorant Garamond',serif;letter-spacing:2.6px;text-transform:uppercase}
+.xparty{display:none!important}
+.tlock{display:none;position:absolute;top:8px;right:8px;z-index:3;align-items:center;gap:5px;padding:5px 9px;border-radius:12px;background:rgba(59,38,25,.78);color:#F6EADA;font:600 10px 'Josefin Sans',sans-serif;letter-spacing:1px;text-transform:uppercase}
+body.locked .rtile.lk .tlock{display:flex}
+.rfoot{display:flex;align-items:center;justify-content:center;gap:14px;margin:30px auto 0;max-width:600px}.rfoot i{flex:1;height:1px;background:#9A7A5C}.rfoot img{width:70px;height:30px}
+.rmade{text-align:center;margin-top:10px;font:15px 'Josefin Sans',sans-serif;color:#6E5A48}.rmade a{color:#8A5A3A}
+@media (max-width:760px){
+.rhead{height:64px;justify-content:center}
+.rnav{display:none}
+.rbrand.m{display:flex}.rbrand.m img{width:78px;height:34px}
+.rburger{display:flex;flex-direction:column;justify-content:center;gap:5px;position:absolute;right:14px;top:12px;width:40px;height:40px;border:0;background:none;cursor:pointer;z-index:9;padding:8px}
+.rburger span{display:block;height:2px;background:#3B2619;border-radius:2px;transition:transform .25s,opacity .25s}
+.rburger[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}.rburger[aria-expanded=true] span:nth-child(2){opacity:0}.rburger[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.rdrawer{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;position:absolute;left:0;right:0;top:64px;z-index:8;background:#FBF5EC;padding:8px 18px 16px;box-shadow:0 14px 26px rgba(59,38,25,.18);transform:translateY(-10px);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.rdrawer.open{opacity:1;transform:none;pointer-events:auto}
+.rdrawer a{padding:13px 4px;border-bottom:1px solid #EADBC8;font:600 12px 'Josefin Sans',sans-serif;letter-spacing:1.4px;text-transform:uppercase;color:#3B2619;text-decoration:none}
+.rfl.tl{width:118px}.rfl.tr{display:none}
+.rhero{height:auto;display:flex;flex-direction:column;align-items:center;padding-bottom:18px}
+.rphoto{top:150px;bottom:150px;-webkit-mask:linear-gradient(transparent,#000 14%,#000 84%,transparent);mask:linear-gradient(transparent,#000 14%,#000 84%,transparent);background-position:30% 60%}
+.rphoto:after{background:linear-gradient(180deg,rgba(245,235,223,.5),transparent 40%)}
+.rtitle{position:relative;top:auto;padding:4px 16px 0}
+.rtitle h1{white-space:normal;font-size:64px;line-height:.98}
+.rsub{font-size:11px;letter-spacing:2.6px;margin-top:6px}
+.rorn{margin-top:6px}.rorn i{width:56px}.rorn img{width:36px;height:16px}
+.rcard{position:relative;left:auto;bottom:auto;margin-top:150px;width:min(88%,340px);padding:16px 18px 14px}
+.rcard label{font-size:11px;letter-spacing:2px;margin-bottom:9px}
+.rbtn{height:36px;min-width:130px;font-size:13px;margin-top:10px}
+.renv{position:relative;right:auto;bottom:auto;width:250px;margin-top:6px}
+.rexplore{padding:20px 12px 24px}
+.rhd{gap:8px;margin-bottom:14px}.rhd b{font-size:13px;letter-spacing:2.6px}
+.rgrid{grid-template-columns:repeat(3,1fr);gap:8px}
+.xparty{display:grid!important}
+.rtile{height:96px;border-radius:9px}
+.rlab{min-width:78%;padding:7px 6px 6px;gap:3px;border-radius:8px;outline-offset:2px}
+.rlab svg{width:19px;height:19px}
+.rlab b{font-size:10.5px;letter-spacing:1.2px}
+.tlock{top:4px;right:4px;padding:3px 5px;font-size:0;gap:0}
+.rfl.bl,.rfl.br{width:70px}
+}
+/* ===== RSVP envelope (ranch) ===== */
+#rsvp{background:#F5EBDF!important}
+.xstage{position:relative;height:100vh!important;min-height:600px;max-height:none!important;margin-top:0!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:0!important}
+.xstage:before{content:'';display:block!important;position:absolute;inset:0;background:url(images/ranch.jpg) center 60%/cover;filter:sepia(.4) saturate(.8) blur(3px);opacity:1!important;transform:scale(1.05);-webkit-mask:none!important;mask:none!important}
+.xstage:after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(245,235,223,.35),rgba(245,235,223,.88) 75%)}
+.xstage>*{position:relative;z-index:2}
+.xstage .rfl{position:absolute;z-index:3}
+.xtext{text-align:center;margin-bottom:14px;transition:opacity .6s}
+.xeyebrow{font:600 13px 'Josefin Sans',sans-serif;letter-spacing:4px;text-transform:uppercase;color:#3B2619}
+.xname{font-family:'Mrs Saint Delafield',cursive;font-size:64px;line-height:1.15;color:#3B2619}
+.xenv{position:relative;width:min(78vw,430px);aspect-ratio:358/325;filter:drop-shadow(0 22px 26px rgba(40,25,15,.38));animation:envfloat 5s ease-in-out infinite;margin-top:40px}
+.xenv img{position:absolute;display:block;pointer-events:none}
+.xback,.xfront{inset:0;width:100%;height:100%}
+.xcard{left:18.44%;top:9.23%;width:74.3%;height:57.23%;transition:transform 1.6s cubic-bezier(.22,.8,.25,1),opacity .8s ease;z-index:1}
+.xback{z-index:0}.xfront{z-index:2}
+.xseal{position:absolute;z-index:4;left:43.5%;top:53%;width:22%;aspect-ratio:1;margin:0;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer}
+.xseal:before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(251,242,230,.9);animation:sealring 2.2s ease-out infinite}
+@keyframes sealring{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+.xenv.open{animation:none}
+.xenv.open .xseal{display:none}
+.xenv.open .xcard{transform:translateY(-62%) rotate(-1.5deg)}
+.xenv.open.lift .xcard{transform:translateY(-62%) scale(1.25);opacity:0}
+.xenv.open .xfront,.xenv.open .xback{transition:transform 1.2s ease .2s;transform:translateY(8%)}
+.xstage.gone{display:none!important}
+.xenv.open ~ .xtap,.xstage.opening .xtext{opacity:0}
+.xtap{margin-top:30px;transition:opacity .5s}
+.xtap span{display:inline-block;padding:11px 24px;border-radius:24px;background:linear-gradient(#7C5236,#583620);border:2px solid #C9A57F;color:#FBF2E6;font:600 13px 'Josefin Sans',sans-serif;letter-spacing:2.5px;text-transform:uppercase;box-shadow:0 6px 14px rgba(50,30,17,.3);animation:tapnudge 2.4s ease-in-out infinite}
+@media (max-width:760px){.xstage .rfl.tl{width:118px}.xstage .rfl.tr{width:110px}.xname{font-size:54px}}
+
+/* ===== clean drawn envelope ===== */
+.env3{position:relative;aspect-ratio:400/330;container-type:inline-size;width:100%}
+.env3>img,.env3>.e3card{position:absolute;display:block;pointer-events:none}
+.e3back,.e3front{inset:0;width:100%!important;height:100%!important}
+.e3back{z-index:0}.e3card{z-index:1}.e3front{z-index:2}.e3leaf{z-index:3}.e3rose{z-index:4}.e3seal{z-index:5}
+.e3card{left:11%;width:78%;top:6%;height:76%;background:linear-gradient(170deg,#FFFBF4,#F3E6D5);border:1px solid #DCC6AA;border-radius:3px;box-shadow:0 2px 10px rgba(80,50,30,.2);display:flex;flex-direction:column;align-items:center;padding-top:4.5cqw;transform:rotate(-1.2deg);transition:transform 1.6s cubic-bezier(.22,.8,.25,1),opacity .8s ease}
+.e3card:before{content:'';position:absolute;inset:2.2cqw;border:1px solid #D9C3A6;border-radius:2px}
+.e3orn{display:flex;align-items:center;gap:2cqw}.e3orn i{width:15cqw;height:1px;background:#5B3B26}.e3orn img{width:12cqw;height:auto}
+.e3orn.sm{margin-top:1cqw}.e3orn.sm img{width:8cqw}.e3orn.sm i{width:13cqw}
+.e3rsvp{font-family:'Mrs Saint Delafield',cursive;font-size:19cqw;white-space:nowrap;line-height:1.05;color:#3B2619;margin-top:1cqw}
+.e3seal{left:41.5%;top:59.5%;width:17%!important;height:auto!important;filter:drop-shadow(0 3px 4px rgba(60,30,10,.35))}
+.e3leaf{left:-10%;bottom:-6%;width:48%!important;height:auto!important}
+.e3rose{left:-7%;bottom:-10%;width:34%!important;height:auto!important;filter:drop-shadow(0 4px 5px rgba(60,35,20,.3))}
+.renv{filter:drop-shadow(0 16px 18px rgba(40,25,15,.3))}
+.renv .e3card{transform:translateY(-6%) rotate(-1.2deg)}
+.renv:hover .e3card{transform:translateY(-14%) rotate(-2deg)}
+.xenv.env3{aspect-ratio:400/330;width:min(80vw,440px)}
+.xenv .xseal{left:41.5%;top:59.5%;width:17%}
+.xenv.open .e3card{transform:translateY(-60%) rotate(-1.5deg)}
+.xenv.open.lift .e3card{transform:translateY(-60%) scale(1.25);opacity:0}
+.xenv.open .e3back,.xenv.open .e3front,.xenv.open .e3leaf,.xenv.open .e3rose,.xenv.open .e3seal{transition:transform 1.2s ease .2s;transform:translateY(8%)}
+
+/* ===== clipart pack ===== */
+.renv>img.renvimg{display:block;width:100%;height:auto}
+.renv{width:clamp(320px,29vw,430px)!important;right:5%!important;bottom:-4%!important;filter:drop-shadow(0 14px 16px rgba(40,25,15,.28))}
+.rbrand img{width:100px!important;height:auto!important}
+.rorn img{width:58px!important;height:auto!important}
+.rhd img{width:54px!important;height:auto!important}
+.rfoot img{width:min(340px,60vw)!important;height:auto!important}
+.rfl.tl{width:clamp(170px,14.5vw,235px)}
+.rfl.tr{width:clamp(140px,13vw,210px)}
+.rfl.bl{width:clamp(170px,17vw,270px)!important;left:-10px}
+.rfl.br{width:clamp(200px,20vw,320px)!important;transform:none!important;right:0;bottom:0}
+.rexplore:before{top:-30px!important;height:44px!important;background:url(images/lace2.png) 0 0/auto 100% repeat-x!important;filter:drop-shadow(0 3px 3px rgba(60,40,25,.18))}
+.rexplore{padding-top:34px!important}
+.xenv.envL{aspect-ratio:491/462;width:min(86vw,460px)}
+.xenv.envL img{position:absolute;display:block;pointer-events:none}
+.xb,.xf{inset:0;width:100%;height:100%}
+.xb{z-index:0}.xc{z-index:1}.xf{z-index:2}
+.xc{left:29.74%;top:11.47%;width:60.9%;height:59.3%;transition:transform 1.6s cubic-bezier(.22,.8,.25,1),opacity .8s ease}
+.xenv.envL .xseal{left:52.5%;top:48.5%;width:18.3%}
+.xenv.envL.open .xc{transform:translateY(-62%) rotate(-1deg)}
+.xenv.envL.open.lift .xc{transform:translateY(-62%) scale(1.22);opacity:0}
+.xenv.envL.open .xb,.xenv.envL.open .xf{transition:transform 1.2s ease .2s;transform:translateY(8%)}
+@media (max-width:760px){
+.rfl.tl{width:112px}.rfl.tr{display:none}.rtitle{padding-top:14px!important}
+.renv{width:270px!important;right:auto!important;bottom:auto!important}
+.rfl.bl{width:120px!important}.rfl.br{width:140px!important}
+.rexplore:before{height:30px!important;top:-20px!important}
+.rbrand.m img{width:84px!important}
+.rfoot img{width:220px!important}
+}
+</style>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tus-js-client@4.2.3/dist/tus.min.js"></script>
+<script src="live.js"></script>
+</head>
+<body>
+<div class="app">
+
+<!-- WELCOME -->
+<section class="screen" id="welcome">
+<div style="position:absolute;inset:0;overflow:hidden;z-index:3;pointer-events:none"><div class="petal" aria-hidden="true" style="left: 8px; background: #B4532A; opacity: 0.8; animation-delay: 0.0s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 56px; background: #FFFFFF; opacity: 0.8; animation-delay: -1.6s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 104px; background: #E8B48F; opacity: 0.8; animation-delay: -3.2s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 152px; background: #B4532A; opacity: 0.8; animation-delay: -4.800000000000001s; animation-duration: 13.5s"></div><div class="petal" aria-hidden="true" style="left: 200px; background: #FFFFFF; opacity: 0.8; animation-delay: -6.4s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 248px; background: #E8B48F; opacity: 0.8; animation-delay: -8.0s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 296px; background: #B4532A; opacity: 0.8; animation-delay: -9.600000000000001s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 344px; background: #FFFFFF; opacity: 0.8; animation-delay: -11.200000000000001s; animation-duration: 13.5s"></div></div>
+<div style="position:relative;display:flex;flex-direction:column;align-items:center;padding:52px 24px 0;text-align:center">
+<div class="rise eyebrow muted">Together with their families</div>
+<div style="margin-top:22px;filter:drop-shadow(0 18px 28px rgba(59,42,30,.22))"><div class="unveil" style="width:272px;height:356px;border-radius:136px 136px 16px 16px;overflow:hidden;border:6px solid #fff;animation-delay:.2s">
+<img class="kb" src="images/couple.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block"></div></div>
+<div style="margin-top:20px;width:100%;color:#7C5236"><div class="script" id="welFirst" style="font-size:56px;line-height:1.1;white-space:nowrap"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.9s">M</span><span class="ltr" style="animation-delay: 0.945s">a</span><span class="ltr" style="animation-delay: 0.99s">c</span><span class="ltr" style="animation-delay: 1.035s">k</span><span class="ltr" style="animation-delay: 1.08s">e</span><span class="ltr" style="animation-delay: 1.125s">n</span><span class="ltr" style="animation-delay: 1.17s">z</span><span class="ltr" style="animation-delay: 1.215s">i</span><span class="ltr" style="animation-delay: 1.26s">e</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.305s">&amp;</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.35s">B</span><span class="ltr" style="animation-delay: 1.395s">r</span><span class="ltr" style="animation-delay: 1.44s">a</span><span class="ltr" style="animation-delay: 1.485s">n</span><span class="ltr" style="animation-delay: 1.53s">d</span><span class="ltr" style="animation-delay: 1.575s">o</span><span class="ltr" style="animation-delay: 1.62s">n</span></span></div></div>
+<div style="margin-top:10px"><svg width="180" height="22" viewBox="0 0 180 22" fill="none" aria-hidden="true"><path class="draw" d="M2 11 C 40 11, 60 3, 78 11 M102 11 C 120 19, 140 11, 178 11" stroke="#C8A97E" stroke-width="1.4" stroke-linecap="round"/><path d="M90 17 C 84 12, 80 9, 83 6 C 85 4, 88 5, 90 8 C 92 5, 95 4, 97 6 C 100 9, 96 12, 90 17 Z" fill="#B4532A"/></svg></div>
+<div class="rise serif" style="margin-top:8px;font-size:22px;font-style:italic;animation-delay:1.9s">invite you to share the day through your eyes</div>
+<div class="rise eyebrow muted" style="margin-top:6px;font-weight:600;animation-delay:2s">[Wedding Date] · [Venue]</div>
+</div>
+
+<div class="rise muted" style="position:relative;margin-top:12px;text-align:center;font-size:13px;animation-delay:2.4s">No app to download. Everything stays right here.</div>
+<div class="foot" style="margin-top:auto;position:relative">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- HOME -->
+<section class="screen" id="home">
+<div class="rhome">
+<header class="rhead">
+<img class="rfl tl" src="images/flor-tl.png" alt=""><img class="rfl tr" src="images/flor-tr.png" alt="">
+<nav class="rnav" aria-label="Main">
+<a href="#home">Home</a><a href="#about">Our Story</a><a href="#schedule">Schedule</a><a href="#info">Details</a>
+<a href="#home" class="rbrand" aria-label="Home"><img src="images/longhorn.png" alt=""></a>
+<a href="#gallery">Gallery</a><a href="#hunt">Scavenger Hunt</a><a href="#quiz">Quiz</a>
+<span class="rmore"><button type="button" id="rMoreBtn" aria-expanded="false">More <svg viewBox="0 0 12 8" width="9" height="7" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button><span class="rmenu" id="rMoreMenu"><a href="#rsvp">RSVP</a><a href="#wishes">Video Wishes</a><a href="#honeymoon">Honeymoon Fund</a><a href="#party">Wedding Party</a><a href="#hire">Made by Codember</a></span></span>
+</nav>
+<a href="#home" class="rbrand m" aria-label="Home"><img src="images/longhorn.png" alt=""></a>
+<button type="button" class="rburger" id="rBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+<div class="rdrawer" id="rDrawer"><a href="#home">Home</a><a href="#rsvp">RSVP</a><a href="#about">Our Story</a><a href="#schedule">Schedule</a><a href="#info">Wedding Details</a><a href="#gallery">Gallery</a><a href="#hunt">Scavenger Hunt</a><a href="#quiz">Quiz</a><a href="#wishes">Video Wishes</a><a href="#honeymoon">Honeymoon Fund</a><a href="#party">Wedding Party</a></div>
+<div class="rhero">
+<div class="rphoto"></div>
+<div class="rtitle">
+<h1 class="script" id="homeNames">Mackenzie <span class="amp">&amp;</span> Brandon</h1>
+<div class="rsub">Welcome to our wedding website</div>
+<div class="rorn"><i></i><img src="images/longhorn.png" alt=""><i></i></div>
+</div>
+<form id="welcomeForm" class="rcard">
+<label for="guestName">Please enter your name</label>
+<input id="guestName" type="text" placeholder="Your Name..." autocomplete="name">
+<button class="rbtn" type="submit">Enter <span aria-hidden="true">&#9829;</span></button>
+<div class="rhello" id="rHello"></div>
+</form>
+<a href="#rsvp" class="renv" aria-label="Open your RSVP invitation"><img class="renvimg" src="images/env-full.png" alt=""></a>
+</div>
+<div class="rexplore">
+<img class="rfl bl" src="images/flor-bl.png" alt=""><img class="rfl br" src="images/lace-cow.png" alt="">
+<div class="rhd"><i></i><span><img src="images/longhorn.png" alt=""><b>Explore our wedding details</b></span><i></i></div>
+<div class="rgrid"><a href="#schedule" class="rtile" style="--d:0.00s"><span class="rph" style="background:url(images/t-schedule.jpg) center/cover"></span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M7 13h2M11 13h2M15 13h2M7 16.5h2M11 16.5h2M15 16.5h2"/></svg><b>Schedule</b></span></a><a href="#about" class="rtile" style="--d:0.06s"><span class="rph" style="background:url(images/t-story.jpg) center/cover"></span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.6 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><b>Our Story</b></span></a><a href="#info" class="rtile" style="--d:0.12s"><span class="rph" style="background:url(images/cowhide.svg) center/cover"></span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M10.5 5l1.5-2 1.5 2-1.5 2z"/></svg><b>Wedding<br>Details</b></span></a><a href="#gallery" class="rtile lk" style="--d:0.18s"><span class="rph" style="background:url(images/t-gallery.jpg) center/cover"></span><span class="tlock"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Opens on the day</span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><circle cx="9" cy="9.5" r="1.6"/><path d="M20.5 16l-5-5-8.5 8.5"/></svg><b>Gallery</b></span></a><a href="#hunt" class="rtile lk" style="--d:0.24s"><span class="rph" style="background:url(images/t-hunt.jpg) center/cover"></span><span class="tlock"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Opens on the day</span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg><b>Scavenger<br>Hunt</b></span></a><a href="#quiz" class="rtile" style="--d:0.30s"><span class="rph" style="background:url(images/cowhide.svg) 30% 60%/170% auto"></span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 8.5a3.5 3.5 0 1 1 5 3.2c-.9.4-1.5 1.2-1.5 2.2v.8"/><circle cx="12" cy="18.5" r=".6" fill="currentColor"/></svg><b>Quiz</b></span></a><a href="#wishes" class="rtile" style="--d:0.36s"><span class="rph" style="background:url(images/t-wishes.jpg) center/cover"></span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="12" height="10" rx="1.5"/><path d="M15 11l6-3.5v9L15 13"/></svg><b>Video Wishes</b></span></a><a href="#honeymoon" class="rtile" style="--d:0.42s"><span class="rph" style="background:url(images/t-fund.jpg) center/cover"></span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="1"/><path d="M3 9h18v-1.5H3zM12 7.5V20M12 7.5c-2-3-6-3.5-6-1s4 1.5 6 1.5zM12 7.5c2-3 6-3.5 6-1s-4 1.5-6 1.5z"/></svg><b>Honeymoon<br>Fund</b></span></a><a href="#party" class="rtile xparty" style="--d:0.48s"><span class="rph" style="background:url(images/t-schedule.jpg) center/cover"></span><span class="rlab"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2.5 20c0-3.5 2.5-6 5.5-6s5.5 2.5 5.5 6M10.5 20c.3-3.3 2.6-6 5.5-6 3 0 5.5 2.5 5.5 6"/></svg><b>Wedding<br>Party</b></span></a></div>
+<div class="rfoot"><i></i><img src="images/skull-garland.png" alt=""><i></i></div>
+<div class="rmade">Made with love by <a href="#hire">Codember</a></div>
+</div>
+</div>
+<div hidden><span id="nowLbl"></span><span id="nowName"></span><span id="rsvpBarText"></span><span id="homeLeft"></span><span id="huntBadge"></span></div>
+</section>
+
+<section class="screen" id="schedule">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#7C5236">The big day</div><h1 class="rise" style="animation-delay:.08s">Schedule</h1><p class="rise" style="animation-delay:.16s">Tap a moment to see what to do and your mission for it.</p></div></div>
+<div style="padding:8px 20px 0"><div id="schedCard"></div></div>
+<div style="position:relative;padding:10px 24px 0"><div style="position:absolute;left:39px;top:32px;bottom:22px;width:2px;background:#E9DFCF"></div><div id="moments"></div></div>
+<div style="padding:16px 20px 0"><label class="btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Capture this moment</span><span class="sheen"></span><input type="file" accept="image/*,video/*" multiple class="sr upload"></label></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+<section class="screen" id="about">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#7C5236">Our story</div><h1 class="rise" style="animation-delay:.08s">About the Couple</h1><p class="rise" style="animation-delay:.16s">How a cowgirl and her cowboy ended up here.</p></div></div>
+<div class="unveil" style="margin:8px 20px 0;height:300px;border-radius:150px 150px 22px 22px;overflow:hidden;border:6px solid #fff;box-shadow:0 16px 34px rgba(59,42,30,.18)"><img class="kb" src="images/kiss.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%"></div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:18px 20px 0">
+<div class="inforow rise" style="animation-delay:0.2s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="26" r="10"/><circle cx="30" cy="26" r="10"/><path d="M18 9l3 3-3 3-3-3z"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">How we met</div><div class="muted" style="font-size:14px;line-height:1.45">[Their story in a few sentences]</div></div></div>
+<div class="inforow rise" style="animation-delay:0.3s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 42s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23z"/><path d="M24 25c-3-2-5-4-5-6a2.5 2.5 0 0 1 5-.5 2.5 2.5 0 0 1 5 .5c0 2-2 4-5 6z"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">The proposal</div><div class="muted" style="font-size:14px;line-height:1.45">[Where and how Brandon asked]</div></div></div>
+<div class="inforow rise" style="animation-delay:0.4s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 31c5 6 33 6 38 0"/><path d="M5 31c2-2 5-3 7-3h24c2 0 5 1 7 3"/><path d="M13 28c0-9 2-17 6-17 2 0 3 2 5 2s3-2 5-2c4 0 6 8 6 17"/><path d="M14 23c6 2 14 2 20 0"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">Fun fact</div><div class="muted" style="font-size:14px;line-height:1.45">[Something guests would love to know]</div></div></div>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+<section class="screen" id="info">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#7C5236">Know before you go</div><h1 class="rise" style="animation-delay:.08s">Wedding Info</h1><p class="rise" style="animation-delay:.16s">Everything you need for the day.</p></div></div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:8px 20px 0">
+<div class="inforow rise" style="animation-delay:0.1s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 18h34M16 6v8M32 6v8"/><path d="M14 25h4M22 25h4M30 25h4M14 32h4M22 32h4"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">When</div><div class="muted" style="font-size:14px;line-height:1.45">[Wedding Date] · Ceremony at [4:00 PM]</div></div></div>
+<div class="inforow rise" style="animation-delay:0.2s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 42s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23z"/><path d="M24 25c-3-2-5-4-5-6a2.5 2.5 0 0 1 5-.5 2.5 2.5 0 0 1 5 .5c0 2-2 4-5 6z"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">Where</div><div class="muted" style="font-size:14px;line-height:1.45">[Venue name and address]</div></div></div>
+<div class="inforow rise" style="animation-delay:0.3s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 31c5 6 33 6 38 0"/><path d="M5 31c2-2 5-3 7-3h24c2 0 5 1 7 3"/><path d="M13 28c0-9 2-17 6-17 2 0 3 2 5 2s3-2 5-2c4 0 6 8 6 17"/><path d="M14 23c6 2 14 2 20 0"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">What to wear</div><div class="muted" style="font-size:14px;line-height:1.45">[Dress code]. Boots are always welcome.</div></div></div>
+<div class="inforow rise" style="animation-delay:0.4s"><div style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#8C7354" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M42 36a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V18a3 3 0 0 1 3-3h7l3-5h10l3 5h7a3 3 0 0 1 3 3z"/><circle cx="24" cy="26" r="7"/><path d="M24 23v6M21 26h6"/></svg></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:16px;font-weight:700">Phones</div><div class="muted" style="font-size:14px;line-height:1.45">Unplugged ceremony. Share everything after the kiss!</div></div></div>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+<section class="screen" id="party">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#7C5236">Meet the crew</div><h1 class="rise" style="animation-delay:.08s">Wedding Party</h1><p class="rise" style="animation-delay:.16s">The people standing beside Mackenzie &amp; Brandon.</p></div></div>
+<div class="sec" style="padding-top:8px"><span>Her side</span><i></i></div><div style="display:flex;flex-direction:column;gap:8px;padding:0 20px"><div class="person rise" style="animation-delay:0.1s"><div class="pic">?</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">[Name]</div><div class="muted" style="font-size:13px">Maid of Honor</div></div></div><div class="person rise" style="animation-delay:0.15s"><div class="pic">?</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">[Name]</div><div class="muted" style="font-size:13px">Bridesmaid</div></div></div></div>
+<div class="sec"><span>His side</span><i></i></div><div style="display:flex;flex-direction:column;gap:8px;padding:0 20px"><div class="person rise" style="animation-delay:0.2s"><div class="pic">?</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">[Name]</div><div class="muted" style="font-size:13px">Best Man</div></div></div><div class="person rise" style="animation-delay:0.25s"><div class="pic">?</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">[Name]</div><div class="muted" style="font-size:13px">Groomsman</div></div></div></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+<!-- RSVP -->
+<section class="screen" id="rsvp">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div></div>
+<div class="env-stage xstage" id="envStage">
+<img class="rfl tl" src="images/flor-tl.png" alt=""><img class="rfl tr" src="images/flor-tr.png" alt="">
+<div class="xtext">
+<div class="xeyebrow">A special delivery for</div>
+<div class="xname script"><span class="gname">you</span></div>
+<div class="rorn"><i></i><img src="images/longhorn.png" alt=""><i></i></div>
+</div>
+<div class="xenv envL" id="env"><img class="xb" src="images/envL-back.png" alt=""><img class="xc" src="images/envL-card.png" alt=""><img class="xf" src="images/envL-front.png" alt=""><button type="button" class="xseal" id="seal" aria-label="Open your invitation"></button>
+</div>
+<div class="xtap" id="envTap"><span>Tap the seal to open</span></div>
+</div>
+<div class="invite" id="invite"><div class="shine"></div><span class="lacerow t"></span><span class="lacerow b"></span><span class="pearl" style="top:40px;left:22px"></span><span class="pearl" style="top:64px;right:26px"></span><span class="pearl" style="top:120px;left:14px"></span><span class="pearl" style="top:180px;right:16px"></span><span class="pearl" style="bottom:90px;left:18px"></span><span class="pearl" style="bottom:60px;right:22px"></span><span class="pearl" style="bottom:150px;right:12px"></span><span class="pearl" style="top:250px;left:12px"></span>
+<div class="eyebrow muted" style="font-size:11px">Together with their families</div>
+<div style="width:120px;height:150px;margin:16px auto 0;border-radius:60px 60px 8px 8px;overflow:hidden;border:4px solid #fff;box-shadow:0 8px 18px rgba(59,42,30,.16)"><img src="images/couple.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%"></div>
+<div class="script" id="invFirst" style="font-size:50px;line-height:1.1;color:#7C5236;margin-top:14px;white-space:nowrap">Mackenzie &amp; Brandon</div>
+<div class="serif" style="font-size:19px;line-height:1.45;margin-top:14px">request the honor of your presence<br>as they say &ldquo;I do&rdquo;</div>
+<div style="margin:16px auto 0;width:180px;height:1px;background:#C8A97E"></div>
+<div style="margin-top:14px;font-size:14px;letter-spacing:3px;text-transform:uppercase;font-weight:700">[Wedding Date]</div>
+<div style="margin-top:4px;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#6E5A48">[Time] · [Venue]</div>
+<div class="serif" style="margin-top:4px;font-size:16px;font-style:italic;color:#6E5A48">[City], Texas</div>
+<div style="margin:16px auto 0;width:180px;height:1px;background:#C8A97E"></div>
+<div class="serif" style="font-size:17px;font-style:italic;margin-top:12px">Taco bar, dancing and boots welcome</div>
+<div class="cdown" id="cdown"><div><b id="cdD">--</b><span>days</span></div><div><b id="cdH">--</b><span>hours</span></div><div><b id="cdM">--</b><span>min</span></div></div>
+<div class="eyebrow" style="font-size:11px;color:#7C5236;margin-top:12px">Kindly reply by [RSVP Date]</div>
+<button type="button" class="btn" id="toForm" style="margin-top:20px">RSVP now<span class="sheen"></span></button>
+<a class="btn ghost enterapp" href="#welcome" style="margin-top:10px">Explore the wedding app</a>
+</div>
+
+<form class="rsvp-form" id="rsvpForm" novalidate>
+<div class="serif" style="font-size:30px;font-weight:600;text-align:center">Find your invitation</div>
+<p class="muted" style="margin:-6px 0 0;text-align:center;font-size:14px;line-height:1.45">Type your name the way it is on your invitation. Everyone invited with you will show up.</p>
+<div style="position:relative"><label class="flabel sr" for="rName">Your name</label>
+<input id="rName" class="field" type="text" placeholder="Start typing your name" autocomplete="off" aria-autocomplete="list" aria-controls="rSug">
+<div id="rSug" class="sug" role="listbox"></div></div>
+<div id="noMatch" class="muted" style="display:none;font-size:14px;line-height:1.45;text-align:center">We could not find that name. Try your first and last name, or text the couple and they will sort it out.</div>
+<div style="font-size:13px;line-height:1.45;text-align:center;padding:10px 12px;border-radius:14px;background:#EFE6D8;color:#5E4B36"><b>Mockup:</b> the real guest list is not in yet. Try <button type="button" class="tryname" data-n="Jake">Jake</button>, <button type="button" class="tryname" data-n="Kayla">Kayla</button>, <button type="button" class="tryname" data-n="Linda">Linda</button> or <button type="button" class="tryname" data-n="Tyler">Tyler</button>.</div>
+<div id="partyBox" style="display:none;flex-direction:column;gap:14px">
+<div class="card" style="padding:16px 14px 6px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 4px 8px"><span class="serif" style="font-size:24px;font-weight:600">Your invitation</span><span class="muted" style="font-size:13px" id="partyCount"></span></div>
+<div id="partyList"></div>
+</div>
+<div class="muted" style="font-size:13px;line-height:1.45;text-align:center">Only the people listed here are invited. Thank you for helping us keep our count right!</div>
+<div id="yesBits" style="display:flex;flex-direction:column;gap:14px">
+<div><label class="flabel" for="rSong">Song that will get you dancing</label><input id="rSong" class="field" type="text" placeholder="Song and artist"></div>
+</div>
+<div><label class="flabel" for="rNote">A note for the couple</label><textarea id="rNote" class="field" placeholder="Optional"></textarea></div>
+<button type="submit" class="btn">Send my RSVP<span class="sheen"></span></button>
+</div>
+</form>
+
+<div class="thanks" id="thanks">
+<span class="stampb stamp" style="display:inline-block;font-size:14px;padding:7px 14px">RSVP RECEIVED</span>
+<div class="script" id="thanksTitle" style="font-size:46px;line-height:1.05;color:#7C5236;margin-top:16px">See you there!</div>
+<p class="muted" id="thanksText" style="font-size:15px;line-height:1.5;margin:8px 0 18px">We saved your spot. This app will have everything you need on the big day.</p>
+<button type="button" class="btn ghost" data-toast="Added to your calendar">Add to calendar</button>
+<a class="btn enterapp" href="#home" style="margin-top:10px">Explore the wedding app<span class="sheen"></span></a>
+<button type="button" class="btn ghost" id="rsvpEdit" style="margin-top:10px">Change my RSVP</button>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- LOCKED -->
+<section class="screen" id="locked">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div></div>
+<div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 26px 0">
+<div class="unveil" style="position:relative;width:220px;height:270px;border-radius:110px 110px 16px 16px;overflow:hidden;border:6px solid #fff;box-shadow:0 18px 40px rgba(59,42,30,.18)">
+<div class="cow" style="position:absolute;inset:0"></div>
+<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div class="float" style="width:96px;height:96px;border-radius:48px;background:#7C5236;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(124,82,54,.4)"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div></div></div>
+<div class="rise eyebrow" style="color:#7C5236;margin-top:24px" id="lockEyebrow">Opens on the wedding day</div>
+<div class="script" style="font-size:54px;line-height:1.05;color:#3B2A1E;margin-top:6px">No sneak peeks, partner!</div>
+<p class="rise muted" id="lockText" style="font-size:16px;line-height:1.55;margin:10px 0 0;animation-delay:.2s"></p>
+<div class="rise eyebrow" style="margin-top:14px;font-size:12px;animation-delay:.3s">Unlocks the morning of [Wedding Date]</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:24px 24px 0">
+<a class="btn" href="#rsvp">RSVP while you wait<span class="sheen"></span></a>
+<a class="btn ghost" href="#quiz">Take the couple quiz</a>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- HONEYMOON -->
+<section class="screen" id="honeymoon">
+<div style="position:relative;height:270px;flex-shrink:0;overflow:hidden">
+<img class="kb" src="images/kiss.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block">
+<a href="#home" aria-label="Back" class="iconbtn" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);z-index:3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a>
+<div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 24px 18px;text-align:center;color:#fff">
+<div class="rise eyebrow">Your presence is the gift</div>
+<div class="script" style="font-size:56px;line-height:1"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.2s">H</span><span class="ltr" style="animation-delay: 0.245s">o</span><span class="ltr" style="animation-delay: 0.29s">n</span><span class="ltr" style="animation-delay: 0.335s">e</span><span class="ltr" style="animation-delay: 0.38s">y</span><span class="ltr" style="animation-delay: 0.425s">m</span><span class="ltr" style="animation-delay: 0.47s">o</span><span class="ltr" style="animation-delay: 0.515s">o</span><span class="ltr" style="animation-delay: 0.56s">n</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.605s">F</span><span class="ltr" style="animation-delay: 0.65s">u</span><span class="ltr" style="animation-delay: 0.695s">n</span><span class="ltr" style="animation-delay: 0.74s">d</span></span></div>
+<div class="rise" style="font-size:14px;animation-delay:.8s">If you would like to give, help us make memories in [Destination]</div></div></div>
+<div class="bandana" style="height:8px;flex-shrink:0"></div>
+<div id="hmForm">
+<div class="sec" style="padding-top:20px"><span>Gift an experience</span><i></i></div>
+<div id="exps" style="display:flex;flex-direction:column;gap:8px;padding:0 20px">
+<button type="button" class="exp" data-a="75" data-i="0"><span class="em"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18M5 18c0-5 3-9 7-9s7 4 7 9"/><path d="M12 5v4"/></svg></span><span><b>Sunset dinner</b><span>A table for two by the water</span></span><span class="pr">$75</span></button>
+<button type="button" class="exp" data-a="100" data-i="1"><span class="em"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/><path d="M2 20c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/><circle cx="16" cy="7" r="3"/></svg></span><span><b>Snorkel trip</b><span>A morning out on the reef</span></span><span class="pr">$100</span></button>
+<button type="button" class="exp" data-a="150" data-i="2"><span class="em"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-5-3-8-6-8-10a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 4-3 7-8 10z"/></svg></span><span><b>Couples massage</b><span>Some rest after the big day</span></span><span class="pr">$150</span></button>
+<button type="button" class="exp" data-a="25" data-i="3"><span class="em"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg></span><span><b>Coffee and breakfast</b><span>Mornings on the balcony</span></span><span class="pr">$25</span></button>
+</div>
+<div class="sec"><span>Or choose an amount</span><i></i></div>
+<div style="padding:0 20px"><div class="amts" id="amts"><button type="button" data-a="25">$25</button><button type="button" data-a="50">$50</button><button type="button" data-a="100">$100</button><button type="button" data-a="250">$250</button><button type="button" id="amtOther" class="other" style="grid-column:span 4;font-family:'Josefin Sans',sans-serif;font-size:16px">Other amount</button></div>
+<div id="otherBox" style="display:none;margin-top:10px;position:relative"><span class="serif" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:700;color:#3B2A1E">$</span><label for="otherAmt" class="sr">Other amount in dollars</label><input id="otherAmt" class="field" type="text" inputmode="decimal" placeholder="Enter any amount" style="padding-left:40px;font-size:18px"></div></div>
+<div style="display:flex;flex-direction:column;gap:12px;padding:18px 20px 0">
+<div><label class="flabel" for="hmName">From</label><input id="hmName" class="field" type="text" placeholder="Your name"></div>
+<div><label class="flabel" for="hmNote">A note for their trip</label><textarea id="hmNote" class="field" placeholder="Optional"></textarea></div>
+<button type="button" class="btn" id="hmGo">Give <span id="hmAmt">a gift</span><span class="sheen"></span></button>
+<div class="muted" style="text-align:center;font-size:12px;line-height:1.45">Everything goes straight to Mackenzie &amp; Brandon. No gift is ever expected.</div>
+</div></div>
+<div id="hmPay" style="display:none;padding:20px 20px 0" class="rise">
+<div class="card" style="padding:22px 18px;text-align:center">
+<div class="serif" style="font-size:28px;font-weight:600">How would you like to send it?</div>
+<p class="muted" style="font-size:14px;margin:6px 0 16px" id="hmPayText"></p>
+<div class="payb" style="grid-template-columns:1fr 1fr"><button type="button" data-p="Venmo">Venmo</button><button type="button" data-p="Cash App">Cash App</button></div>
+<button type="button" class="btn ghost" id="hmBack" style="margin-top:12px">Back</button>
+</div></div>
+<div id="hmThanks" class="thanks" style="margin-top:20px">
+<span class="stampb stamp" style="display:inline-block;font-size:14px;padding:7px 14px">BON VOYAGE</span>
+<div class="script" id="hmThanksTitle" style="font-size:44px;line-height:1.05;color:#7C5236;margin-top:16px">Thank you!</div>
+<p class="muted" style="font-size:15px;line-height:1.5;margin:8px 0 0">Mackenzie &amp; Brandon will see your gift and your note. They will send you a postcard from the trip!</p>
+</div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- HUNT -->
+<section class="screen" id="hunt">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#7C5236">Play along</div><h1 class="rise" style="animation-delay:.08s">The Scavenger Hunt</h1><p class="rise" style="animation-delay:.16s">Tap a mission to snap it. The couple sees every find after the big day.</p></div></div>
+<div class="rise" style="margin:18px 20px 0;padding:18px;border-radius:22px;background:#3B2A1E;color:#fff;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden;animation-delay:.2s">
+<div class="cow" style="position:absolute;inset:0;opacity:.08"></div>
+<div style="position:relative;width:110px;height:110px;flex-shrink:0">
+<svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true"><circle cx="55" cy="55" r="48" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="9"/><circle id="ring" class="ring" cx="55" cy="55" r="48" fill="none" stroke="#7C5236" stroke-width="9" stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="301.6" transform="rotate(-90 55 55)" style="transition:stroke-dashoffset .6s ease"/></svg>
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><span id="hCount" class="serif" style="font-size:38px;font-weight:700;line-height:1">0</span><span style="font-size:12px;opacity:.8">of <span id="hTotal">8</span></span></div></div>
+<div style="position:relative;display:flex;flex-direction:column;gap:6px"><div class="serif" style="font-size:24px;font-weight:600;line-height:1.1"><span id="hLeft">8</span> left to find</div><div style="font-size:13px;line-height:1.45;opacity:.85">Finish them all to unlock a thank-you from Mackenzie &amp; Brandon.</div></div></div>
+<div id="huntList" style="display:flex;flex-direction:column;gap:10px;padding:18px 20px 0"></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- GALLERY -->
+<section class="screen" id="gallery">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#7C5236">Through your eyes</div><h1 class="rise" style="animation-delay:.08s">The Gallery</h1><p class="rise" style="animation-delay:.16s">Every photo and video from everyone, sorted by moment.</p></div></div>
+<div id="gChips" style="display:flex;gap:8px;padding:16px 20px 4px;overflow-x:auto"></div>
+<div id="gBody"></div>
+<label aria-label="Add photos or videos" class="live" style="position:fixed;right:max(20px,calc(50% - 195px));bottom:100px;width:64px;height:64px;border-radius:32px;background:#7C5236;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 12px 24px rgba(124,82,54,.35);z-index:15"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><input type="file" accept="image/*,video/*" multiple class="sr upload"></label>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- QUIZ -->
+<section class="screen" id="quiz">
+<div class="hdr"><div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div><div class="in"><div class="rise eyebrow" style="color:#7C5236">The couple quiz</div><h1 class="rise" style="animation-delay:.08s">How well do you know us?</h1><p class="rise" style="animation-delay:.16s">10 quick questions. Scores are revealed at the reception.</p></div></div>
+<div id="quizBody"></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- WISHES -->
+<section class="screen" id="wishes">
+<div class="topbar"><a href="#home" aria-label="Back" class="iconbtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a href="#welcome" aria-label="Your profile" class="avatar"><span class="ginit">G</span></a></div>
+<div style="position:relative;height:250px;flex-shrink:0;overflow:hidden">
+<img class="kb" src="images/ring.jpg" alt="Mackenzie's hands and ring" style="width:100%;height:100%;object-fit:cover;object-position:50% 62%;display:block">
+<div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 28px 18px;text-align:center;color:#fff">
+<div class="script" style="font-size:60px;line-height:1"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.2s">V</span><span class="ltr" style="animation-delay: 0.245s">i</span><span class="ltr" style="animation-delay: 0.29s">d</span><span class="ltr" style="animation-delay: 0.335s">e</span><span class="ltr" style="animation-delay: 0.38s">o</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.425s">W</span><span class="ltr" style="animation-delay: 0.47s">i</span><span class="ltr" style="animation-delay: 0.515s">s</span><span class="ltr" style="animation-delay: 0.56s">h</span><span class="ltr" style="animation-delay: 0.605s">e</span><span class="ltr" style="animation-delay: 0.65s">s</span></span></div>
+<div class="rise" style="font-size:14px;animation-delay:.8s">Words they will watch for years to come</div></div></div>
+<div class="bandana" style="height:8px;flex-shrink:0"></div>
+<div class="rise" style="margin:16px 20px 0;padding:12px 14px;border-radius:16px;background:#E6F4F2;display:flex;gap:12px;align-items:center;animation-delay:.3s">
+<div class="sway" style="flex-shrink:0"><svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#9AA0A6" stroke-width="2"><circle cx="24" cy="24" r="21"/><circle cx="24" cy="24" r="16" stroke-dasharray="3 3"/></g><g fill="#C9CDD1"><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(0 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(45 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(90 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(135 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(180 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(225 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(270 24 24)"/><ellipse cx="24" cy="11" rx="4" ry="7" transform="rotate(315 24 24)"/></g><circle cx="24" cy="24" r="6.5" fill="#2E9E95"/></svg></div>
+<div style="font-size:13px;line-height:1.4;color:#134E49"><b>Asked personally?</b> If the couple sent you a special link, your name shows up here.</div></div>
+<div class="rise" style="display:flex;align-items:center;gap:12px;padding:22px 24px 10px;animation-delay:.4s"><div class="serif" style="width:30px;height:30px;border-radius:15px;border:1.5px solid #7C5236;color:#7C5236;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700">1</div><div style="font-size:17px;font-weight:700">Pick what to talk about</div></div>
+<div id="prompts" style="display:flex;flex-wrap:wrap;gap:8px;padding:0 24px"></div>
+<div class="card" style="margin:12px 24px 0;padding:14px 16px"><div id="promptText" class="serif" style="font-size:21px;font-style:italic;line-height:1.3"></div><div id="capsule" style="display:none;margin-top:8px;gap:6px;align-items:center;font-size:13px;font-weight:700;color:#7C5236"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Unlocks on their 1st anniversary</div></div>
+<div class="rise" style="display:flex;align-items:center;gap:12px;padding:22px 24px 10px;animation-delay:.5s"><div class="serif" style="width:30px;height:30px;border-radius:15px;border:1.5px solid #7C5236;color:#7C5236;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700">2</div><div style="font-size:17px;font-weight:700">Record your video</div></div>
+<div style="padding:0 24px;display:flex;align-items:center;gap:16px">
+<div style="width:96px;height:96px;border-radius:48px;border:2px dashed #C8A97E;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+<label class="live" aria-label="Record a video" style="width:76px;height:76px;border-radius:38px;background:#7C5236;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><input id="wishVideo" type="file" accept="video/*" capture="user" class="sr"></label></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span id="recLabel" style="font-size:16px;font-weight:700">Tap to record</span><span class="muted" style="font-size:13px">Up to 1 minute</span></div></div>
+<div class="rise" style="display:flex;align-items:center;gap:12px;padding:22px 24px 10px;animation-delay:.6s"><div class="serif" style="width:30px;height:30px;border-radius:15px;border:1.5px solid #7C5236;color:#7C5236;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700">3</div><div style="font-size:17px;font-weight:700">Add your name and send</div></div>
+<form id="wishForm" style="padding:0 24px;display:flex;flex-direction:column;gap:10px">
+<label for="wishName" class="sr">Your name</label>
+<input id="wishName" class="field gname-input" type="text" placeholder="Your name">
+<button class="btn" type="submit"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Send to the couple</span><span class="sheen"></span></button>
+<div class="muted" style="display:flex;gap:6px;align-items:center;justify-content:center;font-size:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Only Mackenzie &amp; Brandon can watch</div></form>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- KEEPSAKE -->
+<section class="screen" id="keepsake">
+<div style="position:relative;height:380px;flex-shrink:0;overflow:hidden">
+<img class="kb" src="images/kiss.jpg" alt="Mackenzie and Brandon" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block">
+<div style="position:absolute;inset:0;overflow:hidden"><div class="petal" aria-hidden="true" style="left: 8px; background: #B4532A; opacity: 0.8; animation-delay: 0.0s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 56px; background: #FFFFFF; opacity: 0.8; animation-delay: -1.6s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 104px; background: #E8B48F; opacity: 0.8; animation-delay: -3.2s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 152px; background: #B4532A; opacity: 0.8; animation-delay: -4.800000000000001s; animation-duration: 13.5s"></div><div class="petal" aria-hidden="true" style="left: 200px; background: #FFFFFF; opacity: 0.8; animation-delay: -6.4s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 248px; background: #E8B48F; opacity: 0.8; animation-delay: -8.0s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 296px; background: #B4532A; opacity: 0.8; animation-delay: -9.600000000000001s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 344px; background: #FFFFFF; opacity: 0.8; animation-delay: -11.200000000000001s; animation-duration: 13.5s"></div></div>
+<div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 24px 22px;text-align:center;color:#fff">
+<div class="rise eyebrow">For the newlyweds</div>
+<div class="script" style="font-size:56px;line-height:1.05"><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.3s">Y</span><span class="ltr" style="animation-delay: 0.345s">o</span><span class="ltr" style="animation-delay: 0.39s">u</span><span class="ltr" style="animation-delay: 0.435s">r</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.48s">d</span><span class="ltr" style="animation-delay: 0.525s">a</span><span class="ltr" style="animation-delay: 0.57s">y</span><span class="ltr" style="animation-delay: 0.615s">,</span></span><br><span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 0.7s">t</span><span class="ltr" style="animation-delay: 0.745s">h</span><span class="ltr" style="animation-delay: 0.79s">r</span><span class="ltr" style="animation-delay: 0.835s">o</span><span class="ltr" style="animation-delay: 0.88s">u</span><span class="ltr" style="animation-delay: 0.925s">g</span><span class="ltr" style="animation-delay: 0.97s">h</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.015s">t</span><span class="ltr" style="animation-delay: 1.06s">h</span><span class="ltr" style="animation-delay: 1.105s">e</span><span class="ltr" style="animation-delay: 1.15s">i</span><span class="ltr" style="animation-delay: 1.195s">r</span></span> <span style="display: inline-block; white-space: nowrap"><span class="ltr" style="animation-delay: 1.24s">e</span><span class="ltr" style="animation-delay: 1.285s">y</span><span class="ltr" style="animation-delay: 1.33s">e</span><span class="ltr" style="animation-delay: 1.375s">s</span></span></div></div></div>
+<div class="bandana" style="height:8px;flex-shrink:0"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:18px 20px 0" id="stats"></div>
+<div class="sec"><span>Most loved moment</span><i></i></div>
+<div class="unveil tile" style="margin:0 20px;height:230px;border-radius:22px;animation-delay:.5s"><img src="images/hero.jpg" alt="" style="object-position:50% 40%"><div class="cap scrim" style="height:100%;padding:16px;font-size:14px"><span>Shared by Aunt Jo</span><span>64 hearts</span></div></div>
+<div class="sec"><span>Quiz champions</span><i></i></div>
+<div style="display:flex;flex-direction:column;gap:8px;padding:0 20px" id="leaders"></div>
+<div class="sec"><span>Time capsule</span><i></i></div>
+<div style="margin:0 20px;padding:18px;border-radius:22px;background:#3B2A1E;color:#fff;display:flex;gap:16px;align-items:center;position:relative;overflow:hidden">
+<div class="cow" style="position:absolute;inset:0;opacity:.07"></div>
+<div class="float" style="position:relative;width:54px;height:54px;border-radius:27px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+<div style="position:relative;display:flex;flex-direction:column;gap:4px"><span class="serif" style="font-size:24px;font-weight:600">12 videos are waiting</span><span style="font-size:13px;opacity:.85;line-height:1.4">They unlock on your first anniversary. We will text you that morning.</span></div></div>
+<div style="padding:22px 20px 0"><button class="btn" type="button" data-toast="Your download would start here">Download everything<span class="sheen"></span></button></div>
+<div class="muted" style="text-align:center;font-size:12px;padding-top:10px">This is what the couple sees after the wedding. Sample numbers.</div>
+<div style="padding:16px 20px 0"><a class="btn ghost" href="#home">Back to the guest app</a></div>
+<div class="foot">Made with love by <a href="#hire">Codember</a></div>
+</section>
+
+<!-- HIRE -->
+<section class="screen" id="hire">
+<div style="position:relative;height:330px;flex-shrink:0;overflow:hidden;background:#F3EADB">
+<div style="position:absolute;inset:0;overflow:hidden"><div class="petal" aria-hidden="true" style="left: 8px; background: #B4532A; opacity: 0.8; animation-delay: 0.0s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 56px; background: #FFFFFF; opacity: 0.8; animation-delay: -1.6s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 104px; background: #E8B48F; opacity: 0.8; animation-delay: -3.2s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 152px; background: #B4532A; opacity: 0.8; animation-delay: -4.800000000000001s; animation-duration: 13.5s"></div><div class="petal" aria-hidden="true" style="left: 200px; background: #FFFFFF; opacity: 0.8; animation-delay: -6.4s; animation-duration: 9.0s"></div><div class="petal" aria-hidden="true" style="left: 248px; background: #E8B48F; opacity: 0.8; animation-delay: -8.0s; animation-duration: 10.5s"></div><div class="petal" aria-hidden="true" style="left: 296px; background: #B4532A; opacity: 0.8; animation-delay: -9.600000000000001s; animation-duration: 12.0s"></div><div class="petal" aria-hidden="true" style="left: 344px; background: #FFFFFF; opacity: 0.8; animation-delay: -11.200000000000001s; animation-duration: 13.5s"></div></div>
+<a href="#home" aria-label="Back to the wedding" style="position:absolute;top:16px;left:16px;z-index:5;width:44px;height:44px;border-radius:22px;background:#fff;display:flex;align-items:center;justify-content:center;color:#3B2A1E"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<div id="phones"></div></div>
+<div class="bandana" style="height:8px;flex-shrink:0"></div>
+<div style="padding:26px 24px 0;text-align:center">
+<div class="rise eyebrow" style="color:#7C5236">Loved this app?</div>
+<div class="rise serif" style="font-size:38px;line-height:1.05;font-weight:600;margin-top:8px;animation-delay:.1s">Get one made for <span class="script" style="font-weight:400;font-size:56px;color:#7C5236">your</span> event</div>
+<div class="rise muted" style="font-size:15px;line-height:1.5;margin-top:10px;animation-delay:.2s">Weddings, quinceañeras, birthdays, showers, reunions and company parties. Designed around your theme.</div></div>
+<div class="sec" style="padding-top:28px"><span>How it works</span><i></i></div>
+<div id="steps" style="display:flex;flex-direction:column;gap:18px;padding:0 24px"></div>
+<div class="muted" style="padding:26px 24px 0;text-align:center;font-size:16px">Starting at <b style="color:#3B2A1E">[YOUR PRICE]</b></div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:14px 24px 0">
+<a class="btn" href="sms:3467704879">Text Codember: 346-770-4879<span class="sheen"></span></a>
+<a class="btn ghost" href="https://codember.co">Visit codember.co</a>
+<a class="btn ghost" href="#keepsake">See what the couple gets after</a></div>
+<div class="foot" style="padding-bottom:30px">codember · Custom apps · Houston, TX</div>
+</section>
+
+<nav class="tabs" id="tabs" aria-label="Main">
+<a href="#home" data-t="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home<span class="dot"></span></a>
+<a href="#rsvp" data-t="rsvp" class="pre"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>RSVP<span class="dot"></span></a>
+<a href="#hunt" data-t="hunt"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>Hunt<span class="dot"></span></a>
+<a href="#gallery" data-t="gallery"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Gallery<span class="dot"></span></a>
+<a href="#quiz" data-t="quiz"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Quiz<span class="dot"></span></a>
+<a href="#wishes" data-t="wishes"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Wishes<span class="dot"></span></a>
+<a href="#locked" data-t="locked" class="pre"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Big Day<span class="dot"></span></a>
+</nav>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script>
+(function () {
+var $ = function (s) { return document.querySelector(s); };
+var ICON = { camera: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>', plus: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>', check: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>', play: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>', heart: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' };
+var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+function toast(msg) { var t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove('show'); }, 2600); }
+
+// guest name
+function setName(n) { n = (n || '').trim(); if (!n) return; store.set('guestName', n); document.querySelectorAll('.gname').forEach(function (e) { e.textContent = n; }); document.querySelectorAll('.ginit').forEach(function (e) { e.textContent = n.charAt(0).toUpperCase(); }); var w = $('#wishName'); if (w && !w.value) w.value = n; }
+setName(store.get('guestName'));
+$('#welcomeForm').addEventListener('submit', function (e) { e.preventDefault(); var v = $('#guestName').value.trim(); if (!v) { $('#guestName').focus(); return; } setName(v); $('#rHello').textContent = 'Welcome, ' + v + '! We are so glad you are here.'; toast('Welcome, ' + v); });
+(function () { var n = store.get('guestName'); if (n) { $('#guestName').value = n; $('#rHello').textContent = 'Welcome back, ' + n + '!'; } })();
+$('#rBurger').addEventListener('click', function () { var o = $('#rDrawer').classList.toggle('open'); this.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+$('#rDrawer').addEventListener('click', function (e) { if (e.target.closest('a')) { this.classList.remove('open'); $('#rBurger').setAttribute('aria-expanded', 'false'); } });
+$('#rMoreBtn').addEventListener('click', function (e) { e.stopPropagation(); var o = $('#rMoreMenu').classList.toggle('open'); this.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+document.addEventListener('click', function (e) { if (!e.target.closest('.rmore')) $('#rMoreMenu').classList.remove('open'); });
+
+// uploads (demo)
+document.querySelectorAll('.upload').forEach(function (inp) {
+inp.addEventListener('change', function () { var n = inp.files.length; if (n) toast('Added ' + n + (n === 1 ? ' file' : ' files') + '. Thank you!'); inp.value = ''; });
+});
+$('#wishVideo').addEventListener('change', function () { if (this.files.length) { $('#recLabel').textContent = 'Video ready'; toast('Video added. Now hit send!'); } });
+$('#wishForm').addEventListener('submit', function (e) { e.preventDefault(); toast('Sent to Mackenzie & Brandon'); });
+document.querySelectorAll('[data-toast]').forEach(function (b) { b.addEventListener('click', function () { toast(b.getAttribute('data-toast')); }); });
+
+// moments
+var M = [
+{ name: 'The Ceremony', time: '[4:00 PM]', img: 'images/hero.jpg', pos: '50% 40%', tip: 'Phones down for the vows. Snap away after the kiss!', mission: 'Catch the first kiss as husband and wife' },
+{ name: 'Cocktail Hour', time: '[4:45 PM]', img: 'images/denim.jpg', pos: '50% 40%', tip: 'Grab a drink and say hey to someone new.', mission: 'Take a selfie with a guest you just met' },
+{ name: 'The Reception', time: '[6:00 PM]', img: 'images/kiss.jpg', pos: '50% 30%', tip: 'Dinner, toasts and the first dance.', mission: 'Get the first dance on video' },
+{ name: 'The Send-Off', time: '[10:00 PM]', img: 'images/ring.jpg', pos: '50% 60%', tip: 'Line up outside to send them off in style.', mission: 'Film the grand exit' }
+];
+var cur = 0;
+function renderMoments() {
+var m = M[cur];
+if (!locked) $('#nowName').textContent = M[0].name;
+$('#schedCard').innerHTML = '<div class="unveil" style="position:relative;height:220px;border-radius:22px;overflow:hidden;box-shadow:0 14px 30px rgba(59,42,30,.18)"><img class="kb" src="' + m.img + '" alt="" style="width:100%;height:100%;object-fit:cover;object-position:' + m.pos + '"><div class="scrim" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff;gap:6px"><div class="serif" style="font-size:34px;font-weight:600;line-height:1">' + m.name + '</div><div style="font-size:14px;line-height:1.4">' + m.tip + '</div></div></div><a href="#hunt" style="margin-top:10px;padding:12px 14px;border-radius:16px;background:#fff;border:1.5px dashed #7C5236;display:flex;gap:10px;align-items:center;text-decoration:none;color:#3B2A1E"><span class="eyebrow" style="color:#7C5236;font-size:11px">Mission</span><span style="font-size:15px;font-weight:700">' + m.mission + '</span></a>';
+$('#moments').innerHTML = M.map(function (x, i) {
+var cls = i === cur ? 'on' : (i < cur ? 'past' : '');
+var st = i === cur ? 'Happening now' : (i < cur ? 'Done' : 'Coming up');
+return '<button type="button" class="moment ' + cls + '" data-i="' + i + '"><span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="d"></span></span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span class="n" style="font-size:16px;font-weight:600">' + x.name + '</span><span class="muted" style="font-size:12px">' + x.time + ' · ' + st + '</span></span></button>';
+}).join('');
+}
+$('#moments').addEventListener('click', function (e) { var b = e.target.closest('.moment'); if (b) { cur = +b.getAttribute('data-i'); renderMoments(); } });
+renderMoments();
+
+// hunt
+var H = [
+['Ceremony', 'The first kiss as husband and wife', 'images/hero.jpg'],
+['Ceremony', 'Someone happy crying', 'images/ring.jpg'],
+['Cocktail Hour', 'A selfie with a guest you just met', 'images/denim.jpg'],
+['Cocktail Hour', 'The best pair of boots here', 'images/denim.jpg'],
+['Reception', 'The first dance', 'images/kiss.jpg'],
+['Reception', 'Grandparents on the dance floor', 'images/kiss.jpg'],
+['Reception', 'The cake before anyone cuts it', 'images/hero.jpg'],
+['Send-Off', 'The grand exit', 'images/ring.jpg']
+];
+var found = {};
+try { found = JSON.parse(store.get('hunt') || '{}') || {}; } catch (e) { found = {}; }
+function renderHunt(animIdx) {
+var n = 0;
+$('#huntList').innerHTML = H.map(function (x, i) {
+var f = !!found[i]; if (f) n++;
+return '<button type="button" class="hunt-item' + (f ? ' found' : '') + '" data-i="' + i + '"><span class="thumb">' + (f ? ((typeof found[i] === 'string' ? found[i] : x[2]) ? '<img src="' + (typeof found[i] === 'string' ? found[i] : x[2]) + '" alt="">' : ICON.check) : ICON.camera) + '</span><span style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="eyebrow" style="color:#7C5236;font-size:11px;letter-spacing:2px">' + x[0] + '</span><span style="font-size:16px;font-weight:600;line-height:1.3">' + x[1] + '</span></span>' + (f ? '<span class="stampb' + (i === animIdx ? ' stamp' : '') + '" style="transform:rotate(-12deg)">FOUND</span>' : '<span class="addb">' + ICON.plus + '</span>') + '</button>';
+}).join('');
+$('#hCount').textContent = n; if ($('#homeLeft')) { $('#homeLeft').textContent = H.length - n; $('#huntBadge').textContent = H.length - n; } $('#hTotal').textContent = H.length; $('#hLeft').textContent = H.length - n;
+$('#ring').setAttribute('stroke-dashoffset', String(301.6 - 301.6 * n / H.length));
+if (n === H.length && animIdx !== undefined) toast('You found them all! The couple says thank you!');
+}
+$('#huntList').addEventListener('click', function (e) {
+var b = e.target.closest('.hunt-item'); if (!b) return; var i = +b.getAttribute('data-i');
+if (found[i]) { delete found[i]; renderHunt(); } else { found[i] = true; renderHunt(i); toast('Found! Nice one.'); }
+store.set('hunt', JSON.stringify(found));
+});
+renderHunt();
+
+// gallery
+var G = [
+{ k: 'Ceremony', items: [['images/hero.jpg', '50% 40%', 'Aunt Jo', 24], ['images/kiss.jpg', '50% 30%', 'Mom', 42], ['images/ring.jpg', '50% 60%', 'Kayla', 31, '0:42'], ['images/denim.jpg', '55% 45%', 'Tyler', 17]] },
+{ k: 'Cocktails', items: [['images/denim.jpg', '60% 20%', 'Brandon', 8], ['images/hero.jpg', '70% 30%', 'Grandpa', 12, '0:30'], ['images/kiss.jpg', '40% 40%', 'Sam', 5], ['images/ring.jpg', '40% 70%', 'Lily', 9]] },
+{ k: 'Reception', items: [['images/kiss.jpg', '60% 20%', 'Jess', 19, '0:58'], ['images/ring.jpg', '50% 50%', 'Aunt Jo', 22], ['images/hero.jpg', '30% 50%', 'Dad', 14], ['images/denim.jpg', '40% 70%', 'Kayla', 11]] }
+];
+var gf = 'All';
+function tile(x, h, dl) {
+return '<div class="tile unveil" style="height:' + h + 'px;animation-delay:' + dl + 's"><img src="' + x[0] + '" alt="" style="object-position:' + x[1] + '">' + (x[4] ? '<div style="position:absolute;top:10px;left:10px;padding:4px 9px;border-radius:12px;background:rgba(255,255,255,.95);font-size:11px;font-weight:700;display:flex;gap:4px;align-items:center">' + ICON.play + x[4] + '</div>' : '') + '<div class="cap scrim"><span>' + x[2] + '</span><span style="display:flex;gap:4px;align-items:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' + x[3] + '</span></div></div>';
+}
+function renderGallery() {
+$('#gChips').innerHTML = ['All', 'Ceremony', 'Cocktails', 'Reception'].map(function (c) { return '<button type="button" class="chip' + (c === gf ? ' on' : '') + '" data-c="' + c + '">' + c + '</button>'; }).join('');
+$('#gBody').innerHTML = G.filter(function (s) { return gf === 'All' || s.k === gf; }).map(function (s) {
+var it = s.items;
+return '<div class="sec"><span>' + (s.k === 'Cocktails' ? 'Cocktail Hour' : 'The ' + s.k) + '</span><i></i></div><div style="display:flex;gap:10px;padding:0 20px"><div style="flex:1;display:flex;flex-direction:column;gap:10px">' + tile(it[0], 240, .1) + tile(it[2], 180, .35) + '</div><div style="flex:1;display:flex;flex-direction:column;gap:10px;padding-top:30px">' + tile(it[1], 200, .22) + tile(it[3], 190, .48) + '</div></div>';
+}).join('');
+}
+$('#gChips').addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (b) { gf = b.getAttribute('data-c'); renderGallery(); } });
+renderGallery();
+
+// quiz
+var Q = [
+{ q: 'Who said "I love you" first?', o: ['Mackenzie', 'Brandon', 'Same time', 'Still arguing about it'] },
+{ q: 'Where was their first date?', o: ['[Answer A]', '[Answer B]', '[Answer C]', '[Answer D]'] },
+{ q: 'Who takes longer to get ready?', o: ['Mackenzie', 'Brandon', 'A tie', 'Depends on the boots'] }
+];
+var qi = 0, picked = null;
+function renderQuiz() {
+var c = Q[qi];
+$('#quizBody').innerHTML = '<div style="display:flex;flex-direction:column;gap:8px;padding:20px 24px 0"><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>Question ' + (qi + 1) + ' of ' + Q.length + '</span><span style="color:#7C5236">You\'re doing great</span></div><div style="height:10px;border-radius:5px;background:#E9DFCF;overflow:hidden"><div class="bandana" style="height:10px;border-radius:5px;width:' + Math.round((qi + 1) / Q.length * 100) + '%;transition:width .5s ease"></div></div></div>'
++ '<div class="rise" style="position:relative;margin:22px 20px 0;padding:26px 18px 18px;background:#fff;border-radius:24px;box-shadow:0 14px 34px rgba(59,42,30,.1);display:flex;flex-direction:column;gap:12px"><img src="images/kiss.jpg" alt="" style="position:absolute;top:-22px;right:18px;width:56px;height:56px;border-radius:28px;object-fit:cover;object-position:50% 35%;border:3px solid #fff;box-shadow:0 6px 14px rgba(59,42,30,.2)"><div class="serif" style="font-size:28px;font-weight:600;line-height:1.15;padding-right:50px">' + c.q + '</div>'
++ c.o.map(function (o, i) { return '<button type="button" class="opt' + (picked === i ? ' on' : '') + '" data-i="' + i + '"><span class="l">' + 'ABCD'[i] + '</span>' + o + '</button>'; }).join('')
++ (picked !== null ? '<div style="display:flex;justify-content:center;padding-top:4px"><span class="stampb stamp" style="font-size:13px;padding:6px 12px">LOCKED IN</span></div>' : '') + '</div>'
++ '<div style="padding:18px 20px 0"><button type="button" class="btn" id="qNext">Next question<span class="sheen"></span></button></div>';
+}
+$('#quizBody').addEventListener('click', function (e) {
+var o = e.target.closest('.opt'); if (o) { picked = +o.getAttribute('data-i'); renderQuiz(); return; }
+if (e.target.closest('#qNext')) { if (picked === null) { toast('Pick an answer first'); return; } qi = (qi + 1) % Q.length; picked = null; renderQuiz(); }
+});
+renderQuiz();
+
+// wishes
+var W = [
+{ l: 'Marriage advice', t: 'What is your best advice for a happy marriage?' },
+{ l: 'Sweet wishes', t: 'What do you wish for them in this next chapter?' },
+{ l: 'Favorite memory', t: 'Share a favorite memory with one of them.' },
+{ l: 'Time capsule', t: 'Talk to them on their 1st anniversary. It stays locked until then.', cap: true }
+];
+var wi = 0;
+function renderWishes() {
+$('#prompts').innerHTML = W.map(function (x, i) { return '<button type="button" class="pill' + (i === wi ? ' on' : '') + '" data-i="' + i + '">' + x.l + '</button>'; }).join('');
+$('#promptText').textContent = W[wi].t; $('#capsule').style.display = W[wi].cap ? 'flex' : 'none';
+}
+$('#prompts').addEventListener('click', function (e) { var b = e.target.closest('.pill'); if (b) { wi = +b.getAttribute('data-i'); renderWishes(); } });
+renderWishes();
+
+// keepsake count-up
+var S = [['Photos', 1286], ['Videos', 94], ['Video wishes', 41], ['Hunt finds', 212]];
+$('#stats').innerHTML = S.map(function (s, i) { return '<div class="card rise" style="padding:16px 14px;display:flex;flex-direction:column;gap:2px;animation-delay:' + (i * .1) + 's"><span class="serif cnt" data-v="' + s[1] + '" style="font-size:40px;font-weight:700;line-height:1;color:#7C5236">0</span><span class="muted" style="font-size:13px;font-weight:600">' + s[0] + '</span></div>'; }).join('');
+$('#leaders').innerHTML = [['1', 'Aunt Jo', '10/10', '#7C5236'], ['2', 'Tyler', '9/10', '#3B2A1E'], ['3', 'Kayla', '9/10', '#6E8FAF']].map(function (l) { return '<div class="card" style="height:58px;display:flex;align-items:center;gap:14px;padding:0 14px"><span style="width:34px;height:34px;border-radius:17px;background:' + l[3] + ';color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">' + l[0] + '</span><span style="flex:1;font-size:16px;font-weight:700">' + l[1] + '</span><span class="serif" style="font-size:22px;font-weight:700">' + l[2] + '</span></div>'; }).join('');
+function countUp() {
+var els = document.querySelectorAll('.cnt'), start = performance.now();
+function f(now) { var k = Math.min(1, (now - start) / 1800), e = 1 - Math.pow(1 - k, 3); els.forEach(function (el) { el.textContent = Math.round(+el.getAttribute('data-v') * e).toLocaleString(); }); if (k < 1) requestAnimationFrame(f); }
+requestAnimationFrame(f);
+}
+
+// hire
+var ph = [[-8, 'images/ring.jpg', '50% 60%', 'Wishes', 36, 70, 1, .1], [8, 'images/hero.jpg', '50% 40%', 'Our Day', 222, 70, 1, .2], [0, 'images/kiss.jpg', '50% 30%', 'Welcome', 129, 44, 2, .3]];
+$('#phones').innerHTML = ph.map(function (p) { return '<div class="rise" style="position:absolute;left:calc(50% - 195px + ' + p[4] + 'px);top:' + p[5] + 'px;z-index:' + p[6] + ';animation-delay:' + p[7] + 's"><div class="float" style="width:128px;height:244px;border-radius:26px;background:#3B2A1E;padding:6px;box-shadow:0 18px 36px rgba(59,42,30,.3);transform:rotate(' + p[0] + 'deg);animation-delay:' + (-p[7] * 5) + 's"><div style="width:100%;height:100%;border-radius:21px;overflow:hidden;background:#F7EFE4;display:flex;flex-direction:column"><img src="' + p[1] + '" alt="" style="width:100%;height:150px;object-fit:cover;object-position:' + p[2] + ';display:block"><div class="bandana" style="height:5px"></div><div class="script" style="font-size:22px;color:#7C5236;text-align:center;padding-top:8px;line-height:1">' + p[3] + '</div><div style="margin:10px 12px 0;height:20px;border-radius:10px;background:#7C5236"></div></div></div></div>'; }).join('');
+$('#steps').innerHTML = [['Tell me about your event', 'Your colors, your photos and what you want guests to do.'], ['I design and build your app', 'Photo sharing, games, a scavenger hunt and video wishes.'], ['Guests scan a QR code', 'No download. You keep every memory afterward.']].map(function (s, i) { return '<div class="rise" style="display:flex;gap:14px;align-items:flex-start;animation-delay:' + (.3 + i * .1) + 's"><div class="serif" style="width:34px;height:34px;border-radius:17px;border:1.5px solid #7C5236;color:#7C5236;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;flex-shrink:0">' + (i + 1) + '</div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:17px;font-weight:700">' + s[0] + '</div><div class="muted" style="font-size:14px;line-height:1.45">' + s[1] + '</div></div></div>'; }).join('');
+
+
+// rsvp
+// Guest list: each party is one invitation. Swap in the couple's real list.
+var PARTIES = [
+{ id: 'p1', members: [{ n: 'Kayla Smith', r: 'Invited guest' }, { n: 'Plus one', r: 'Guest of Kayla', plus: true }] },
+{ id: 'p2', members: [{ n: 'Jake Meyers', r: 'Brother of the bride' }, { n: 'Lily Meyers', r: 'Daughter' }, { n: 'Emma Meyers', r: 'Daughter' }, { n: 'Ava Meyers', r: 'Daughter' }] },
+{ id: 'p3', members: [{ n: 'Linda Greenshields', r: 'Aunt of the groom' }, { n: 'Tom Greenshields', r: 'Uncle of the groom' }] },
+{ id: 'p4', members: [{ n: 'Tyler Brooks', r: 'Groomsman' }, { n: 'Plus one', r: 'Guest of Tyler', plus: true }] }
+];
+var env = $('#env'), rs = { opened: false, party: null, ans: {}, plusName: {} };
+function openEnv() {
+if (rs.opened) return; rs.opened = true; store.set('opened', '1');
+var stage = $('#envStage'), seal = $('#seal');
+seal.classList.add('crack');
+stage.classList.add('opening'); setTimeout(function () { env.classList.add('open'); }, 350); setTimeout(function () { env.classList.add('lift'); }, 2900);
+setTimeout(function () { var r = env.getBoundingClientRect(); confettiBurst(r.left + r.width / 2, r.top + r.height * 0.45, 150); hearts(stage); }, 900);
+setTimeout(function () { stage.classList.add('gone'); document.body.classList.remove('envmode'); $('#invite').classList.add('show'); fitNames(); var v = document.getElementById('vp'); if (v) v.scrollTop = 0; else window.scrollTo(0, 0); confettiRain(70); }, 3600);
+}
+function hearts(stage) {
+var cols = ['#7C5236', '#E8B48F', '#CC6A3A', '#C8A97E'];
+for (var i = 0; i < 12; i++) { (function (i) { setTimeout(function () {
+var h = document.createElement('span'); h.className = 'heartup'; h.style.left = (12 + Math.random() * 76) + '%'; h.style.setProperty('--r', (Math.random() * 60 - 30) + 'deg');
+var s = 12 + Math.random() * 14; h.style.width = s + 'px'; h.style.height = s + 'px';
+h.innerHTML = '<svg viewBox="0 0 24 24" width="100%" height="100%" aria-hidden="true"><path fill="' + cols[i % 4] + '" d="M12 21s-7.5-4.6-9.6-9.2C.8 8.2 3 4.5 6.6 4.5c2.1 0 3.6 1.2 5.4 3.2 1.8-2 3.3-3.2 5.4-3.2 3.6 0 5.8 3.7 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg>';
+stage.appendChild(h); setTimeout(function () { h.remove(); }, 3400);
+}, i * 120); })(i); }
+}
+var CF = { parts: [], raf: null };
+var CCOLS = ['#E8C9AE', '#C99A78', '#FFFFFF', '#F3E3D0', '#7C5236', '#3B2619', '#B08A62'];
+function reduceMotion() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+function cfCanvas() {
+var c = $('#confetti'), host = c.parentElement.getBoundingClientRect ? c : c;
+var w = c.clientWidth || window.innerWidth, h = c.clientHeight || window.innerHeight, dpr = window.devicePixelRatio || 1;
+if (c.width !== Math.round(w * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
+var ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); return { c: c, ctx: ctx, w: w, h: h };
+}
+function addPart(x, y, vx, vy) {
+var shape = Math.random(); CF.parts.push({ x: x, y: y, vx: vx, vy: vy, rot: Math.random() * 6.28, vr: (Math.random() - .5) * .3, s: 6 + Math.random() * 7, col: CCOLS[Math.floor(Math.random() * CCOLS.length)], kind: shape < .2 ? 'heart' : (shape < .55 ? 'circle' : 'rect'), life: 0, wob: Math.random() * 6.28 });
+}
+function toLocal(x, y) { var r = $('#confetti').getBoundingClientRect(); return [x - r.left, y - r.top]; }
+function confettiBurst(x, y, n) {
+if (reduceMotion()) return; var p = toLocal(x, y);
+for (var i = 0; i < n; i++) { var a = -Math.PI / 2 + (Math.random() - .5) * 1.9, sp = 7 + Math.random() * 9; addPart(p[0], p[1], Math.cos(a) * sp, Math.sin(a) * sp); }
+runCF();
+}
+function confettiRain(n) {
+if (reduceMotion()) return; var g = cfCanvas();
+for (var i = 0; i < n; i++) addPart(Math.random() * g.w, -20 - Math.random() * 200, (Math.random() - .5) * 2, 2 + Math.random() * 2);
+runCF();
+}
+function heartPath(ctx, s) { ctx.beginPath(); ctx.moveTo(0, s * .35); ctx.bezierCurveTo(-s, -s * .3, -s * .45, -s, 0, -s * .45); ctx.bezierCurveTo(s * .45, -s, s, -s * .3, 0, s * .35); ctx.fill(); }
+function runCF() {
+if (CF.raf) return;
+(function step() {
+var g = cfCanvas(), ctx = g.ctx; ctx.clearRect(0, 0, g.w, g.h);
+CF.parts = CF.parts.filter(function (p) { return p.y < g.h + 40 && p.life < 420; });
+CF.parts.forEach(function (p) {
+p.life++; p.vy += .22; p.vx *= .985; p.vy = Math.min(p.vy, 4.2); p.wob += .08; p.x += p.vx + Math.sin(p.wob) * .6; p.y += p.vy; p.rot += p.vr;
+ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.col; ctx.globalAlpha = p.life > 360 ? (420 - p.life) / 60 : 1;
+if (p.kind === 'rect') { ctx.scale(1, Math.abs(Math.cos(p.wob))); ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); }
+else if (p.kind === 'circle') { ctx.beginPath(); ctx.arc(0, 0, p.s / 3, 0, 6.28); ctx.fill(); }
+else heartPath(ctx, p.s * .7);
+ctx.restore();
+});
+if (CF.parts.length) CF.raf = requestAnimationFrame(step); else { CF.raf = null; ctx.clearRect(0, 0, g.w, g.h); }
+})();
+}
+function fitOne(a, max) {
+if (!a || !a.clientWidth) return;
+var s = max; a.style.fontSize = s + 'px';
+while (s > 24 && a.scrollWidth > a.clientWidth) { s -= 1; a.style.fontSize = s + 'px'; }
+}
+function fitNames() { fitOne($('#invFirst'), 54); fitOne($('#welFirst'), 64); }
+window.addEventListener('resize', fitNames);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNames);
+$('#seal').addEventListener('click', openEnv);
+$('#toForm').addEventListener('click', function () { var f = $('#rsvpForm'); f.classList.add('show'); setTimeout(function () { f.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); });
+function esc(x) { return String(x).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function norm(x) { return x.toLowerCase().replace(/[^a-z ]/g, '').replace(/\s+/g, ' ').trim(); }
+function findMatches(q) {
+q = norm(q); if (q.length < 2) return [];
+var out = [];
+PARTIES.forEach(function (p) { p.members.forEach(function (m) { if (!m.plus && norm(m.n).indexOf(q) >= 0) out.push({ p: p, m: m }); }); });
+return out.slice(0, 5);
+}
+$('#rName').addEventListener('input', function () {
+var list = findMatches(this.value), box = $('#rSug');
+$('#noMatch').style.display = this.value.trim().length >= 4 && !list.length ? 'block' : 'none';
+if (!list.length) { box.style.display = 'none'; return; }
+box.innerHTML = list.map(function (x) { var others = x.p.members.length - 1; return '<button type="button" role="option" data-p="' + x.p.id + '" data-n="' + esc(x.m.n) + '">' + esc(x.m.n) + '<span>' + (others ? '+' + others + ' on invitation' : 'Just you') + '</span></button>'; }).join('');
+box.style.display = 'block';
+});
+document.querySelectorAll('.tryname').forEach(function (b) { b.addEventListener('click', function () { var i = $('#rName'); i.value = b.getAttribute('data-n'); i.dispatchEvent(new Event('input')); i.focus(); }); });
+$('#rSug').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; selectParty(b.getAttribute('data-p'), b.getAttribute('data-n')); });
+function selectParty(pid, who) {
+rs.party = PARTIES.filter(function (p) { return p.id === pid; })[0]; rs.ans = {}; rs.plusName = {};
+$('#rName').value = who; $('#rSug').style.display = 'none'; $('#noMatch').style.display = 'none';
+renderParty(); var pb = $('#partyBox'); pb.style.display = 'flex'; pb.classList.remove('rise'); void pb.offsetWidth; pb.classList.add('rise');
+}
+function renderParty() {
+var p = rs.party; if (!p) return;
+$('#partyCount').textContent = p.members.length + (p.members.length === 1 ? ' person' : ' people') + ' invited';
+$('#partyList').innerHTML = p.members.map(function (m, i) {
+var a = rs.ans[i];
+var label = m.plus ? (rs.plusName[i] ? esc(rs.plusName[i]) : 'Plus one') : esc(m.n);
+var ini = m.plus ? '+1' : esc(m.n.charAt(0));
+return '<div class="member"><div class="row"><span class="ini">' + ini + '</span><span class="nm"><b>' + label + '</b><span>' + esc(m.r) + '</span></span></div>'
++ '<div class="yn"><button type="button" class="y' + (a === 'y' ? ' on' : '') + '" data-i="' + i + '" data-a="y">' + (m.plus ? 'Bringing a guest' : 'Going') + '</button><button type="button" class="n' + (a === 'n' ? ' on' : '') + '" data-i="' + i + '" data-a="n">' + (m.plus ? 'Coming solo' : 'Can&#39;t make it') + '</button></div>'
++ (m.plus && a === 'y' ? '<input class="plusname" data-i="' + i + '" type="text" placeholder="Your guest&#39;s full name" aria-label="Your guest&#39;s full name" value="' + esc(rs.plusName[i] || '') + '">' : '')
++ '</div>';
+}).join('');
+var anyYes = Object.keys(rs.ans).some(function (k) { return rs.ans[k] === 'y'; });
+$('#yesBits').style.display = anyYes ? 'flex' : 'none';
+}
+$('#partyList').addEventListener('click', function (e) { var b = e.target.closest('.yn button'); if (!b) return; rs.ans[+b.getAttribute('data-i')] = b.getAttribute('data-a'); renderParty(); });
+$('#partyList').addEventListener('input', function (e) { if (e.target.classList.contains('plusname')) rs.plusName[+e.target.getAttribute('data-i')] = e.target.value; });
+$('#rsvpForm').addEventListener('submit', function (e) {
+e.preventDefault();
+var p = rs.party;
+if (!p) { toast('Find your name first'); $('#rName').focus(); return; }
+for (var i = 0; i < p.members.length; i++) { if (!rs.ans[i]) { toast('Pick an answer for everyone listed'); return; } if (p.members[i].plus && rs.ans[i] === 'y' && !(rs.plusName[i] || '').trim()) { toast('Add your guest&#39;s name'.replace('&#39;', "'")); return; } }
+var going = 0; p.members.forEach(function (m, i) { if (rs.ans[i] === 'y') going++; });
+var first = $('#rName').value.trim().split(' ')[0];
+$('#thanksTitle').textContent = going ? 'See you there, ' + first + '!' : 'We will miss you, ' + first;
+$('#thanksText').textContent = going ? going + ' of ' + p.members.length + ' on your invitation ' + (going === 1 ? 'is' : 'are') + ' coming. This app will have everything you need on the big day.' : 'Thank you for letting us know. You can still leave the couple a video wish.';
+$('#rsvpForm').classList.remove('show'); $('#invite').classList.remove('show'); var th = $('#thanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show');
+if (going) setTimeout(function () { confettiRain(110); }, 200);
+$('#rsvpBarText').textContent = going ? 'You are going! Tap to view your invitation' : 'RSVP sent. Tap to view your invitation';
+setName(first);
+var v = document.getElementById('vp'); if (v) v.scrollTop = 0; else window.scrollTo(0, 0);
+});
+$('#rsvpEdit').addEventListener('click', function () { $('#thanks').classList.remove('show'); $('#invite').classList.add('show'); fitNames(); $('#rsvpForm').classList.add('show'); });
+window.__resetRsvp = function () { rs.opened = false; rs.party = null; rs.ans = {}; rs.plusName = {}; env.classList.remove('open'); $('#seal').classList.remove('crack'); $('#envStage').classList.remove('gone', 'lit'); $('#envStage').classList.remove('gone'); ['invite', 'rsvpForm', 'thanks'].forEach(function (id) { document.getElementById(id).classList.remove('show'); }); $('#rName').value = ''; $('#partyBox').style.display = 'none'; $('#rSug').style.display = 'none'; };
+
+// wedding-day lock (in the real app this flips on its own the morning of the wedding)
+var locked = store.get('dayof') !== '1';
+var LOCKMSG = { all: 'Photo sharing, the gallery and the scavenger hunt all open the morning of the wedding. Until then, RSVP, take the quiz or leave a video wish.', gallery: 'The gallery opens the morning of the wedding so everyone sees the big day for the first time together.', hunt: 'The scavenger hunt starts the morning of the wedding. Save your best shots for the big day!', share: 'Photo sharing opens the morning of the wedding. Until then, keep those cameras in your pocket!' };
+function applyLock() {
+document.body.classList.toggle('locked', locked);
+document.querySelectorAll('#mock button').forEach(function (b) { b.classList.toggle('on', (b.getAttribute('data-m') === 'before') === locked); });
+$('#nowLbl').textContent = locked ? 'Coming up:' : 'Happening now:';
+$('#nowName').textContent = locked ? 'The big day, [Wedding Date]' : M[0].name;
+}
+function showLock(kind) { $('#lockText').textContent = LOCKMSG[kind] || LOCKMSG.share; location.hash = 'locked'; }
+if ($('#mock')) $('#mock').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; locked = b.getAttribute('data-m') === 'before'; store.set('dayof', locked ? '0' : '1'); applyLock(); toast(locked ? 'Showing the app before the wedding' : 'Showing the wedding day'); });
+document.addEventListener('click', function (e) {
+if (!locked) return;
+var up = e.target.closest('label'); if (up && up.querySelector('input.upload')) { e.preventDefault(); showLock('share'); }
+}, true);
+applyLock();
+window.__setLock = function (v) { locked = v; store.set('dayof', v ? '0' : '1'); applyLock(); };
+
+
+// honeymoon fund
+var hm = { amt: null, what: '' };
+function setAmt(a, what) { hm.amt = a; hm.what = what || ''; $('#hmAmt').textContent = a ? '$' + a : 'a gift'; if (what) { hm.other = false; $('#otherBox').style.display = 'none'; $('#amtOther').classList.remove('on'); } document.querySelectorAll('#amts button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-a') === String(a) && !what); }); document.querySelectorAll('#exps .exp').forEach(function (b) { b.classList.toggle('on', !!what && b.querySelector('b').textContent === what); }); }
+$('#exps').addEventListener('click', function (e) { var b = e.target.closest('.exp'); if (b) setAmt(b.getAttribute('data-a'), b.querySelector('b').textContent); });
+$('#amts').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return;
+if (b.id === 'amtOther') { setAmt(null); hm.other = true; b.classList.add('on'); $('#otherBox').style.display = 'block'; $('#hmAmt').textContent = 'a gift'; $('#otherAmt').focus(); return; }
+hm.other = false; $('#otherBox').style.display = 'none'; $('#amtOther').classList.remove('on'); setAmt(b.getAttribute('data-a')); });
+$('#otherAmt').addEventListener('input', function () { var v = this.value.replace(/[^0-9.]/g, ''); var parts = v.split('.'); if (parts.length > 2) v = parts[0] + '.' + parts.slice(1).join(''); if (parts[1] && parts[1].length > 2) v = parts[0] + '.' + parts[1].slice(0, 2); this.value = v; var n = parseFloat(v); hm.amt = n > 0 ? (n % 1 ? n.toFixed(2) : String(n)) : null; $('#hmAmt').textContent = hm.amt ? '$' + hm.amt : 'a gift'; });
+$('#hmGo').addEventListener('click', function () {
+if (!hm.amt) { toast(hm.other ? 'Type the amount you want to give' : 'Pick an experience or an amount'); return; }
+$('#hmPayText').textContent = '$' + hm.amt + (hm.what ? ' for ' + hm.what.toLowerCase() : '') + ' to Mackenzie & Brandon';
+$('#hmForm').style.display = 'none'; $('#hmPay').style.display = 'block'; var v = document.getElementById('vp'); if (v) v.scrollTop = 200; else window.scrollTo(0, 200);
+});
+$('#hmBack').addEventListener('click', function () { $('#hmPay').style.display = 'none'; $('#hmForm').style.display = 'block'; });
+document.querySelectorAll('#hmPay .payb button').forEach(function (b) { b.addEventListener('click', function () {
+toast('In the real app this opens ' + b.getAttribute('data-p'));
+var n = ($('#hmName').value || '').trim().split(' ')[0];
+setTimeout(function () { $('#hmPay').style.display = 'none'; $('#hmThanksTitle').textContent = n ? 'Thank you, ' + n + '!' : 'Thank you!'; var th = $('#hmThanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show'); }, 1400);
+}); });
+window.__resetHoney = function () { hm.amt = null; hm.other = false; $('#otherBox').style.display = 'none'; $('#otherAmt').value = ''; $('#hmAmt').textContent = 'a gift'; $('#hmForm').style.display = 'block'; $('#hmPay').style.display = 'none'; $('#hmThanks').classList.remove('show'); document.querySelectorAll('#amts button, #exps .exp').forEach(function (b) { b.classList.remove('on'); }); };
+
+document.querySelectorAll('.enterapp').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); location.hash = store.get('guestName') ? 'home' : 'welcome'; }); });
+
+
+// countdown on the invitation
+function weddingTime() { var C = window.CFG; var s = C && C.moments && C.moments[0] && C.moments[0].start; var d = s ? Date.parse(s) : NaN; return isNaN(d) || d > Date.parse('2090-01-01') ? null : d; }
+function tickCountdown() {
+var w = weddingTime(), box = $('#cdown'); if (!box) return;
+if (!w) return;
+var ms = Math.max(0, w - Date.now()), d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+$('#cdD').textContent = d; $('#cdH').textContent = h; $('#cdM').textContent = m;
+}
+tickCountdown(); setInterval(tickCountdown, 30000);
+
+// ===== live mode: real data from Supabase (only when config.js has keys) =====
+if (window.LIVE) (function () {
+var L = window.LIVE, C = window.CFG || {};
+function strip(el) { if (!el) return el; var c = el.cloneNode(true); el.parentNode.replaceChild(c, el); return c; }
+document.body.classList.add('live');
+
+// mockup-only bits off
+var mk = $('#mock'); if (mk) mk.style.display = 'none';
+document.querySelectorAll('.tryname').forEach(function (b) { var p = b.parentNode; if (p) p.style.display = 'none'; });
+var ks = document.querySelector('#hire a[href="#keepsake"]'); if (ks) ks.style.display = 'none';
+
+// wedding details from config.js
+if (C.moments && C.moments.length) M = C.moments.map(function (m) { return { name: m.name, time: m.time || '', img: m.img || 'images/hero.jpg', pos: m.pos || '50% 40%', tip: m.tip || '', mission: m.mission || '' }; });
+if (C.hunt && C.hunt.length) H = C.hunt.map(function (h) { return [h[0], h[1], '']; });
+if (C.quiz && C.quiz.length) Q = C.quiz.map(function (x) { return { q: x.q, o: x.o }; });
+function partyList(list) { return list.map(function (p, i) { return '<div class="person rise" style="animation-delay:' + (0.1 + i * 0.05) + 's"><div class="pic">' + esc(p.name.charAt(0)) + '</div><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:700">' + esc(p.name) + '</div><div class="muted" style="font-size:13px">' + esc(p.role || '') + '</div></div></div>'; }).join(''); }
+if (C.party) {
+  var secs = document.querySelectorAll('#party .sec');
+  if (C.party.her && C.party.her.length && secs[0]) secs[0].nextElementSibling.innerHTML = partyList(C.party.her);
+  if (C.party.his && C.party.his.length && secs[1]) secs[1].nextElementSibling.innerHTML = partyList(C.party.his);
+}
+L.applyText(document.body);
+renderMoments(); renderHunt(); renderQuiz();
+
+// wedding-day lock from the server clock
+locked = true;
+applyLock = function () {
+  document.body.classList.toggle('locked', locked);
+  $('#nowLbl').textContent = locked ? 'Coming up:' : 'Happening now:';
+  $('#nowName').textContent = locked ? L.t('The big day, [Wedding Date]') : (M[L.momentIndex()] || M[0]).name;
+};
+applyLock();
+function refreshClock() {
+  var was = locked; locked = !L.unlocked();
+  if (!locked) { var mi = L.momentIndex(); if (mi !== cur && !refreshClock.picked) { cur = mi; renderMoments(); } }
+  applyLock();
+  if (was && !locked) { loadGallery(); route(); }
+}
+L.ready.then(function () { refreshClock(); route(); loadGallery(); setInterval(refreshClock, 60000); });
+$('#moments').addEventListener('click', function () { refreshClock.picked = true; });
+
+// ---------- photo and video sharing ----------
+function afterUpload(r) {
+  if (r.done) { toast('Added ' + r.done + (r.done === 1 ? ' memory' : ' memories') + '. Thank you!'); confettiRain(60); loadGallery(); }
+  if (r.skipped) setTimeout(function () { toast('Videos need to be 1 minute or shorter'); }, r.done ? 2700 : 0);
+  if (r.failed) setTimeout(function () { toast('Something did not upload. Check your signal and try again.'); }, (r.done || r.skipped) ? 5400 : 0);
+}
+document.querySelectorAll('input.upload').forEach(function (inp) {
+  var n = strip(inp);
+  n.addEventListener('change', function () {
+    var files = Array.prototype.slice.call(n.files || []); n.value = '';
+    if (!files.length) return;
+    if (locked) { showLock('share'); return; }
+    L.uploadFiles(files).then(afterUpload);
+  });
+});
+
+// ---------- scavenger hunt: each mission takes a real photo ----------
+var huntInput = document.createElement('input');
+huntInput.type = 'file'; huntInput.accept = 'image/*,video/*'; huntInput.className = 'sr'; document.body.appendChild(huntInput);
+var pendingMission = null;
+var hl = strip($('#huntList'));
+hl.addEventListener('click', function (e) {
+  var b = e.target.closest('.hunt-item'); if (!b) return;
+  if (locked) { showLock('hunt'); return; }
+  pendingMission = +b.getAttribute('data-i'); huntInput.click();
+});
+huntInput.addEventListener('change', function () {
+  var files = Array.prototype.slice.call(huntInput.files || []), i = pendingMission; huntInput.value = '';
+  if (!files.length || i === null) return;
+  L.uploadFiles(files.slice(0, 1), { mission: i }).then(function (r) {
+    if (r.done) { found[i] = r.thumbs[0] || true; store.set('hunt', JSON.stringify(found)); renderHunt(i); toast('Found! Nice one.'); loadGallery(); }
+    else afterUpload(r);
+  });
+});
+
+// ---------- gallery ----------
+var GL = [], loved = {};
+try { loved = JSON.parse(store.get('loved') || '{}') || {}; } catch (e) { loved = {}; }
+function loadGallery() {
+  if (locked) return;
+  L.gallery().then(function (list) {
+    GL = list; renderGallery();
+    var gb = document.querySelector('.grid3 a[href="#gallery"] .badge'); if (gb) { gb.textContent = list.length; gb.style.display = list.length ? 'flex' : 'none'; }
+  }).catch(function (e) { console.warn(e); });
+}
+function short(n) { return n === 'Cocktail Hour' ? 'Cocktails' : n.replace(/^The /, ''); }
+function liveTile(x, h, dl) {
+  return '<button type="button" class="tile unveil" data-id="' + x.id + '" style="height:' + h + 'px;animation-delay:' + dl + 's;border:none;padding:0;cursor:pointer;width:100%;background:#E9DFCF"><img src="' + esc(x.thumb) + '" alt="Shared by ' + esc(x.who) + '" loading="lazy">'
+    + (x.kind === 'video' ? '<div style="position:absolute;top:10px;left:10px;padding:4px 9px;border-radius:12px;background:rgba(255,255,255,.95);font-size:11px;font-weight:700;display:flex;gap:4px;align-items:center;color:#3B2A1E">' + ICON.play + 'Video</div>' : '')
+    + '<div class="cap scrim"><span>' + esc(x.who) + '</span><span style="display:flex;gap:4px;align-items:center">' + (x.hearts ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' + x.hearts : '') + '</span></div></button>';
+}
+renderGallery = function () {
+  var names = M.map(function (m) { return m.name; });
+  var chips = ['All'].concat(names.map(short));
+  $('#gChips').innerHTML = chips.map(function (c) { return '<button type="button" class="chip' + (c === gf ? ' on' : '') + '" data-c="' + esc(c) + '">' + esc(c) + '</button>'; }).join('');
+  var groups = names.map(function (n) { return { k: n, items: GL.filter(function (x) { return x.moment === n; }) }; });
+  var other = GL.filter(function (x) { return names.indexOf(x.moment) < 0; });
+  if (other.length) groups.push({ k: 'More memories', items: other });
+  groups = groups.filter(function (g) { return g.items.length && (gf === 'All' || short(g.k) === gf); });
+  if (!groups.length) { $('#gBody').innerHTML = '<div style="padding:40px 30px;text-align:center"><div class="script" style="font-size:44px;color:#B4532A">Be the first!</div><p class="muted" style="font-size:15px;line-height:1.5">No photos here yet. Tap the + button to share yours.</p></div>'; return; }
+  $('#gBody').innerHTML = groups.map(function (g) {
+    var a = [], b = [];
+    g.items.forEach(function (x, i) { (i % 2 ? b : a).push(liveTile(x, [240, 180, 210, 190][i % 4], Math.min(i * 0.06, 0.6))); });
+    return '<div class="sec"><span>' + esc(g.k) + '</span><i></i></div><div style="display:flex;gap:10px;padding:0 20px"><div style="flex:1;display:flex;flex-direction:column;gap:10px">' + a.join('') + '</div><div style="flex:1;display:flex;flex-direction:column;gap:10px;padding-top:30px">' + b.join('') + '</div></div>';
+  }).join('');
+};
+renderGallery();
+
+// lightbox
+var lb = document.createElement('div');
+lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Photo');
+lb.style.cssText = 'position:fixed;inset:0;z-index:70;background:rgba(20,14,10,.94);display:none;flex-direction:column;align-items:center;justify-content:center;padding:60px 14px 24px';
+lb.innerHTML = '<button type="button" id="lbClose" aria-label="Close" style="position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:22px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:24px;cursor:pointer">&times;</button><div id="lbMedia" style="flex:1;width:100%;display:flex;align-items:center;justify-content:center;min-height:0"></div><div style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:400px;padding-top:14px;color:#fff;font-family:\'Josefin Sans\',sans-serif"><span id="lbWho" style="font-size:15px;font-weight:600"></span><button type="button" id="lbHeart" style="height:44px;padding:0 16px;border-radius:22px;border:1.5px solid #fff;background:transparent;color:#fff;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px"></button></div>';
+document.body.appendChild(lb);
+var lbItem = null;
+function heartLabel(x) { return (loved[x.id] ? '&#9829; Loved' : '&#9825; Love it') + (x.hearts ? ' · ' + x.hearts : ''); }
+function openLb(x) {
+  lbItem = x;
+  $('#lbMedia').innerHTML = x.kind === 'video' ? '<video src="' + esc(x.url) + '" controls playsinline autoplay style="max-width:100%;max-height:100%;border-radius:12px"></video>' : '<img src="' + esc(x.url) + '" alt="Shared by ' + esc(x.who) + '" style="max-width:100%;max-height:100%;border-radius:12px;object-fit:contain">';
+  $('#lbWho').textContent = 'Shared by ' + x.who;
+  $('#lbHeart').innerHTML = heartLabel(x);
+  lb.style.display = 'flex'; $('#lbClose').focus();
+}
+function closeLb() { lb.style.display = 'none'; $('#lbMedia').innerHTML = ''; lbItem = null; }
+$('#lbClose').addEventListener('click', closeLb);
+lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+lb.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+$('#lbHeart').addEventListener('click', function () {
+  var x = lbItem; if (!x || loved[x.id]) return;
+  loved[x.id] = 1; store.set('loved', JSON.stringify(loved)); x.hearts++; $('#lbHeart').innerHTML = heartLabel(x);
+  L.heart(x.id).then(function () {}, function () {});
+});
+$('#gBody').addEventListener('click', function (e) {
+  var t = e.target.closest('.tile[data-id]'); if (!t) return;
+  var id = t.getAttribute('data-id'); var x = GL.filter(function (g) { return g.id === id; })[0]; if (x) openLb(x);
+});
+
+// ---------- quiz: saves answers, shows the leaderboard after the reveal ----------
+try { var qs = JSON.parse(store.get('quiz') || '{}'); if (qs.qi) qi = Math.min(qs.qi, Q.length); } catch (e) {}
+var baseQuiz = renderQuiz;
+renderQuiz = function () {
+  if (qi < Q.length) { baseQuiz(); return; }
+  $('#quizBody').innerHTML = '<div class="rise card" style="margin:22px 20px 0;padding:28px 20px;text-align:center"><span class="stampb stamp" style="display:inline-block;font-size:13px;padding:6px 12px">ALL DONE</span><div class="script" style="font-size:46px;color:#B4532A;margin-top:14px;line-height:1.05">You know them well!</div><p class="muted" style="font-size:15px;line-height:1.5;margin:8px 0 0">Scores are revealed at the reception.</p><div id="lbBoard" style="margin-top:16px;text-align:left"></div></div>';
+  L.leaderboard().then(function (rows) {
+    if (!rows || !rows.length) return;
+    $('#lbBoard').innerHTML = '<div class="serif" style="font-size:24px;font-weight:600;text-align:center;margin-bottom:10px">Quiz champions</div>' + rows.slice(0, 10).map(function (r, i) {
+      return '<div style="display:flex;align-items:center;gap:12px;padding:10px 4px;border-top:1px solid #F3ECE0"><span style="width:30px;height:30px;border-radius:15px;background:' + (i ? '#3B2A1E' : '#B4532A') + ';color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">' + (i + 1) + '</span><span style="flex:1;font-weight:700">' + esc(r.name || 'Guest') + '</span><span class="serif" style="font-size:20px;font-weight:700">' + r.score + '/' + Q.length + '</span></div>';
+    }).join('');
+  });
+};
+var qb = strip($('#quizBody'));
+qb.addEventListener('click', function (e) {
+  var o = e.target.closest('.opt'); if (o) { picked = +o.getAttribute('data-i'); L.answerQuiz(qi, picked); renderQuiz(); return; }
+  if (e.target.closest('#qNext')) {
+    if (picked === null) { toast('Pick an answer first'); return; }
+    qi++; picked = null; store.set('quiz', JSON.stringify({ qi: qi })); renderQuiz();
+    if (qi >= Q.length) confettiRain(70);
+  }
+});
+renderQuiz();
+
+// ---------- video wishes ----------
+var wf = strip($('#wishForm'));
+var wv = $('#wishVideo'), wvLabel = strip(wv.parentNode);
+wv = $('#wishVideo');
+wv.addEventListener('change', function () { if (wv.files.length) { $('#recLabel').textContent = 'Video ready'; toast('Video added. Now hit send!'); } });
+wf.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var file = wv.files && wv.files[0];
+  if (!file) { toast('Record your video first'); return; }
+  var name = ($('#wishName').value || '').trim();
+  if (!name) { toast('Add your name so they know who it is from'); $('#wishName').focus(); return; }
+  var btn = wf.querySelector('button[type=submit]'); btn.disabled = true;
+  L.uploadWish(file, W[wi].l, !!W[wi].cap, name).then(function (r) {
+    btn.disabled = false;
+    if (r && r.tooLong) { toast('Videos need to be 1 minute or shorter'); return; }
+    toast('Sent to ' + L.t('Mackenzie & Brandon')); confettiRain(80);
+    wv.value = ''; $('#recLabel').textContent = 'Tap to record';
+  }, function () { btn.disabled = false; toast('That did not send. Check your signal and try again.'); });
+});
+
+// ---------- RSVP from the real guest list ----------
+var form = strip($('#rsvpForm'));
+var found_inv = {}, tmr = null;
+$('#rName').addEventListener('input', function () {
+  var q = this.value; clearTimeout(tmr);
+  if (q.trim().length < 3) { $('#rSug').style.display = 'none'; $('#noMatch').style.display = 'none'; return; }
+  tmr = setTimeout(function () {
+    L.findInvitation(q).then(function (list) {
+      var box = $('#rSug');
+      $('#noMatch').style.display = !list.length && q.trim().length >= 4 ? 'block' : 'none';
+      if (!list.length) { box.style.display = 'none'; return; }
+      list.forEach(function (p) { found_inv[p.party_id] = p; });
+      box.innerHTML = list.map(function (p) { var others = p.members.length - 1; return '<button type="button" role="option" data-p="' + p.party_id + '" data-n="' + esc(p.match_name) + '">' + esc(p.match_name) + '<span>' + (p.responded ? 'Already replied' : (others ? '+' + others + ' on invitation' : 'Just you')) + '</span></button>'; }).join('');
+      box.style.display = 'block';
+    }).catch(function () { toast('Could not search right now. Try again in a moment.'); });
+  }, 250);
+});
+$('#rSug').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; selectParty(b.getAttribute('data-p'), b.getAttribute('data-n')); });
+selectParty = function (pid, who) {
+  var p = found_inv[pid]; if (!p) return;
+  rs.party = { id: p.party_id, members: p.members.map(function (m) { return { id: m.id, n: m.name, r: m.role, plus: m.plus }; }) };
+  rs.ans = {}; rs.plusName = {};
+  p.members.forEach(function (m, i) { if (m.attending === true) rs.ans[i] = 'y'; else if (m.attending === false) rs.ans[i] = 'n'; if (m.plus_one_name) rs.plusName[i] = m.plus_one_name; });
+  $('#rName').value = who; $('#rSug').style.display = 'none'; $('#noMatch').style.display = 'none';
+  renderParty(); var pb = $('#partyBox'); pb.style.display = 'flex'; pb.classList.remove('rise'); void pb.offsetWidth; pb.classList.add('rise');
+};
+$('#partyList').addEventListener('click', function (e) { var b = e.target.closest('.yn button'); if (!b) return; rs.ans[+b.getAttribute('data-i')] = b.getAttribute('data-a'); renderParty(); });
+$('#partyList').addEventListener('input', function (e) { if (e.target.classList.contains('plusname')) rs.plusName[+e.target.getAttribute('data-i')] = e.target.value; });
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var p = rs.party;
+  if (!p) { toast('Find your name first'); $('#rName').focus(); return; }
+  for (var i = 0; i < p.members.length; i++) {
+    if (!rs.ans[i]) { toast('Pick an answer for everyone listed'); return; }
+    if (p.members[i].plus && rs.ans[i] === 'y' && !(rs.plusName[i] || '').trim()) { toast("Add your guest's name"); return; }
+  }
+  var answers = p.members.map(function (m, i) { return { guest_id: m.id, attending: rs.ans[i] === 'y', plus_one_name: m.plus && rs.ans[i] === 'y' ? (rs.plusName[i] || '').trim() : '' }; });
+  var btn = form.querySelector('button[type=submit]'); btn.disabled = true;
+  L.submitRsvp(p.id, answers, $('#rName').value.trim(), ($('#rSong').value || '').trim(), ($('#rNote').value || '').trim()).then(function (res) {
+    btn.disabled = false;
+    var going = res.going, total = res.total, first = $('#rName').value.trim().split(' ')[0];
+    $('#thanksTitle').textContent = going ? 'See you there, ' + first + '!' : 'We will miss you, ' + first;
+    $('#thanksText').textContent = going ? going + ' of ' + total + ' on your invitation ' + (going === 1 ? 'is' : 'are') + ' coming. This app will have everything you need on the big day.' : 'Thank you for letting us know. You can still leave the couple a video wish.';
+    $('#rsvpForm').classList.remove('show'); $('#invite').classList.remove('show'); var th = $('#thanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show');
+    if (going) setTimeout(function () { confettiRain(110); }, 200);
+    $('#rsvpBarText').textContent = going ? 'You are going! Tap to view your invitation' : 'RSVP sent. Tap to view your invitation';
+    store.set('rsvpDone', going ? 'yes' : 'no');
+    setName(first); window.scrollTo(0, 0);
+  }, function () { btn.disabled = false; toast('That did not send. Check your signal and try again.'); });
+});
+if (store.get('rsvpDone')) $('#rsvpBarText').textContent = store.get('rsvpDone') === 'yes' ? 'You are going! Tap to view your invitation' : 'RSVP sent. Tap to view your invitation';
+
+// ---------- honeymoon fund: real Venmo and Cash App links ----------
+document.querySelectorAll('#hmPay .payb button').forEach(function (b) {
+  var n = strip(b), method = n.getAttribute('data-p');
+  if (!L.payUrl(method, 1, '')) { n.style.display = 'none'; return; }
+  n.addEventListener('click', function () {
+    var name = ($('#hmName').value || '').trim(), note = ($('#hmNote').value || '').trim();
+    var url = L.payUrl(method, hm.amt, (hm.what ? hm.what + '. ' : '') + 'Honeymoon fund' + (name ? ' from ' + name : ''));
+    L.recordGift({ name: name, amount: hm.amt, method: method, what: hm.what, note: note }).then(function () {}, function () {});
+    var w = window.open(url, '_blank'); if (!w) location.href = url;
+    setTimeout(function () { $('#hmPay').style.display = 'none'; $('#hmThanksTitle').textContent = name ? 'Thank you, ' + name.split(' ')[0] + '!' : 'Thank you!'; var th = $('#hmThanks'); th.classList.remove('show'); void th.offsetWidth; th.classList.add('show'); }, 800);
+  });
+});
+})();
+
+
+// routing
+var views = ['welcome', 'home', 'rsvp', 'honeymoon', 'locked', 'schedule', 'about', 'info', 'party', 'hunt', 'gallery', 'quiz', 'wishes', 'keepsake', 'hire'];
+function route() {
+var h = (location.hash || '').replace('#', ''); if (h === 'welcome') h = 'home';
+if (views.indexOf(h) < 0) {
+  h = 'home';
+}
+if (locked && (h === 'gallery' || h === 'hunt')) { $('#lockText').textContent = LOCKMSG[h]; var tabH = h; h = 'locked'; }
+if (h === 'locked' && !tabH) $('#lockText').textContent = LOCKMSG.all;
+document.querySelectorAll('.screen').forEach(function (s) { s.classList.toggle('on', s.id === h); });
+document.body.classList.toggle('envmode', h === 'rsvp' && !rs.opened);
+var tabbed = ['rsvp', 'honeymoon', 'locked', 'schedule', 'about', 'info', 'party', 'hunt', 'gallery', 'quiz', 'wishes'].indexOf(h) >= 0;
+$('#tabs').classList.toggle('hide', !tabbed);
+document.querySelectorAll('#tabs a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-t') === (h === 'locked' && typeof tabH !== 'undefined' ? tabH : h)); });
+window.scrollTo(0, 0);
+if (h === 'keepsake') countUp();
+if (h === 'welcome' || h === 'home') fitNames();
+}
+window.addEventListener('hashchange', route);
+route();
+})();
+</script>
+</body>
+</html>
